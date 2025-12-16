@@ -1,69 +1,70 @@
 // lib/features/onboarding/presentation/widgets/fitness_arc_painter.dart
 
+import 'package:fitness/common/res/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
 class FitnessArcPainter extends CustomPainter {
   final int level;
   final int maxLevel;
-  static const Color primaryColor = Colors.teal;
-  static const double _strokeWidth = 6.0;
-  static const double _thumbRadius = 12.0;
-  static const double _thumbBorderRadius = 16.0;
+  static const double _strokeWidth = 8.0;
+  static const double _thumbRadius = 14.0;
+  static const double _thumbBorderWidth = 4.0;
 
-  // Arc parameters (210° to 330°)
-  static const double _startAngle = pi * 1.1667; // 210 degrees
-  static const double _sweepAngle = pi * 0.6667; // 120 degrees
-  static const double _centerOffset = 1.5;
+  static const double startAngle = pi * 1.16;
+  static const double sweepAngle = pi * 0.66; 
 
   FitnessArcPainter({required this.level, required this.maxLevel});
 
   @override
   void paint(Canvas canvas, Size size) {
     _drawInactiveArc(canvas, size);
+    _drawLevelMarkers(canvas, size);
     _drawActiveArc(canvas, size);
     _drawThumb(canvas, size);
-    _drawLevelMarkers(canvas, size);
   }
 
   void _drawInactiveArc(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.white24
+      ..color = AppColors.textPrimary
       ..style = PaintingStyle.stroke
       ..strokeWidth = _strokeWidth
       ..strokeCap = StrokeCap.round;
 
     final rect = _getArcRect(size);
-    canvas.drawArc(rect, _startAngle, _sweepAngle, false, paint);
+    canvas.drawArc(rect, startAngle, sweepAngle, false, paint);
   }
 
   void _drawActiveArc(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = primaryColor
+      ..color =  AppColors.primary
       ..style = PaintingStyle.stroke
       ..strokeWidth = _strokeWidth
       ..strokeCap = StrokeCap.round;
 
     final rect = _getArcRect(size);
-    final activeSweep = (level / maxLevel) * _sweepAngle;
-    canvas.drawArc(rect, _startAngle, activeSweep, false, paint);
+    final activeSweep = (level / maxLevel) * sweepAngle;
+    canvas.drawArc(rect, startAngle, activeSweep, false, paint);
   }
 
   void _drawThumb(Canvas canvas, Size size) {
     final thumbPosition = _calculateThumbPosition(size);
 
-    // Draw thumb fill
-    final thumbPaint = Paint()
-      ..color = primaryColor
-      ..style = PaintingStyle.fill;
-    canvas.drawCircle(thumbPosition, _thumbRadius, thumbPaint);
-
-    // Draw thumb border
+    // Draw white border first (larger circle)
     final borderPaint = Paint()
       ..color = Colors.white
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 4.0;
-    canvas.drawCircle(thumbPosition, _thumbBorderRadius, borderPaint);
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(
+      thumbPosition,
+      _thumbRadius + _thumbBorderWidth,
+      borderPaint,
+    );
+
+    // Draw teal fill on top (smaller circle)
+    final thumbPaint = Paint()
+      ..color = AppColors.primary
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(thumbPosition, _thumbRadius, thumbPaint);
   }
 
   void _drawLevelMarkers(Canvas canvas, Size size) {
@@ -74,21 +75,19 @@ class FitnessArcPainter extends CustomPainter {
 
   void _drawLevelMarker(Canvas canvas, Size size, int markerLevel) {
     final markerPosition = _calculateMarkerPosition(size, markerLevel);
-    final isActive = markerLevel == level;
-
+    
     final markerPaint = Paint()
-      ..color = isActive ? primaryColor : Colors.white54
+      ..color = AppColors.textLightDark
       ..style = PaintingStyle.fill;
 
-    final markerRadius = isActive ? 4.0 : 3.0;
-    canvas.drawCircle(markerPosition, markerRadius, markerPaint);
+    canvas.drawCircle(markerPosition, 3.5, markerPaint);
   }
 
   Offset _calculateThumbPosition(Size size) {
-    final center = Offset(size.width / 2, size.height * _centerOffset);
-    final radius = size.width * 0.9;
-    final activeSweep = (level / maxLevel) * _sweepAngle;
-    final thumbAngle = _startAngle + activeSweep;
+    final center = _getCenter(size);
+    final radius = _getRadius(size);
+    final activeSweep = (level / maxLevel) * sweepAngle;
+    final thumbAngle = startAngle + activeSweep;
 
     return Offset(
       center.dx + radius * cos(thumbAngle),
@@ -97,9 +96,9 @@ class FitnessArcPainter extends CustomPainter {
   }
 
   Offset _calculateMarkerPosition(Size size, int markerLevel) {
-    final center = Offset(size.width / 2, size.height * _centerOffset);
-    final radius = size.width * 0.9;
-    final markerAngle = _startAngle + (markerLevel / maxLevel) * _sweepAngle;
+    final center = _getCenter(size);
+    final radius = _getRadius(size);
+    final markerAngle = startAngle + (markerLevel / maxLevel) * sweepAngle;
 
     return Offset(
       center.dx + radius * cos(markerAngle),
@@ -107,9 +106,17 @@ class FitnessArcPainter extends CustomPainter {
     );
   }
 
+  Offset _getCenter(Size size) {
+    return Offset(size.width / 2, size.height * 0.75);
+  }
+
+  double _getRadius(Size size) {
+    return size.width * 0.55;
+  }
+
   Rect _getArcRect(Size size) {
-    final center = Offset(size.width / 2, size.height * _centerOffset);
-    final radius = size.width * 0.9;
+    final center = _getCenter(size);
+    final radius = _getRadius(size);
     return Rect.fromCircle(center: center, radius: radius);
   }
 

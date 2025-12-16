@@ -7,7 +7,8 @@ import 'package:fitness/common/helpers/app_router.gr.dart';
 import 'package:fitness/features/onboarding/data/models/fitness_profile_model.dart';
 import 'package:fitness/features/onboarding/presentation/widgets/continue_button.dart';
 import 'package:fitness/common/res/colors.dart'; // <--- NEW IMPORT
-import 'package:fitness/features/onboarding/presentation/widgets/sleep_quality_tile.dart'; // <--- NEW IMPORT
+import 'package:fitness/features/onboarding/presentation/widgets/sleep_quality_tile.dart';
+import 'package:flutter_animate/flutter_animate.dart'; // <--- NEW IMPORT
 
 @RoutePage()
 class SleepQualityScreen extends StatefulWidget {
@@ -59,11 +60,8 @@ class _SleepQualityScreenState extends State<SleepQualityScreen> {
   @override
   void initState() {
     super.initState();
-    // Initialize state from profile data if available
     _selectedQuality = widget.profile.sleepQuality;
   }
-
-  // --- Tile Builder is now the reusable widget SleepQualityTile ---
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +69,7 @@ class _SleepQualityScreenState extends State<SleepQualityScreen> {
     final bool isButtonEnabled = _selectedQuality != null;
 
     return Scaffold(
-      backgroundColor: AppColors.backgroundDark, // Refactored color
+      backgroundColor: AppColors.backgroundDark, 
       appBar: const OnboardingAppBar(
         currentStep: 14,
         totalSteps: 17,
@@ -88,9 +86,10 @@ class _SleepQualityScreenState extends State<SleepQualityScreen> {
               Text(
                 "What's your sleep quality like?",
                 style: theme.textTheme.headlineMedium?.copyWith(
-                  color: AppColors.textPrimary, // Refactored color
                   fontWeight: FontWeight.w800,
                 ),
+              ).animate(
+                effects: [FadeEffect(), SlideEffect()],
               ),
               const SizedBox(height: 30),
               Expanded(
@@ -111,6 +110,13 @@ class _SleepQualityScreenState extends State<SleepQualityScreen> {
                             _selectedQuality = quality;
                           });
                         },
+                      ).animate(
+                        delay: 100.ms,
+                      ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideX(
+                          begin: 0.2,
+                          end: 0,
+                          duration: 600.ms,
+                          curve: Curves.easeOut
                       );
                     }).toList(),
                   ),
@@ -121,7 +127,7 @@ class _SleepQualityScreenState extends State<SleepQualityScreen> {
                 onPressed: isButtonEnabled
                     ? () {
                         final updatedProfile = FitnessProfileModel(
-                          // Pass all existing data
+                          
                           uid: widget.profile.uid,
                           primaryGoal: widget.profile.primaryGoal,
                           gender: widget.profile.gender,
@@ -139,11 +145,9 @@ class _SleepQualityScreenState extends State<SleepQualityScreen> {
                           supplementsTaken: widget.profile.supplementsTaken,
                           heightCm: widget.profile.heightCm,
                           calorieGoal:
-                              widget.profile.calorieGoal, // Use actual value
+                              widget.profile.calorieGoal, 
                           calorieUnit:
-                              widget.profile.calorieUnit, // Use actual value
-
-                          // --- FIELD UPDATED HERE ---
+                              widget.profile.calorieUnit, 
                           sleepQuality: _selectedQuality!,
                         );
 

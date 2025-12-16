@@ -1,8 +1,10 @@
 // lib/features/onboarding/presentation/pages/gender_screen.dart
 
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness/common/res/colors.dart';
 import 'package:fitness/features/onboarding/presentation/widgets/onboarding_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:fitness/common/helpers/app_router.gr.dart';
@@ -37,9 +39,7 @@ class _GenderScreenState extends State<GenderScreen> {
 
   GenderOption? _selectedGender;
 
-  static const Color textColor = Color(0xFFFF9800);
-
-  // Widget for the "Prefer to skip" option (kept here for simplicity)
+ 
   Widget _buildSkipButton() {
     const Color skipBackgroundColor = Color.fromARGB(255, 59, 31, 23);
 
@@ -59,10 +59,10 @@ class _GenderScreenState extends State<GenderScreen> {
             borderRadius: BorderRadius.circular(16.0),
           ),
           alignment: Alignment.center,
-          child: const Text(
+          child:  Text(
             "Prefer to skip, thanks! ✕",
             style: TextStyle(
-              color: textColor,
+              color: AppColors.accent,
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
@@ -98,8 +98,6 @@ class _GenderScreenState extends State<GenderScreen> {
                 ),
               ),
               const SizedBox(height: 30),
-
-              // Gender Tiles List using the new dedicated widget
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -109,6 +107,7 @@ class _GenderScreenState extends State<GenderScreen> {
                               title: option.title,
                               icon: option.icon,
                               imagePath: option.imagePath,
+                              
                               isSelected: _selectedGender == option,
                               onTap: () {
                                 setState(() {
@@ -117,6 +116,13 @@ class _GenderScreenState extends State<GenderScreen> {
                               },
                             ))
                         .toList(),
+                  ).animate(
+                    delay: 200.ms,
+                  ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideY(
+                      begin: 0.2,
+                      end: 0,
+                      duration: 600.ms,
+                      curve: Curves.easeOut
                   ),
                 ),
               ),

@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:fitness/common/helpers/app_router.gr.dart';
 import 'package:fitness/features/onboarding/data/models/fitness_profile_model.dart';
 import 'package:fitness/features/onboarding/presentation/widgets/continue_button.dart';
-import 'package:fitness/common/res/colors.dart'; // <--- NEW IMPORT
+import 'package:fitness/common/res/colors.dart';
+import 'package:flutter_animate/flutter_animate.dart'; // <--- NEW IMPORT
 
 @RoutePage()
 class CaloriesScreen extends StatefulWidget {
@@ -48,7 +49,7 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
     return Container(
       width: 250,
       decoration: BoxDecoration(
-        color: AppColors.cardDark, // Refactored
+        color: AppColors.cardDark, 
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Row(
@@ -66,8 +67,8 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 decoration: BoxDecoration(
                   color: isSelected
-                      ? AppColors.textPrimary
-                      : Colors.transparent, // Refactored (White when selected)
+                      ? AppColors.accent
+                      : Colors.transparent, 
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 child: Center(
@@ -76,7 +77,7 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
                     style: TextStyle(
                       color: isSelected
                           ? AppColors.textAccent
-                          : AppColors.textSecondary, // Refactored
+                          : AppColors.textOnPrimary, 
                       fontWeight:
                           isSelected ? FontWeight.bold : FontWeight.normal,
                     ),
@@ -89,8 +90,6 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
       ),
     );
   }
-
-  // --- Plus/Minus Button (Refactored Colors) ---
   Widget _buildControlButton(
       {required IconData icon,
       required VoidCallback onPressed,
@@ -103,7 +102,7 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
           style: ElevatedButton.styleFrom(
             backgroundColor: isPrimary
                 ? AppColors.primary
-                : AppColors.cardDark, // Refactored
+                : AppColors.cardDark, 
             padding: const EdgeInsets.symmetric(vertical: 20.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16.0),
@@ -115,7 +114,7 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
             size: 32,
             color: isPrimary
                 ? AppColors.textAccent
-                : AppColors.textOnPrimary, // Refactored
+                : AppColors.textOnPrimary,
           ),
         ),
       ),
@@ -146,24 +145,23 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
                 child: Text(
                   "What's Your Calorie Goal per Day?",
                   style: theme.textTheme.headlineMedium?.copyWith(
-                    color: AppColors.textPrimary, // Refactored
+                   
                     fontWeight: FontWeight.w800,
                   ),
                 ),
+              ).animate(
+                effects: [FadeEffect(), SlideEffect()],
               ),
 
               const Spacer(),
 
-              // Unit Toggle
               _buildUnitToggle(),
 
               const Spacer(),
 
-              // Large Numeric Display
               Text(
                 _calorieGoal.toString(),
                 style: const TextStyle(
-                  color: AppColors.textPrimary, // Refactored
                   fontSize: 100,
                   fontWeight: FontWeight.w900,
                   height: 1.0,
@@ -172,7 +170,7 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
               Text(
                 'calories daily',
                 style: theme.textTheme.titleMedium?.copyWith(
-                  color: AppColors.textSecondary, // Refactored
+                  color: AppColors.textSecondary,
                 ),
               ),
 
@@ -186,11 +184,31 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
                     icon: Icons.remove,
                     onPressed: () => _changeGoal(-_step),
                     isPrimary: false,
+                  ).animate(
+                    effects: [
+                      FadeEffect(delay: 100.ms, duration: 500.ms),
+                      SlideEffect(
+                        delay: 100.ms,
+                        duration: 500.ms,
+                        begin: const Offset(-0.5, 0),
+                        end: const Offset(0, 0),
+                      ),
+                    ],
                   ),
                   _buildControlButton(
                     icon: Icons.add,
                     onPressed: () => _changeGoal(_step),
                     isPrimary: true,
+                  ).animate(
+                    effects: [
+                      FadeEffect(delay: 200.ms, duration: 500.ms),
+                      SlideEffect(
+                        delay: 200.ms,
+                        duration: 500.ms,
+                        begin: const Offset(0.5, 0),
+                        end: const Offset(0, 0),
+                      ),
+                    ],
                   ),
                 ],
               ),

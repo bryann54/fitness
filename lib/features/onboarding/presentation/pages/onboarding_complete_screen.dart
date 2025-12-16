@@ -1,6 +1,7 @@
 // lib/features/onboarding/presentation/pages/onboarding_complete_screen.dart
 
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness/common/res/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:animate_do/animate_do.dart';
@@ -21,9 +22,6 @@ class OnboardingCompleteScreen extends StatefulWidget {
 }
 
 class _OnboardingCompleteScreenState extends State<OnboardingCompleteScreen> {
-  static const Color primaryColor = Color(0xFFFF9800);
-
-  // Helper to display key-value pairs (Unchanged)
   Widget _buildProfileDetail(BuildContext context, String title, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -31,7 +29,7 @@ class _OnboardingCompleteScreenState extends State<OnboardingCompleteScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            width: 150, // Fixed width for titles
+            width: 150, 
             child: Text(
               '$title:',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -106,7 +104,7 @@ class _OnboardingCompleteScreenState extends State<OnboardingCompleteScreen> {
                   Text(
                     "All Set!",
                     style: theme.textTheme.headlineLarge?.copyWith(
-                      color: primaryColor,
+                      color: AppColors.accent,
                       fontWeight: FontWeight.w900,
                     ),
                   ),

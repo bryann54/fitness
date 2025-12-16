@@ -1,11 +1,13 @@
 // lib/features/onboarding/presentation/pages/weight_screen.dart
 
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness/common/res/colors.dart';
 import 'package:fitness/features/onboarding/presentation/widgets/continue_button.dart';
 import 'package:fitness/features/onboarding/presentation/widgets/onboarding_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness/common/helpers/app_router.gr.dart';
 import 'package:fitness/features/onboarding/data/models/fitness_profile_model.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 @RoutePage()
 class WeightScreen extends StatefulWidget {
@@ -33,21 +35,31 @@ class _WeightScreenState extends State<WeightScreen> {
         Text(
           _displayedWeight.toStringAsFixed(_unit == 'kg' ? 0 : 0),
           style: const TextStyle(
-            // color: Colors.white,
             fontSize: 80,
             fontWeight: FontWeight.w900,
           ),
-        ),
+        ).animate().fadeIn(duration: 600.ms, delay: 400.ms).slideX(
+                        begin: -0.3,
+                        end: 0,
+                        duration: 600.ms,
+                        delay: 400.ms,
+                        curve: Curves.easeOut,
+                      ),
 
         // Unit label (Small Text)
         Text(
           _unit,
           style: TextStyle(
-            // color: Colors.white.withValues(alpha: 0.5),
             fontSize: 24,
             fontWeight: FontWeight.w500,
           ),
-        ),
+        ).animate().fadeIn(duration: 600.ms, delay: 400.ms).slideX(
+                        begin: 0.3,
+                        end: 0,
+                        duration: 600.ms,
+                        delay: 400.ms,
+                        curve: Curves.easeOut,
+                      ),
         const SizedBox(height: 50),
 
         SliderTheme(
@@ -75,11 +87,11 @@ class _WeightScreenState extends State<WeightScreen> {
             children: [
               Text(
                 '${_minWeight.toInt()}',
-                // style: TextStyle(color: Colors.white.withValues(alpha: 0.5)),
+                // style: TextStyle(color: AppColors.visualLightBackgroundHalfe.withValues(alpha: 0.5)),
               ),
               Text(
                 '${_maxWeight.toInt()}',
-                // style: TextStyle(color: Colors.white.withValues(alpha: 0.5)),
+                // style: TextStyle(color: AppColors.visualLightBackgroundHalfe.withValues(alpha: 0.5)),
               ),
             ],
           ),
@@ -99,8 +111,23 @@ class _WeightScreenState extends State<WeightScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _buildUnitButton('kg'),
-          _buildUnitButton('lbs'),
+          _buildUnitButton('kg')
+              .animate()
+              .fadeIn(duration: 600.ms, delay: 400.ms)
+              .slideX(
+                begin: -0.3,
+                end: 0,
+                duration: 600.ms,
+                delay: 400.ms,
+                curve: Curves.easeOut,
+              ),
+          _buildUnitButton('lbs').animate().fadeIn(duration: 600.ms, delay: 400.ms).slideX(
+                        begin: 0.3,
+                        end: 0,
+                        duration: 600.ms,
+                        delay: 400.ms,
+                        curve: Curves.easeOut,
+                      ),
         ],
       ),
     );
@@ -119,14 +146,14 @@ class _WeightScreenState extends State<WeightScreen> {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: isSelected ? Colors.teal : Colors.transparent,
+            color: isSelected ?AppColors.primary : Colors.transparent,
             borderRadius: BorderRadius.circular(8.0),
           ),
           alignment: Alignment.center,
           child: Text(
             label.toUpperCase(),
             style: TextStyle(
-              color: isSelected ? Colors.white : Colors.white70,
+              color: isSelected ? AppColors.visualLightBackgroundHalf : AppColors.visualLightBackgroundHalf,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -156,9 +183,11 @@ class _WeightScreenState extends State<WeightScreen> {
               Text(
                 "What is your weight?",
                 style: theme.textTheme.headlineMedium?.copyWith(
-                  color: Colors.white,
+                  color: AppColors.visualLightBackgroundHalf,
                   fontWeight: FontWeight.w800,
                 ),
+              ).animate(
+                effects: [FadeEffect(), SlideEffect()],
               ),
               const SizedBox(height: 30),
               _buildUnitToggle(),

@@ -3,22 +3,21 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fitness/features/onboarding/presentation/widgets/onboarding_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'dart:math';
 
 import 'package:fitness/common/helpers/app_router.gr.dart';
 import 'package:fitness/features/onboarding/data/models/fitness_profile_model.dart';
 import 'package:fitness/features/onboarding/presentation/widgets/continue_button.dart';
-import 'package:fitness/features/onboarding/presentation/widgets/fitness_arc_painter.dart'; // Import the new widget
+import 'package:fitness/features/onboarding/presentation/widgets/fitness_arc_painter.dart';
 
-// Mapping fitness level score to descriptive text
-// Corrected to reflect a 0-5 scale
 const List<String> fitnessDescriptions = [
-  "Sedentary", // 0
-  "Beginner", // 1
-  "Casual Athlete", // 2
-  "Somewhat Athletic", // 3
-  "Advanced", // 4
-  "Elite Athlete", // 5
+  "Sedentary",
+  "Beginner",
+  "Casual Athlete",
+  "Somewhat Athletic",
+  "Advanced",
+  "Elite Athlete",
 ];
 
 @RoutePage()
@@ -34,60 +33,61 @@ class _FitnessLevelScreenState extends State<FitnessLevelScreen> {
   static const int maxScore = 5;
   late int _selectedLevel;
 
-  // Define constant angles used in the painter for calculation
+  // Match the painter's constants
   static const double startAngle = pi * 1.16; // 210 degrees
   static const double sweepAngle = pi * 0.66; // 120 degrees
 
   @override
   void initState() {
     super.initState();
-    // Default to 'Somewhat Athletic' (Index 3), as per design and experience logic
-    _selectedLevel = 3;
+    _selectedLevel = 3; // Default to "Somewhat Athletic"
   }
 
-  // --- Professional Angular Drag Logic ---
   void _handleGesture(Offset position, Size size) {
-    // 1. Define the center and radius used by the painter
-    final center = Offset(size.width / 2, size.height * 1.5);
-
-    // 2. Calculate the angle of the touch position relative to the center
+    final center = Offset(size.width / 2, size.height * 0.75);
+  
     final touchVector = position - center;
-    double touchAngle =
-        atan2(touchVector.dy, touchVector.dx); // angle in radians (-pi to pi)
+    double touchAngle = atan2(touchVector.dy, touchVector.dx);
 
-    // 3. Normalize the angle to be in the 0 to 2*pi range
+    // Normalize to 0-2π range
     if (touchAngle < 0) {
       touchAngle += 2 * pi;
     }
 
-    // 4. Calculate the start and end angles of the visible arc
+    // Calculate the end angle
     final double endAngle = startAngle + sweepAngle;
 
-    // 5. Clamp the angle to the arc range (startAngle to endAngle)
+    // Clamp the angle to our arc range (210° to 330°)
     double clampedAngle = touchAngle;
 
-    // Handle wrap-around (since our arc wraps around the bottom)
-    if (startAngle > endAngle) {
-      // If the arc crosses the 0/2pi line (not applicable here, but good practice)
-      // Complex logic for wrap-around angle clamping if needed, but for a 120-degree arc, simple clamping works:
-    }
-
-    // Simple clamping for this specific arc (210 to 330 degrees)
-    // If angle is less than start (210), clamp to start
-    if (clampedAngle < startAngle && clampedAngle > pi) {
+    // Handle angles outside the arc
+    if (touchAngle < startAngle && touchAngle < pi) {
+      // Touch is before start angle (counterclockwise from start)
       clampedAngle = startAngle;
+    } else if (touchAngle > endAngle && touchAngle < startAngle) {
+      // Touch is after end angle but before start (wrapping around)
+      // Determine which end is closer
+      final distToStart = _angleDifference(touchAngle, startAngle);
+      final distToEnd = _angleDifference(touchAngle, endAngle);
+      clampedAngle = distToStart < distToEnd ? startAngle : endAngle;
     }
-    // If angle is greater than end (330), clamp to end
-    else if (clampedAngle > endAngle) {
+
+    // Calculate proportion along the arc
+    double angleTraversed = clampedAngle - startAngle;
+    if (angleTraversed < 0) {
+      angleTraversed += 2 * pi;
+    }
+
+    // Ensure we're within the sweep range
+    if (angleTraversed > sweepAngle) {
       clampedAngle = endAngle;
+      angleTraversed = sweepAngle;
     }
 
-    // 6. Calculate the proportion along the sweep
-    final double angleTraversed = clampedAngle - startAngle;
-    double proportion = (angleTraversed / sweepAngle).clamp(0.0, 1.0);
+    final proportion = (angleTraversed / sweepAngle).clamp(0.0, 1.0);
 
-    // 7. Convert proportion to the 0-5 score
-    final newLevel = (proportion * maxScore.toDouble()).round();
+    // Convert to level (0-5)
+    final newLevel = (proportion * maxScore).round().clamp(0, maxScore);
 
     if (_selectedLevel != newLevel) {
       setState(() {
@@ -96,11 +96,19 @@ class _FitnessLevelScreenState extends State<FitnessLevelScreen> {
     }
   }
 
+  // Helper to calculate the shortest angular distance
+  double _angleDifference(double angle1, double angle2) {
+    double diff = (angle1 - angle2).abs();
+    if (diff > pi) {
+      diff = 2 * pi - diff;
+    }
+    return diff;
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final description = fitnessDescriptions[_selectedLevel];
-    final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -116,14 +124,22 @@ class _FitnessLevelScreenState extends State<FitnessLevelScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 10),
+
+              // Animated title
               Text(
                 "How would you rate your fitness level?",
                 style: theme.textTheme.headlineMedium?.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                 ),
-              ),
+              )
+                  .animate()
+                  .fadeIn(duration: 600.ms)
+                  .slideX(begin: -0.2, end: 0, duration: 600.ms),
+
               const SizedBox(height: 10),
+
+              // Animated hint
               const Row(
                 children: [
                   Icon(Icons.help_outline, color: Colors.white70, size: 16),
@@ -133,57 +149,90 @@ class _FitnessLevelScreenState extends State<FitnessLevelScreen> {
                     style: TextStyle(color: Colors.white70, fontSize: 14),
                   ),
                 ],
-              ),
-              const SizedBox(height: 20),
+              ).animate().fadeIn(duration: 600.ms, delay: 200.ms),
+
+              const SizedBox(height: 30),
 
               // Custom Angular Slider Area
               Expanded(
                 child: LayoutBuilder(
                   builder: (context, constraints) {
-                    // Set height proportional to screen or container for the arc visualization
-                    final size =
-                        Size(constraints.maxWidth, screenHeight * 0.45);
+                    final size = Size(
+                      constraints.maxWidth,
+                      constraints.maxHeight,
+                    );
 
                     return GestureDetector(
                       onPanUpdate: (details) =>
                           _handleGesture(details.localPosition, size),
+                      onPanDown: (details) =>
+                          _handleGesture(details.localPosition, size),
                       onTapDown: (details) =>
                           _handleGesture(details.localPosition, size),
                       child: Stack(
-                        alignment: Alignment.center,
                         children: [
-                          // 1. Custom Arc Painter
-                          CustomPaint(
-                            size: size,
-                            painter: FitnessArcPainter(
-                                level: _selectedLevel, maxLevel: maxScore),
+                          // Arc Painter
+                          Positioned.fill(
+                            child: CustomPaint(
+                              painter: FitnessArcPainter(
+                                level: _selectedLevel,
+                                maxLevel: maxScore,
+                              ),
+                            )
+                                .animate()
+                                .fadeIn(duration: 800.ms, delay: 400.ms)
+                                .scale(
+                                  begin: const Offset(0.8, 0.8),
+                                  duration: 800.ms,
+                                  delay: 400.ms,
+                                  curve: Curves.easeOutBack,
+                                ),
                           ),
 
-                          // 2. Large Number and Description (Positioned to match design)
-                          Positioned(
-                            bottom: size.height * 0.0, // Move it up slightly
+                          // Number and Description
+                          Positioned.fill(
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                // The large score number
+                                const Spacer(),
+
+                                // Large score number
                                 Text(
                                   '$_selectedLevel',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
-                                    fontSize:
-                                        180, // Larger size to match screenshot
+                                    fontSize: 160,
                                     fontWeight: FontWeight.w900,
-                                    height: 0.8, // Adjust line height
+                                    height: 0.9,
                                   ),
-                                ),
-                                // The text description below the number
+                                )
+                                    .animate(
+                                      key: ValueKey(_selectedLevel),
+                                    )
+                                    .scale(
+                                      begin: const Offset(0.8, 0.8),
+                                      duration: 300.ms,
+                                      curve: Curves.easeOutBack,
+                                    ),
+
+                                const SizedBox(height: 8),
+
+                                // Description text
                                 Text(
                                   description,
                                   style: const TextStyle(
                                     color: Colors.white70,
-                                    fontSize: 22,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w500,
+                                    letterSpacing: 0.5,
                                   ),
-                                ),
+                                )
+                                    .animate(
+                                      key: ValueKey(description),
+                                    )
+                                    .fadeIn(duration: 200.ms),
+
+                                const SizedBox(height: 40),
                               ],
                             ),
                           ),
@@ -194,32 +243,22 @@ class _FitnessLevelScreenState extends State<FitnessLevelScreen> {
                 ),
               ),
 
+              const SizedBox(height: 10),
+
               // Continue Button
               ContinueButton(
                 onPressed: () {
-                  final updatedProfile = FitnessProfileModel(
-                    uid: widget.profile.uid,
-                    primaryGoal: widget.profile.primaryGoal,
-                    gender: widget.profile.gender,
-                    currentWeightKg: widget.profile.currentWeightKg,
-                    age: widget.profile.age,
-                    experience: widget.profile.experience,
+                  final updatedProfile = widget.profile.copyWith(
                     fitnessLevel: fitnessDescriptions[_selectedLevel],
-                    heightCm: widget.profile.heightCm,
-                    workoutsPerWeek: widget.profile.workoutsPerWeek,
-                    isTakingSupplements: widget.profile.isTakingSupplements,
-                    dietPreference: widget.profile.dietPreference,
-                    workoutPreferences: widget.profile.workoutPreferences,
-                    sleepQuality: widget.profile.sleepQuality,
-                    physicalLimitations: widget.profile.physicalLimitations,
-                    calorieGoal: 0,
-                    calorieUnit: 'Kcal',
                   );
 
                   context.router
                       .push(PhysicalLimitationsRoute(profile: updatedProfile));
                 },
-              ),
+              )
+                  .animate()
+                  .fadeIn(duration: 600.ms, delay: 600.ms)
+                  .slideY(begin: 0.3, end: 0, duration: 600.ms, delay: 600.ms),
             ],
           ),
         ),

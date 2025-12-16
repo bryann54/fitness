@@ -6,7 +6,8 @@ import 'package:fitness/features/onboarding/presentation/widgets/continue_button
 import 'package:fitness/features/onboarding/presentation/widgets/onboarding_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness/features/onboarding/data/models/fitness_profile_model.dart';
-import 'package:fitness/common/res/colors.dart'; // <--- NEW IMPORT
+import 'package:fitness/common/res/colors.dart';
+import 'package:flutter_animate/flutter_animate.dart'; // <--- NEW IMPORT
 // <--- NEW IMPORT
 
 @RoutePage()
@@ -86,6 +87,8 @@ class _AgeScreenState extends State<AgeScreen> {
                 style: theme.textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.w800,
                 ),
+              ).animate(
+                effects: [FadeEffect(), SlideEffect()],
               ),
               const SizedBox(height: 30),
               Expanded(
@@ -104,7 +107,13 @@ class _AgeScreenState extends State<AgeScreen> {
                       if (index < 0 || index >= itemCount) {
                         return null;
                       }
-                      return _buildAgeItem(context, index);
+                      return _buildAgeItem(context, index).animate().fadeIn(duration: 600.ms, delay: 400.ms).slideX(
+                        begin: -0.5,
+                        end: 0,
+                        duration: 600.ms,
+                        delay: 200.ms,
+                        curve: Curves.easeOut,
+                      );
                     },
                     childCount: itemCount,
                   ),

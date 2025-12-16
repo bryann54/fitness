@@ -1,6 +1,8 @@
 // lib/features/onboarding/presentation/widgets/gender_selection_tile.dart
 
+import 'package:fitness/common/res/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // --- Widget Definition ---
@@ -21,20 +23,15 @@ class GenderSelectionTile extends StatelessWidget {
     required this.onTap,
   });
 
-  // Color constants matching the design (Orange)
-  static const Color primaryColor = Colors.teal;
-  static const Color darkTileColor = Color.fromARGB(255, 30, 30, 30);
-
-  // Widget for the selection indicator (the radio button circle)
   Widget _buildSelectionIndicator() {
     return Container(
       width: 24,
       height: 24,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: isSelected ? primaryColor : Colors.transparent,
+        color: isSelected ? AppColors.primary : Colors.transparent,
         border: Border.all(
-          color: isSelected ? primaryColor : Colors.white38,
+          color: isSelected ? AppColors.primary : AppColors.visualLightBackgroundHalf,
           width: 2,
         ),
       ),
@@ -42,13 +39,20 @@ class GenderSelectionTile extends StatelessWidget {
           ? const Icon(
               Icons.check,
               size: 16,
-              color: Colors.black, // Checkmark color
+              color: Colors.black,
             )
           : null,
+    ).animate(
+      delay: 100.ms,
+    ).fadeIn(duration: 500.ms, curve: Curves.easeOut).scale(
+        begin: const Offset(0.8, 0.8),
+        end: const Offset(1.0, 1.0),
+        duration: 500.ms,
+        curve: Curves.easeOut
     );
   }
 
-  // Widget for the main text/icon content (left side)
+
   Widget _buildTextContent(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0, bottom: 16.0, left: 16.0),
@@ -62,14 +66,14 @@ class GenderSelectionTile extends StatelessWidget {
             children: [
               FaIcon(
                 icon,
-                color: Colors.white,
+                color: AppColors.visualLightBackgroundHalf,
                 size: 24,
               ),
               const SizedBox(height: 8),
               Text(
                 title,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: Colors.white,
+                      color: AppColors.visualLightBackgroundHalf,
                       fontWeight: FontWeight.bold,
                     ),
               ),
@@ -103,7 +107,7 @@ class GenderSelectionTile extends StatelessWidget {
           height: double.infinity,
           child: Image.asset(
             imagePath,
-            fit: BoxFit.cover,
+            fit: BoxFit.contain,
             alignment: Alignment.centerRight,
           ),
         ),
@@ -118,27 +122,31 @@ class GenderSelectionTile extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-          height: 150, // Fixed height for visual consistency
+          height: 150,
           decoration: BoxDecoration(
-            color: darkTileColor,
+            color: AppColors.cardDark,
             borderRadius: BorderRadius.circular(16.0),
             border: Border.all(
-              color: isSelected ? primaryColor : Colors.transparent,
+              color: isSelected ? AppColors.primary : Colors.transparent,
               width: 2.0,
             ),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Left side (Text Content)
               Expanded(
                 child: _buildTextContent(context),
               ),
-
-              // Right side (Image Content)
               _buildImageContent(context),
             ],
           ),
+        ).animate(
+          delay: 100.ms,
+        ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideX(
+            begin: 0.2,
+            end: 0,
+            duration: 600.ms,
+            curve: Curves.easeOut
         ),
       ),
     );

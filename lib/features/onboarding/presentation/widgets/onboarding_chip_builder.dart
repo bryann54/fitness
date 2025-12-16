@@ -16,7 +16,7 @@ class OnboardingSelectedChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
+      padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 2.0),
       child: InputChip(
         label: Text(
           label,
@@ -31,7 +31,7 @@ class OnboardingSelectedChip extends StatelessWidget {
         onDeleted: onDelete,
         onPressed: onDelete,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(12),
         ),
       ),
     );

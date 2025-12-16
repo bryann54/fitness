@@ -1,11 +1,14 @@
 // lib/features/onboarding/presentation/pages/goal_screen.dart
 
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitness/common/res/colors.dart';
 import 'package:fitness/features/onboarding/presentation/widgets/continue_button.dart';
 import 'package:fitness/features/onboarding/presentation/widgets/onboarding_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness/common/helpers/app_router.gr.dart';
-import 'package:fitness/features/onboarding/data/models/fitness_profile_model.dart'; // Your data model
+import 'package:fitness/features/onboarding/data/models/fitness_profile_model.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 // Data Structure (linked to the FitnessGoal enum)
 class GoalOption {
@@ -67,14 +70,14 @@ class _GoalScreenState extends State<GoalScreen> {
             children: [
               Icon(
                 goal.icon,
-                color: isSelected ? primaryColor : Colors.white70,
+                color: isSelected ? primaryColor : AppColors.visualLightBackgroundHalf.withValues(alpha: 0.2),
               ),
               const SizedBox(width: 16.0),
               Expanded(
                 child: Text(
                   goal.title,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Colors.white,
+                        color: AppColors.visualLightBackgroundHalf,
                         fontWeight: FontWeight.w500,
                       ),
                 ),
@@ -86,7 +89,7 @@ class _GoalScreenState extends State<GoalScreen> {
                   shape: BoxShape.circle,
                   color: isSelected ? primaryColor : Colors.transparent,
                   border: Border.all(
-                    color: isSelected ? primaryColor : Colors.white38,
+                    color: isSelected ? primaryColor : AppColors.visualLightBackgroundHalf,
                     width: 2,
                   ),
                 ),
@@ -100,9 +103,58 @@ class _GoalScreenState extends State<GoalScreen> {
               ),
             ],
           ),
+        ).animate(
+          delay: 100.ms,
+        ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideX(
+            begin: 0.2,
+            end: 0,
+            duration: 600.ms,
+            curve: Curves.easeOut
         ),
       ),
     );
+  }
+
+  void _handleContinue() {
+    if (_selectedGoal == null) return;
+
+    // Get current user's UID
+    final currentUser = FirebaseAuth.instance.currentUser;
+
+    if (currentUser == null) {
+      // User is not authenticated - show error and potentially navigate to login
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please sign in to continue with onboarding'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      // Optionally navigate to login screen
+      // context.router.push(const LoginRoute());
+      return;
+    }
+
+    // Create initial profile with user's UID
+    final initialProfile = FitnessProfileModel(
+      uid: currentUser.uid, // ✅ Use authenticated user's UID
+      primaryGoal: _selectedGoal!.goalEnum,
+      gender: '',
+      age: 0,
+      currentWeightKg: 0,
+      heightCm: 0,
+      experience: WorkoutExperience.never,
+      fitnessLevel: '',
+      workoutsPerWeek: 0,
+      isTakingSupplements: false,
+      dietPreference: '',
+      workoutPreferences: [],
+      sleepQuality: SleepQuality.poor,
+      physicalLimitations: null,
+      calorieGoal: 0,
+      calorieUnit: 'Kcal',
+    );
+
+    context.router.push(GenderRoute(profile: initialProfile));
   }
 
   @override
@@ -126,9 +178,16 @@ class _GoalScreenState extends State<GoalScreen> {
               Text(
                 "What's your fitness goal/target?",
                 style: theme.textTheme.headlineMedium?.copyWith(
-                  color: Colors.white,
+                  color: AppColors.visualLightBackgroundHalf,
                   fontWeight: FontWeight.w800,
                 ),
+              ).animate(
+                delay: 100.ms,
+              ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideX(
+                  begin: 0.2,
+                  end: 0,
+                  duration: 600.ms,
+                  curve: Curves.easeOut
               ),
               const SizedBox(height: 30),
               Expanded(
@@ -141,31 +200,14 @@ class _GoalScreenState extends State<GoalScreen> {
               ),
               const SizedBox(height: 20),
               ContinueButton(
-                onPressed: _selectedGoal == null
-                    ? null
-                    : () {
-                        final partialProfile = FitnessProfileModel(
-                          uid: 'temp_onboarding_id',
-                          primaryGoal: _selectedGoal!.goalEnum,
-                          gender: '',
-                          age: 0,
-                          currentWeightKg: 0,
-                          heightCm: 0,
-                          experience: WorkoutExperience.never,
-                          fitnessLevel: '',
-                          workoutsPerWeek: 0,
-                          isTakingSupplements: false,
-                          dietPreference: '',
-                          workoutPreferences: [],
-                          sleepQuality: SleepQuality.poor,
-                          physicalLimitations: null,
-                          calorieGoal: 0,
-                          calorieUnit: 'Kcal',
-                        );
-
-                        context.router
-                            .push(GenderRoute(profile: partialProfile));
-                      },
+                onPressed: _selectedGoal == null ? null : _handleContinue,
+              ).animate(
+                delay: 500.ms,
+              ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideX(
+                  begin: 0.2,
+                  end: 0,
+                  duration: 600.ms,
+                  curve: Curves.easeOut
               ),
             ],
           ),

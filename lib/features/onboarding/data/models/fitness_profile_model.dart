@@ -63,6 +63,45 @@ class FitnessProfileModel extends Equatable {
     required this.calorieGoal,
     required this.calorieUnit,
   });
+FitnessProfileModel copyWith({
+    String? uid,
+    String? gender,
+    int? age,
+    double? currentWeightKg,
+    int? heightCm,
+    WorkoutExperience? experience,
+    FitnessGoal? primaryGoal,
+    String? fitnessLevel,
+    String? physicalLimitations,
+    int? workoutsPerWeek,
+    bool? isTakingSupplements,
+    List<String>? supplementsTaken,
+    int? calorieGoal,
+    String? calorieUnit,
+    String? dietPreference,
+    List<String>? workoutPreferences,
+    SleepQuality? sleepQuality,
+  }) {
+    return FitnessProfileModel(
+      uid: uid ?? this.uid,
+      gender: gender ?? this.gender,
+      age: age ?? this.age,
+      currentWeightKg: currentWeightKg ?? this.currentWeightKg,
+      heightCm: heightCm ?? this.heightCm,
+      experience: experience ?? this.experience,
+      primaryGoal: primaryGoal ?? this.primaryGoal,
+      fitnessLevel: fitnessLevel ?? this.fitnessLevel,
+      physicalLimitations: physicalLimitations ?? this.physicalLimitations,
+      workoutsPerWeek: workoutsPerWeek ?? this.workoutsPerWeek,
+      isTakingSupplements: isTakingSupplements ?? this.isTakingSupplements,
+      supplementsTaken: supplementsTaken ?? this.supplementsTaken,
+      calorieGoal: calorieGoal ?? this.calorieGoal,
+      calorieUnit: calorieUnit ?? this.calorieUnit,
+      dietPreference: dietPreference ?? this.dietPreference,
+      workoutPreferences: workoutPreferences ?? this.workoutPreferences,
+      sleepQuality: sleepQuality ?? this.sleepQuality,
+    );
+  }
 
   factory FitnessProfileModel.fromJson(Map<String, dynamic> json) =>
       _$FitnessProfileModelFromJson(json);

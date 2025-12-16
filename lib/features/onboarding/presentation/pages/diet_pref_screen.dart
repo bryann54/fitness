@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:fitness/common/helpers/app_router.gr.dart';
 import 'package:fitness/features/onboarding/data/models/fitness_profile_model.dart';
 import 'package:fitness/features/onboarding/presentation/widgets/continue_button.dart';
-import 'package:fitness/common/res/colors.dart'; // <--- NEW IMPORT
-import 'package:fitness/features/onboarding/presentation/widgets/diet_preference_tile.dart'; // <--- NEW IMPORT
+import 'package:fitness/common/res/colors.dart';
+import 'package:fitness/features/onboarding/presentation/widgets/diet_preference_tile.dart';
 
 @RoutePage()
 class DietPrefScreen extends StatefulWidget {
@@ -26,9 +26,14 @@ class DietPreference {
   const DietPreference(this.title, this.subtitle, this.icon);
 }
 
-class _DietPrefScreenState extends State<DietPrefScreen> {
+// Add TickerProviderStateMixin for the AnimationController
+class _DietPrefScreenState extends State<DietPrefScreen>
+    with SingleTickerProviderStateMixin {
+  // Animation variables
+  late AnimationController _controller;
+  late Animation<Offset> _slideAnimation;
+
   final List<DietPreference> dietOptions = [
-    // Updated icons for visual relevance
     const DietPreference("Plant Based", "Vegan / Vegetarian", Icons.eco),
     const DietPreference(
         "Carbohydrate Cycle", "Bread, pasta, etc", Icons.bakery_dining),
@@ -43,20 +48,43 @@ class _DietPrefScreenState extends State<DietPrefScreen> {
   @override
   void initState() {
     super.initState();
+
     // Initialize state from existing profile data
     _selectedDietTitle = widget.profile.dietPreference.isNotEmpty
         ? widget.profile.dietPreference
         : null;
+
+    // Initialize Animation
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 700),
+    );
+
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(0, 0.2), 
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    ));
+
+  
+
+    _controller.forward();
   }
 
-  // _buildDietTile method is no longer needed, replaced by DietPreferenceTile widget
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: AppColors.backgroundDark, // Refactored
+      backgroundColor: AppColors.backgroundDark,
       appBar: const OnboardingAppBar(
         currentStep: 8,
         totalSteps: 17,
@@ -69,58 +97,73 @@ class _DietPrefScreenState extends State<DietPrefScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 10),
-              Text(
-                "Do you have a specific diet preference?",
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-              const SizedBox(height: 30),
 
-              // Diet Selection Grid (2x2 layout)
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      DietPreferenceTile(
-                        title: dietOptions[0].title,
-                        subtitle: dietOptions[0].subtitle,
-                        icon: dietOptions[0].icon,
-                        isSelected: _selectedDietTitle == dietOptions[0].title,
-                        onTap: () => setState(
-                            () => _selectedDietTitle = dietOptions[0].title),
+              // Animated Content Wrapper
+              SlideTransition(
+                position: _slideAnimation,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Do you have a specific diet preference?",
+                      style: theme.textTheme.headlineMedium?.copyWith(
+                        color: AppColors.textPrimaryDark,
+                        fontWeight: FontWeight.w800,
                       ),
-                      DietPreferenceTile(
-                        title: dietOptions[1].title,
-                        subtitle: dietOptions[1].subtitle,
-                        icon: dietOptions[1].icon,
-                        isSelected: _selectedDietTitle == dietOptions[1].title,
-                        onTap: () => setState(
-                            () => _selectedDietTitle = dietOptions[1].title),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      DietPreferenceTile(
-                        title: dietOptions[2].title,
-                        subtitle: dietOptions[2].subtitle,
-                        icon: dietOptions[2].icon,
-                        isSelected: _selectedDietTitle == dietOptions[2].title,
-                        onTap: () => setState(
-                            () => _selectedDietTitle = dietOptions[2].title),
-                      ),
-                      DietPreferenceTile(
-                        title: dietOptions[3].title,
-                        subtitle: dietOptions[3].subtitle,
-                        icon: dietOptions[3].icon,
-                        isSelected: _selectedDietTitle == dietOptions[3].title,
-                        onTap: () => setState(
-                            () => _selectedDietTitle = dietOptions[3].title),
-                      ),
-                    ],
-                  ),
-                ],
+                    ),
+                    const SizedBox(height: 30),
+              
+                    // Diet Selection Grid (2x2 layout)
+                    Column(
+                      children: [
+                        Row(
+                          children: [
+                            DietPreferenceTile(
+                              title: dietOptions[0].title,
+                              subtitle: dietOptions[0].subtitle,
+                              icon: dietOptions[0].icon,
+                              isSelected:
+                                  _selectedDietTitle == dietOptions[0].title,
+                              onTap: () => setState(() =>
+                                  _selectedDietTitle = dietOptions[0].title),
+                            ),
+                            DietPreferenceTile(
+                              title: dietOptions[1].title,
+                              subtitle: dietOptions[1].subtitle,
+                              icon: dietOptions[1].icon,
+                              isSelected:
+                                  _selectedDietTitle == dietOptions[1].title,
+                              onTap: () => setState(() =>
+                                  _selectedDietTitle = dietOptions[1].title),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            DietPreferenceTile(
+                              title: dietOptions[2].title,
+                              subtitle: dietOptions[2].subtitle,
+                              icon: dietOptions[2].icon,
+                              isSelected:
+                                  _selectedDietTitle == dietOptions[2].title,
+                              onTap: () => setState(() =>
+                                  _selectedDietTitle = dietOptions[2].title),
+                            ),
+                            DietPreferenceTile(
+                              title: dietOptions[3].title,
+                              subtitle: dietOptions[3].subtitle,
+                              icon: dietOptions[3].icon,
+                              isSelected:
+                                  _selectedDietTitle == dietOptions[3].title,
+                              onTap: () => setState(() =>
+                                  _selectedDietTitle = dietOptions[3].title),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
 
               const Spacer(),

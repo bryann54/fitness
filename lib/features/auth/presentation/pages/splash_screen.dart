@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fitness/common/helpers/app_router.gr.dart';
 import 'package:fitness/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:fitness/common/res/colors.dart'; // Import AppColors
+import 'package:fitness/common/res/colors.dart';
 
 @RoutePage()
 class SplashScreen extends StatefulWidget {
@@ -68,18 +68,16 @@ class _SplashScreenState extends State<SplashScreen>
       final currentAuthState = context.read<AuthBloc>().state;
 
       if (currentAuthState is AuthAuthenticated) {
-        context.router.replace(const GoalRoute());
+        context.router.replace(const MainRoute());
       } else if (currentAuthState is AuthUnauthenticated) {
-        // Redirect to GetStartedRoute for new/logged out users
         context.router.replace(const GetStartedRoute());
       } else if (currentAuthState is AuthError) {
-        // For errors, still go to Get Started or Login
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
               content:
                   Text('Authentication Error: ${currentAuthState.message}')),
         );
-        context.router.replace(const GetStartedRoute()); // Or LoginRoute
+        context.router.replace(const GetStartedRoute()); 
       }
     }
   }
@@ -131,7 +129,7 @@ class _SplashScreenState extends State<SplashScreen>
                   child: Container(
                     width: 1,
                     color: Colors.grey.withValues(
-                        alpha: 0.2), // Using opacity for the divider color
+                        alpha: 0.2), 
                   ),
                 ),
                 // Main content
@@ -157,15 +155,15 @@ class _SplashScreenState extends State<SplashScreen>
                                     offset: const Offset(0, 10),
                                   ),
                                 ],
-                                // Logo gradient should reflect the fixed visual background halves
+                                
                                 gradient: LinearGradient(
                                   colors: [
                                     AppColors.visualLightBackgroundHalf
                                         .withValues(
-                                            alpha: 0.3), // Light side of logo
+                                            alpha: 0.3),
                                     AppColors.visualDarkBackgroundHalf
                                         .withValues(
-                                            alpha: 0.3), // Dark side of logo
+                                            alpha: 0.3),
                                   ],
                                   begin: Alignment.centerLeft,
                                   end: Alignment.centerRight,
@@ -177,12 +175,12 @@ class _SplashScreenState extends State<SplashScreen>
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(17),
                                   color: Colors
-                                      .white, // Inner color of the logo border
+                                      .white
                                 ),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(17),
                                   child: Image.asset(
-                                    'assets/wakili.png',
+                                    'assets/fit.png',
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -190,21 +188,19 @@ class _SplashScreenState extends State<SplashScreen>
                             ),
                           ),
                           const SizedBox(height: 32),
-                          // ShaderMask for text to match split background
                           ShaderMask(
                             shaderCallback: (bounds) => LinearGradient(
                               colors: [
-                                Colors
-                                    .white, // Text on the dark side should be white
+                               AppColors.visualLightBackgroundHalf,
                                 AppColors
-                                    .textPrimary, // Text on the light side should be dark
+                                    .textPrimary,
                               ],
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
                               stops: const [
                                 0.5,
                                 0.5
-                              ], // Split precisely in the middle
+                              ],
                             ).createShader(bounds),
                             child: Text(
                               'fitness',
@@ -213,7 +209,7 @@ class _SplashScreenState extends State<SplashScreen>
                                 fontWeight: FontWeight.w700,
                                 letterSpacing: -0.5,
                                 color: Colors
-                                    .white, // This color is masked, but a fallback is good practice
+                                    .white, 
                               ),
                             ),
                           ),
@@ -222,16 +218,16 @@ class _SplashScreenState extends State<SplashScreen>
                             shaderCallback: (bounds) => LinearGradient(
                               colors: [
                                 Colors
-                                    .white70, // Text on the dark side should be light
+                                    .white70,
                                 AppColors
-                                    .textSecondary, // Text on the light side should be secondary dark
+                                    .textSecondary, 
                               ],
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
                               stops: const [
                                 0.55,
                                 0.55
-                              ], // Slightly offset for effect
+                              ], 
                             ).createShader(bounds),
                             child: Text(
                               'Fitness for Everyone',
@@ -239,7 +235,7 @@ class _SplashScreenState extends State<SplashScreen>
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 letterSpacing: 0.5,
-                                color: Colors.white, // This color is masked
+                                color:AppColors.visualLightBackgroundHalf, // This color is masked
                               ),
                             ),
                           ),
@@ -259,7 +255,6 @@ class _SplashScreenState extends State<SplashScreen>
                         height: 24,
                         child: CircularProgressIndicator.adaptive(
                           strokeWidth: 2,
-                          // Progress indicator color can still adapt to overall theme
                           valueColor: AlwaysStoppedAnimation<Color>(
                             isDark
                                 ? AppColors.textLightDark

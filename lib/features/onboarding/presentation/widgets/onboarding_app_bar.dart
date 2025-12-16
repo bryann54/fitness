@@ -39,13 +39,11 @@ class OnboardingAppBar extends StatelessWidget implements PreferredSizeWidget {
             label: Text(
               '$currentStep of $totalSteps',
               style: const TextStyle(
-                color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            backgroundColor: Colors.white,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
+              borderRadius: BorderRadius.circular(6.0),
             ),
           ),
         ),

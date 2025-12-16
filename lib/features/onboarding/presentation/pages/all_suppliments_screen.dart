@@ -4,7 +4,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:fitness/common/res/app_search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness/common/res/colors.dart';
-import 'package:fitness/features/onboarding/presentation/widgets/onboarding_chip_builder.dart'; // <--- NEW IMPORT
+import 'package:fitness/features/onboarding/presentation/widgets/onboarding_chip_builder.dart';
+import 'package:flutter_animate/flutter_animate.dart'; // <--- NEW IMPORT
 
 @RoutePage()
 class AllSupplementsScreen extends StatefulWidget {
@@ -49,6 +50,7 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
     'Melatonin',
     'Collagen',
     'Electrolytes'
+    
   ];
 
   late List<String> _filteredSupplements;
@@ -97,10 +99,19 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
         title: Text(
           'All Supplements',
           style: theme.textTheme.headlineMedium?.copyWith(
-            color: AppColors.textPrimary,
             fontWeight: FontWeight.bold,
           ),
-        ),
+        ).animate(
+                    effects: [
+                      FadeEffect(delay: 100.ms, duration: 500.ms),
+                      SlideEffect(
+                        delay: 100.ms,
+                        duration: 500.ms,
+                        begin: const Offset(-0.5, 0),
+                        end: const Offset(0, 0),
+                      ),
+                    ],
+                  ),
       ),
       body: SafeArea(
         child: Column(
@@ -113,6 +124,11 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
                   AppSearchField(
                     onChanged: _filterSupplements,
                     hintText: 'Search supplements...',
+                  ).animate(
+                    effects: [
+                      FadeEffect(),
+                      SlideEffect(),
+                    ],
                   ),
                   const SizedBox(height: 20),
                 ],
@@ -172,7 +188,7 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
                     'Selected:',
                     style: TextStyle(
                         color: AppColors.textSecondary,
-                        fontSize: 16), // <--- REFACTOR 7: AppColors
+                        fontSize: 16),
                   ),
                   const SizedBox(height: 8),
                   Wrap(
@@ -180,7 +196,7 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
                     runSpacing: 8.0,
                     children: _currentSelection
                         .map(
-                          // Use new reusable chip widget
+                         
                           (supp) => OnboardingSelectedChip(
                             label: supp,
                             onDelete: () => _toggleSelection(supp),
@@ -199,7 +215,7 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
-                            AppColors.primary, // <--- REFACTOR 8: AppColors
+                            AppColors.primary,
                         padding: const EdgeInsets.symmetric(vertical: 18.0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
@@ -207,16 +223,21 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
                       ),
                       icon: const Icon(Icons.check,
                           color: AppColors
-                              .textAccent), // <--- REFACTOR 9: AppColors
+                              .textAccent), 
                       label: Text(
                         'Apply (${_currentSelection.length})',
                         style: theme.textTheme.titleLarge?.copyWith(
                           color: AppColors
-                              .textAccent, // <--- REFACTOR 10: AppColors
+                              .textAccent,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
+                  ).animate(
+                    effects: [
+                      FadeEffect(),
+                      SlideEffect(),
+                    ],
                   ),
                 ],
               ),

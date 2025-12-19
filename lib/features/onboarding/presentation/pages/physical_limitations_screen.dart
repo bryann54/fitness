@@ -167,7 +167,6 @@ class _PhysicalLimitationsScreenState extends State<PhysicalLimitationsScreen>
                       Text(
                         "Do you have any physical limitations?",
                         style: theme.textTheme.headlineMedium?.copyWith(
-                        
                           fontWeight: FontWeight.w800,
                         ),
                       ).animate(
@@ -211,8 +210,7 @@ class _PhysicalLimitationsScreenState extends State<PhysicalLimitationsScreen>
                           const Text(
                             'Most Common:',
                             style: TextStyle(
-                                color: AppColors.textSecondary,
-                                fontSize: 14),
+                                color: AppColors.textSecondary, fontSize: 14),
                           ),
                           Row(
                             children: commonSuggestions

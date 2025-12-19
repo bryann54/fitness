@@ -1,4 +1,5 @@
 // widgets/next_button.dart
+import 'package:fitness/common/res/colors.dart';
 import 'package:flutter/material.dart';
 
 class NextButton extends StatelessWidget {
@@ -32,16 +33,16 @@ class NextButton extends StatelessWidget {
             child: ElevatedButton(
               onPressed: onPressed,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.all(16.0),
+                backgroundColor: AppColors.primary,
+                foregroundColor: AppColors.visualLightBackgroundHalf,
+                padding: const EdgeInsets.all(20.0),
                 shape: const CircleBorder(),
                 elevation: 0,
               ),
               child: const Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: 20,
-                color: Colors.white,
+                color: AppColors.visualLightBackgroundHalf,
               ),
             ),
           ),

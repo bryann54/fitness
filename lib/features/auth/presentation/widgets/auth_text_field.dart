@@ -29,7 +29,7 @@ class AuthTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
+        color: Theme.of(context).colorScheme.tertiary.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: Theme.of(context).dividerColor.withValues(alpha: 0.2),
@@ -60,7 +60,8 @@ class AuthTextField extends StatelessWidget {
             borderSide: BorderSide.none,
           ),
           filled: true,
-          fillColor: Theme.of(context).colorScheme.surface,
+          fillColor:
+              Theme.of(context).colorScheme.surface.withValues(alpha: 0.6),
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 14,

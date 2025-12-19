@@ -29,7 +29,7 @@ class _OnboardingCompleteScreenState extends State<OnboardingCompleteScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            width: 150, 
+            width: 150,
             child: Text(
               '$title:',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(

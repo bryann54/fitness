@@ -39,7 +39,6 @@ class _GenderScreenState extends State<GenderScreen> {
 
   GenderOption? _selectedGender;
 
- 
   Widget _buildSkipButton() {
     const Color skipBackgroundColor = Color.fromARGB(255, 59, 31, 23);
 
@@ -59,7 +58,7 @@ class _GenderScreenState extends State<GenderScreen> {
             borderRadius: BorderRadius.circular(16.0),
           ),
           alignment: Alignment.center,
-          child:  Text(
+          child: Text(
             "Prefer to skip, thanks! ✕",
             style: TextStyle(
               color: AppColors.accent,
@@ -107,7 +106,6 @@ class _GenderScreenState extends State<GenderScreen> {
                               title: option.title,
                               icon: option.icon,
                               imagePath: option.imagePath,
-                              
                               isSelected: _selectedGender == option,
                               onTap: () {
                                 setState(() {
@@ -116,21 +114,20 @@ class _GenderScreenState extends State<GenderScreen> {
                               },
                             ))
                         .toList(),
-                  ).animate(
-                    delay: 200.ms,
-                  ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideY(
-                      begin: 0.2,
-                      end: 0,
-                      duration: 600.ms,
-                      curve: Curves.easeOut
-                  ),
+                  )
+                      .animate(
+                        delay: 200.ms,
+                      )
+                      .fadeIn(duration: 600.ms, curve: Curves.easeOut)
+                      .slideY(
+                          begin: 0.2,
+                          end: 0,
+                          duration: 600.ms,
+                          curve: Curves.easeOut),
                 ),
               ),
-
               const SizedBox(height: 20),
-
               _buildSkipButton(),
-
               ContinueButton(
                 onPressed: _selectedGender == null
                     ? null

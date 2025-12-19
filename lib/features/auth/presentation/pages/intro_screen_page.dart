@@ -25,9 +25,9 @@ class IntroScreenPage extends StatelessWidget {
     final theme = Theme.of(context);
     final isDarkMode = theme.brightness == Brightness.dark;
 
-    final Color leftColor = Colors.black;
-    final Color rightColor = Colors.white;
-    final Color darkSideTextColor = Colors.white;
+    final Color leftColor = AppColors.textAccent;
+    final Color rightColor = AppColors.visualLightBackgroundHalf;
+    final Color darkSideTextColor = AppColors.visualLightBackgroundHalf;
     final Color lightSideTextColor = AppColors.textPrimary;
     final Color lightSideSecondaryTextColor = AppColors.textSecondary;
 
@@ -69,7 +69,7 @@ class IntroScreenPage extends StatelessWidget {
               style: GoogleFonts.poppins(
                 fontSize: 32,
                 fontWeight: FontWeight.w700,
-                color: Colors.white,
+                color: AppColors.visualLightBackgroundHalf,
                 height: 1.2,
                 letterSpacing: -0.5,
               ),
@@ -94,7 +94,7 @@ class IntroScreenPage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
                 fontSize: 17,
-                color: Colors.white,
+                color: AppColors.visualLightBackgroundHalf,
                 height: 1.5,
                 fontWeight: FontWeight.w400,
                 letterSpacing: 0.2,
@@ -127,7 +127,7 @@ class IntroScreenPage extends StatelessWidget {
         ),
         border: Border.all(
           color: isDarkMode
-              ? Colors.white.withValues(alpha: 0.1)
+              ? AppColors.visualLightBackgroundHalf.withValues(alpha: 0.1)
               : Colors.black.withValues(alpha: 0.05),
           width: 1,
         ),
@@ -186,7 +186,7 @@ class IntroScreenPage extends StatelessWidget {
                         child: const FaIcon(
                           FontAwesomeIcons.dumbbell,
                           size: 64,
-                          color: Colors.white,
+                          color: AppColors.visualLightBackgroundHalf,
                         ),
                       ),
                     ),
@@ -205,7 +205,8 @@ class IntroScreenPage extends StatelessWidget {
                     Colors.transparent,
                     isDarkMode
                         ? Colors.black.withValues(alpha: 0.2)
-                        : Colors.white.withValues(alpha: 0.1),
+                        : AppColors.visualLightBackgroundHalf
+                            .withValues(alpha: 0.1),
                   ],
                 ),
               ),
@@ -237,7 +238,7 @@ class IntroScreenPage extends StatelessWidget {
         ),
         border: Border.all(
           color: isDarkMode
-              ? Colors.white.withValues(alpha: 0.1)
+              ? AppColors.visualLightBackgroundHalf.withValues(alpha: 0.1)
               : Colors.black.withValues(alpha: 0.05),
           width: 1,
         ),
@@ -263,7 +264,7 @@ class IntroScreenPage extends StatelessWidget {
           child: FaIcon(
             icon!,
             size: 64,
-            color: Colors.white,
+            color: AppColors.visualLightBackgroundHalf,
           ),
         ),
       ),

@@ -1,5 +1,6 @@
 // widgets/intro_navigation.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fitness/common/res/colors.dart';
 import 'package:fitness/features/auth/presentation/widgets/getstarted/split_theme_button.dart';
@@ -35,9 +36,6 @@ class IntroNavigation extends StatelessWidget {
   }
 
   Widget _buildRegularNavigation(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDarkMode = theme.brightness == Brightness.dark;
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32.0),
       child: Row(
@@ -57,11 +55,9 @@ class IntroNavigation extends StatelessWidget {
             child: Text(
               'Skip',
               style: GoogleFonts.poppins(
-                fontSize: 16,
+                fontSize: 20,
                 fontWeight: FontWeight.w500,
-                color: isDarkMode
-                    ? AppColors.textSecondary
-                    : AppColors.textSecondary,
+                color: AppColors.backgroundLight,
                 letterSpacing: 0.2,
               ),
             ),
@@ -76,9 +72,6 @@ class IntroNavigation extends StatelessWidget {
   }
 
   Widget _buildLastPageNavigation(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDarkMode = theme.brightness == Brightness.dark;
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32.0),
       child: Column(
@@ -99,9 +92,7 @@ class IntroNavigation extends StatelessWidget {
               style: GoogleFonts.poppins(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: isDarkMode
-                    ? AppColors.textSecondary
-                    : AppColors.textSecondary,
+                color: AppColors.cardDark,
                 letterSpacing: 0.2,
               ),
             ),
@@ -110,7 +101,7 @@ class IntroNavigation extends StatelessWidget {
           SplitThemeButton(
             animation: buttonAnimation,
             onPressed: onGetStarted,
-          ),
+          ).animate().fadeIn(duration: 600.ms).slideX(begin: -0.3, end: 0),
         ],
       ),
     );

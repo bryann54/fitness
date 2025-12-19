@@ -42,14 +42,16 @@ class ExerciseGridTile extends StatelessWidget {
               // Use AppColors
               color: isSelected
                   ? AppColors.primary
-                  : AppColors.backgroundLight .withOpacity(0.5),
+                  : AppColors.backgroundLight.withOpacity(0.5),
             ),
             const SizedBox(height: 8),
             Text(
               title,
               style: TextStyle(
                 // Use AppColors
-                color: isSelected ? AppColors.primary : AppColors.backgroundLight .withOpacity(0.5),
+                color: isSelected
+                    ? AppColors.primary
+                    : AppColors.backgroundLight.withOpacity(0.5),
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                 fontSize: 14,
               ),

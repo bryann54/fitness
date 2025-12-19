@@ -49,7 +49,7 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
     return Container(
       width: 250,
       decoration: BoxDecoration(
-        color: AppColors.cardDark, 
+        color: AppColors.cardDark,
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Row(
@@ -66,9 +66,7 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 decoration: BoxDecoration(
-                  color: isSelected
-                      ? AppColors.accent
-                      : Colors.transparent, 
+                  color: isSelected ? AppColors.accent : Colors.transparent,
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 child: Center(
@@ -77,7 +75,7 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
                     style: TextStyle(
                       color: isSelected
                           ? AppColors.textAccent
-                          : AppColors.textOnPrimary, 
+                          : AppColors.textOnPrimary,
                       fontWeight:
                           isSelected ? FontWeight.bold : FontWeight.normal,
                     ),
@@ -90,6 +88,7 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
       ),
     );
   }
+
   Widget _buildControlButton(
       {required IconData icon,
       required VoidCallback onPressed,
@@ -100,9 +99,7 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: isPrimary
-                ? AppColors.primary
-                : AppColors.cardDark, 
+            backgroundColor: isPrimary ? AppColors.primary : AppColors.cardDark,
             padding: const EdgeInsets.symmetric(vertical: 20.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16.0),
@@ -112,9 +109,7 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
           child: Icon(
             icon,
             size: 32,
-            color: isPrimary
-                ? AppColors.textAccent
-                : AppColors.textOnPrimary,
+            color: isPrimary ? AppColors.textAccent : AppColors.textOnPrimary,
           ),
         ),
       ),
@@ -145,7 +140,6 @@ class _CaloriesScreenState extends State<CaloriesScreen> {
                 child: Text(
                   "What's Your Calorie Goal per Day?",
                   style: theme.textTheme.headlineMedium?.copyWith(
-                   
                     fontWeight: FontWeight.w800,
                   ),
                 ),

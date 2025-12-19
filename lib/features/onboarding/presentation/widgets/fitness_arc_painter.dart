@@ -12,7 +12,7 @@ class FitnessArcPainter extends CustomPainter {
   static const double _thumbBorderWidth = 4.0;
 
   static const double startAngle = pi * 1.16;
-  static const double sweepAngle = pi * 0.66; 
+  static const double sweepAngle = pi * 0.66;
 
   FitnessArcPainter({required this.level, required this.maxLevel});
 
@@ -37,7 +37,7 @@ class FitnessArcPainter extends CustomPainter {
 
   void _drawActiveArc(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color =  AppColors.primary
+      ..color = AppColors.primary
       ..style = PaintingStyle.stroke
       ..strokeWidth = _strokeWidth
       ..strokeCap = StrokeCap.round;
@@ -75,7 +75,7 @@ class FitnessArcPainter extends CustomPainter {
 
   void _drawLevelMarker(Canvas canvas, Size size, int markerLevel) {
     final markerPosition = _calculateMarkerPosition(size, markerLevel);
-    
+
     final markerPaint = Paint()
       ..color = AppColors.textLightDark
       ..style = PaintingStyle.fill;

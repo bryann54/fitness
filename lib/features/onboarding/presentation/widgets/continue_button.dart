@@ -24,9 +24,7 @@ class ContinueButton extends StatelessWidget {
       width: double.infinity,
       height: 60,
       child: ElevatedButton(
-        onPressed: isLoading
-            ? null
-            : onPressed, 
+        onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.visualLightBackgroundHalf,
@@ -35,14 +33,14 @@ class ContinueButton extends StatelessWidget {
           ),
           elevation: 0,
           disabledBackgroundColor: AppColors.primary.withValues(alpha: 0.5),
-          disabledForegroundColor: AppColors.visualLightBackgroundHalf.withValues(alpha: 0.7),
+          disabledForegroundColor:
+              AppColors.visualLightBackgroundHalf.withValues(alpha: 0.7),
         ),
         child: isLoading
             ? const SizedBox(
                 width: 24,
                 height: 24,
                 child: CircularProgressIndicator.adaptive(
-                 
                   strokeWidth: 3,
                 ),
               )
@@ -61,13 +59,11 @@ class ContinueButton extends StatelessWidget {
                 ],
               ),
       ),
-    ).animate(
-      delay: 500.ms,
-    ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideX(
-        begin: 0.2,
-        end: 0,
-        duration: 600.ms,
-        curve: Curves.easeOut
-    );
+    )
+        .animate(
+          delay: 500.ms,
+        )
+        .fadeIn(duration: 600.ms, curve: Curves.easeOut)
+        .slideX(begin: 0.2, end: 0, duration: 600.ms, curve: Curves.easeOut);
   }
 }

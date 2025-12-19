@@ -133,7 +133,6 @@ class _ExercisePrefScreenState extends State<ExercisePrefScreen>
                       Text(
                         "Do you have a specific Exercise Preference?",
                         style: theme.textTheme.headlineMedium?.copyWith(
-                          
                           fontWeight: FontWeight.w800,
                         ),
                       ),

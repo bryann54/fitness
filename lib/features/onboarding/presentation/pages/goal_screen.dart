@@ -70,7 +70,10 @@ class _GoalScreenState extends State<GoalScreen> {
             children: [
               Icon(
                 goal.icon,
-                color: isSelected ? primaryColor : AppColors.visualLightBackgroundHalf.withValues(alpha: 0.2),
+                color: isSelected
+                    ? primaryColor
+                    : AppColors.visualLightBackgroundHalf
+                        .withValues(alpha: 0.2),
               ),
               const SizedBox(width: 16.0),
               Expanded(
@@ -89,7 +92,9 @@ class _GoalScreenState extends State<GoalScreen> {
                   shape: BoxShape.circle,
                   color: isSelected ? primaryColor : Colors.transparent,
                   border: Border.all(
-                    color: isSelected ? primaryColor : AppColors.visualLightBackgroundHalf,
+                    color: isSelected
+                        ? primaryColor
+                        : AppColors.visualLightBackgroundHalf,
                     width: 2,
                   ),
                 ),
@@ -103,14 +108,13 @@ class _GoalScreenState extends State<GoalScreen> {
               ),
             ],
           ),
-        ).animate(
-          delay: 100.ms,
-        ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideX(
-            begin: 0.2,
-            end: 0,
-            duration: 600.ms,
-            curve: Curves.easeOut
-        ),
+        )
+            .animate(
+              delay: 100.ms,
+            )
+            .fadeIn(duration: 600.ms, curve: Curves.easeOut)
+            .slideX(
+                begin: 0.2, end: 0, duration: 600.ms, curve: Curves.easeOut),
       ),
     );
   }
@@ -181,14 +185,16 @@ class _GoalScreenState extends State<GoalScreen> {
                   color: AppColors.visualLightBackgroundHalf,
                   fontWeight: FontWeight.w800,
                 ),
-              ).animate(
-                delay: 100.ms,
-              ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideX(
-                  begin: 0.2,
-                  end: 0,
-                  duration: 600.ms,
-                  curve: Curves.easeOut
-              ),
+              )
+                  .animate(
+                    delay: 100.ms,
+                  )
+                  .fadeIn(duration: 600.ms, curve: Curves.easeOut)
+                  .slideX(
+                      begin: 0.2,
+                      end: 0,
+                      duration: 600.ms,
+                      curve: Curves.easeOut),
               const SizedBox(height: 30),
               Expanded(
                 child: SingleChildScrollView(
@@ -201,14 +207,16 @@ class _GoalScreenState extends State<GoalScreen> {
               const SizedBox(height: 20),
               ContinueButton(
                 onPressed: _selectedGoal == null ? null : _handleContinue,
-              ).animate(
-                delay: 500.ms,
-              ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideX(
-                  begin: 0.2,
-                  end: 0,
-                  duration: 600.ms,
-                  curve: Curves.easeOut
-              ),
+              )
+                  .animate(
+                    delay: 500.ms,
+                  )
+                  .fadeIn(duration: 600.ms, curve: Curves.easeOut)
+                  .slideX(
+                      begin: 0.2,
+                      end: 0,
+                      duration: 600.ms,
+                      curve: Curves.easeOut),
             ],
           ),
         ),

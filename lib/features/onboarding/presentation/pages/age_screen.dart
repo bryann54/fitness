@@ -107,13 +107,16 @@ class _AgeScreenState extends State<AgeScreen> {
                       if (index < 0 || index >= itemCount) {
                         return null;
                       }
-                      return _buildAgeItem(context, index).animate().fadeIn(duration: 600.ms, delay: 400.ms).slideX(
-                        begin: -0.5,
-                        end: 0,
-                        duration: 600.ms,
-                        delay: 200.ms,
-                        curve: Curves.easeOut,
-                      );
+                      return _buildAgeItem(context, index)
+                          .animate()
+                          .fadeIn(duration: 600.ms, delay: 400.ms)
+                          .slideX(
+                            begin: -0.5,
+                            end: 0,
+                            duration: 600.ms,
+                            delay: 200.ms,
+                            curve: Curves.easeOut,
+                          );
                     },
                     childCount: itemCount,
                   ),

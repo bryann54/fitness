@@ -142,26 +142,23 @@ class _WorkoutsPerWeekScreenState extends State<WorkoutsPerWeekScreen>
                           ),
                         ),
                       ),
-
-                      const SizedBox(height: 120), 
+                      const SizedBox(height: 120),
                       Text(
                         '${_selectedDays}x',
                         style: const TextStyle(
-                          color: AppColors.cardLight, 
+                          color: AppColors.cardLight,
                           fontSize: 180,
                           fontWeight: FontWeight.w900,
                           height: 0.8,
                         ),
                       ),
-
-                      const SizedBox(height: 80), 
+                      const SizedBox(height: 80),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: availableDays
                             .map((day) => _buildDayButton(day))
                             .toList(),
                       ),
-
                       const SizedBox(height: 20),
                       Text(
                         "I'm committed to exercising ${_selectedDays}x weekly",
@@ -195,7 +192,6 @@ class _WorkoutsPerWeekScreenState extends State<WorkoutsPerWeekScreen>
                     sleepQuality: widget.profile.sleepQuality,
                     calorieGoal: widget.profile.calorieGoal,
                     calorieUnit: widget.profile.calorieUnit,
-
                     workoutsPerWeek: _selectedDays,
                   );
 

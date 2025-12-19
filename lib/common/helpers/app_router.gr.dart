@@ -8,70 +8,78 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i29;
+import 'package:auto_route/auto_route.dart' as _i32;
 import 'package:fitness/features/account/presentation/pages/account_screen.dart'
     as _i1;
 import 'package:fitness/features/account/presentation/pages/edit_profile_screen.dart'
-    as _i7;
+    as _i8;
 import 'package:fitness/features/account/presentation/pages/help_support_screen.dart'
-    as _i14;
-import 'package:fitness/features/account/presentation/pages/tips_tricks_screen.dart'
-    as _i25;
-import 'package:fitness/features/auth/presentation/pages/get_started_screen.dart'
-    as _i12;
-import 'package:fitness/features/auth/presentation/pages/login_screen.dart'
     as _i15;
+import 'package:fitness/features/account/presentation/pages/tips_tricks_screen.dart'
+    as _i26;
+import 'package:fitness/features/auth/presentation/pages/get_started_screen.dart'
+    as _i13;
+import 'package:fitness/features/auth/presentation/pages/login_screen.dart'
+    as _i16;
 import 'package:fitness/features/auth/presentation/pages/register_screen.dart'
-    as _i20;
+    as _i21;
 import 'package:fitness/features/auth/presentation/pages/splash_screen.dart'
-    as _i23;
+    as _i24;
 import 'package:fitness/features/community/presentation/pages/community_page.dart'
-    as _i5;
+    as _i6;
 import 'package:fitness/features/meals/presentation/pages/meals_page.dart'
-    as _i17;
+    as _i18;
 import 'package:fitness/features/onboarding/data/models/fitness_profile_model.dart'
-    as _i31;
+    as _i34;
 import 'package:fitness/features/onboarding/presentation/pages/age_screen.dart'
     as _i2;
 import 'package:fitness/features/onboarding/presentation/pages/all_suppliments_screen.dart'
-    as _i3;
-import 'package:fitness/features/onboarding/presentation/pages/calories_screen.dart'
     as _i4;
+import 'package:fitness/features/onboarding/presentation/pages/calories_screen.dart'
+    as _i5;
 import 'package:fitness/features/onboarding/presentation/pages/diet_pref_screen.dart'
-    as _i6;
+    as _i7;
 import 'package:fitness/features/onboarding/presentation/pages/exercise_pref_screen.dart'
-    as _i8;
-import 'package:fitness/features/onboarding/presentation/pages/experience_screen.dart'
     as _i9;
-import 'package:fitness/features/onboarding/presentation/pages/fitness_level_screen.dart'
+import 'package:fitness/features/onboarding/presentation/pages/experience_screen.dart'
     as _i10;
-import 'package:fitness/features/onboarding/presentation/pages/gender_screen.dart'
+import 'package:fitness/features/onboarding/presentation/pages/fitness_level_screen.dart'
     as _i11;
+import 'package:fitness/features/onboarding/presentation/pages/gender_screen.dart'
+    as _i12;
 import 'package:fitness/features/onboarding/presentation/pages/goal_screen.dart'
-    as _i13;
+    as _i14;
 import 'package:fitness/features/onboarding/presentation/pages/onboarding_complete_screen.dart'
-    as _i18;
-import 'package:fitness/features/onboarding/presentation/pages/physical_limitations_screen.dart'
     as _i19;
+import 'package:fitness/features/onboarding/presentation/pages/physical_limitations_screen.dart'
+    as _i20;
 import 'package:fitness/features/onboarding/presentation/pages/sleep_quality_screen.dart'
-    as _i21;
-import 'package:fitness/features/onboarding/presentation/pages/specific_supp_screen.dart'
     as _i22;
+import 'package:fitness/features/onboarding/presentation/pages/specific_supp_screen.dart'
+    as _i23;
 import 'package:fitness/features/onboarding/presentation/pages/supliments_screen.dart'
-    as _i24;
+    as _i25;
 import 'package:fitness/features/onboarding/presentation/pages/weight_screen.dart'
-    as _i26;
-import 'package:fitness/features/onboarding/presentation/pages/workouts_per_week_screen.dart'
-    as _i28;
-import 'package:fitness/features/workouts/presentation/pages/workouts_page.dart'
     as _i27;
-import 'package:fitness/main_screen.dart' as _i16;
-import 'package:flutter/material.dart' as _i30;
+import 'package:fitness/features/onboarding/presentation/pages/workouts_per_week_screen.dart'
+    as _i31;
+import 'package:fitness/features/workouts/data/models/workout_model.dart'
+    as _i35;
+import 'package:fitness/features/workouts/presentation/pages/all_exercises_page.dart'
+    as _i3;
+import 'package:fitness/features/workouts/presentation/pages/workout_detail_page.dart'
+    as _i28;
+import 'package:fitness/features/workouts/presentation/pages/workout_schedule_page.dart'
+    as _i29;
+import 'package:fitness/features/workouts/presentation/pages/workouts_page.dart'
+    as _i30;
+import 'package:fitness/main_screen.dart' as _i17;
+import 'package:flutter/material.dart' as _i33;
 
 /// generated route for
 /// [_i1.AccountScreen]
-class AccountRoute extends _i29.PageRouteInfo<void> {
-  const AccountRoute({List<_i29.PageRouteInfo>? children})
+class AccountRoute extends _i32.PageRouteInfo<void> {
+  const AccountRoute({List<_i32.PageRouteInfo>? children})
       : super(
           AccountRoute.name,
           initialChildren: children,
@@ -79,7 +87,7 @@ class AccountRoute extends _i29.PageRouteInfo<void> {
 
   static const String name = 'AccountRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       return const _i1.AccountScreen();
@@ -89,11 +97,11 @@ class AccountRoute extends _i29.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.AgeScreen]
-class AgeRoute extends _i29.PageRouteInfo<AgeRouteArgs> {
+class AgeRoute extends _i32.PageRouteInfo<AgeRouteArgs> {
   AgeRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           AgeRoute.name,
           args: AgeRouteArgs(
@@ -105,7 +113,7 @@ class AgeRoute extends _i29.PageRouteInfo<AgeRouteArgs> {
 
   static const String name = 'AgeRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<AgeRouteArgs>();
@@ -123,9 +131,9 @@ class AgeRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {
@@ -134,12 +142,64 @@ class AgeRouteArgs {
 }
 
 /// generated route for
-/// [_i3.AllSupplementsScreen]
-class AllSupplementsRoute extends _i29.PageRouteInfo<AllSupplementsRouteArgs> {
+/// [_i3.AllExercisesPage]
+class AllExercisesRoute extends _i32.PageRouteInfo<AllExercisesRouteArgs> {
+  AllExercisesRoute({
+    _i33.Key? key,
+    required List<_i35.WorkoutModel> workouts,
+    required dynamic profile,
+    List<_i32.PageRouteInfo>? children,
+  }) : super(
+          AllExercisesRoute.name,
+          args: AllExercisesRouteArgs(
+            key: key,
+            workouts: workouts,
+            profile: profile,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'AllExercisesRoute';
+
+  static _i32.PageInfo page = _i32.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<AllExercisesRouteArgs>();
+      return _i3.AllExercisesPage(
+        key: args.key,
+        workouts: args.workouts,
+        profile: args.profile,
+      );
+    },
+  );
+}
+
+class AllExercisesRouteArgs {
+  const AllExercisesRouteArgs({
+    this.key,
+    required this.workouts,
+    required this.profile,
+  });
+
+  final _i33.Key? key;
+
+  final List<_i35.WorkoutModel> workouts;
+
+  final dynamic profile;
+
+  @override
+  String toString() {
+    return 'AllExercisesRouteArgs{key: $key, workouts: $workouts, profile: $profile}';
+  }
+}
+
+/// generated route for
+/// [_i4.AllSupplementsScreen]
+class AllSupplementsRoute extends _i32.PageRouteInfo<AllSupplementsRouteArgs> {
   AllSupplementsRoute({
-    _i30.Key? key,
+    _i33.Key? key,
     required List<String> initialSelection,
-    List<_i29.PageRouteInfo>? children,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           AllSupplementsRoute.name,
           args: AllSupplementsRouteArgs(
@@ -151,11 +211,11 @@ class AllSupplementsRoute extends _i29.PageRouteInfo<AllSupplementsRouteArgs> {
 
   static const String name = 'AllSupplementsRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<AllSupplementsRouteArgs>();
-      return _i3.AllSupplementsScreen(
+      return _i4.AllSupplementsScreen(
         key: args.key,
         initialSelection: args.initialSelection,
       );
@@ -169,7 +229,7 @@ class AllSupplementsRouteArgs {
     required this.initialSelection,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
   final List<String> initialSelection;
 
@@ -180,12 +240,12 @@ class AllSupplementsRouteArgs {
 }
 
 /// generated route for
-/// [_i4.CaloriesScreen]
-class CaloriesRoute extends _i29.PageRouteInfo<CaloriesRouteArgs> {
+/// [_i5.CaloriesScreen]
+class CaloriesRoute extends _i32.PageRouteInfo<CaloriesRouteArgs> {
   CaloriesRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           CaloriesRoute.name,
           args: CaloriesRouteArgs(
@@ -197,11 +257,11 @@ class CaloriesRoute extends _i29.PageRouteInfo<CaloriesRouteArgs> {
 
   static const String name = 'CaloriesRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<CaloriesRouteArgs>();
-      return _i4.CaloriesScreen(
+      return _i5.CaloriesScreen(
         key: args.key,
         profile: args.profile,
       );
@@ -215,9 +275,9 @@ class CaloriesRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {
@@ -226,9 +286,9 @@ class CaloriesRouteArgs {
 }
 
 /// generated route for
-/// [_i5.CommunityPage]
-class CommunityRoute extends _i29.PageRouteInfo<void> {
-  const CommunityRoute({List<_i29.PageRouteInfo>? children})
+/// [_i6.CommunityPage]
+class CommunityRoute extends _i32.PageRouteInfo<void> {
+  const CommunityRoute({List<_i32.PageRouteInfo>? children})
       : super(
           CommunityRoute.name,
           initialChildren: children,
@@ -236,21 +296,21 @@ class CommunityRoute extends _i29.PageRouteInfo<void> {
 
   static const String name = 'CommunityRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
-      return const _i5.CommunityPage();
+      return const _i6.CommunityPage();
     },
   );
 }
 
 /// generated route for
-/// [_i6.DietPrefScreen]
-class DietPrefRoute extends _i29.PageRouteInfo<DietPrefRouteArgs> {
+/// [_i7.DietPrefScreen]
+class DietPrefRoute extends _i32.PageRouteInfo<DietPrefRouteArgs> {
   DietPrefRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           DietPrefRoute.name,
           args: DietPrefRouteArgs(
@@ -262,11 +322,11 @@ class DietPrefRoute extends _i29.PageRouteInfo<DietPrefRouteArgs> {
 
   static const String name = 'DietPrefRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<DietPrefRouteArgs>();
-      return _i6.DietPrefScreen(
+      return _i7.DietPrefScreen(
         key: args.key,
         profile: args.profile,
       );
@@ -280,9 +340,9 @@ class DietPrefRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {
@@ -291,14 +351,14 @@ class DietPrefRouteArgs {
 }
 
 /// generated route for
-/// [_i7.EditProfileScreen]
-class EditProfileRoute extends _i29.PageRouteInfo<EditProfileRouteArgs> {
+/// [_i8.EditProfileScreen]
+class EditProfileRoute extends _i32.PageRouteInfo<EditProfileRouteArgs> {
   EditProfileRoute({
-    _i30.Key? key,
+    _i33.Key? key,
     required String currentFirstName,
     required String currentLastName,
     String? currentPhotoUrl,
-    List<_i29.PageRouteInfo>? children,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           EditProfileRoute.name,
           args: EditProfileRouteArgs(
@@ -312,11 +372,11 @@ class EditProfileRoute extends _i29.PageRouteInfo<EditProfileRouteArgs> {
 
   static const String name = 'EditProfileRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<EditProfileRouteArgs>();
-      return _i7.EditProfileScreen(
+      return _i8.EditProfileScreen(
         key: args.key,
         currentFirstName: args.currentFirstName,
         currentLastName: args.currentLastName,
@@ -334,7 +394,7 @@ class EditProfileRouteArgs {
     this.currentPhotoUrl,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
   final String currentFirstName;
 
@@ -349,12 +409,12 @@ class EditProfileRouteArgs {
 }
 
 /// generated route for
-/// [_i8.ExercisePrefScreen]
-class ExercisePrefRoute extends _i29.PageRouteInfo<ExercisePrefRouteArgs> {
+/// [_i9.ExercisePrefScreen]
+class ExercisePrefRoute extends _i32.PageRouteInfo<ExercisePrefRouteArgs> {
   ExercisePrefRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           ExercisePrefRoute.name,
           args: ExercisePrefRouteArgs(
@@ -366,11 +426,11 @@ class ExercisePrefRoute extends _i29.PageRouteInfo<ExercisePrefRouteArgs> {
 
   static const String name = 'ExercisePrefRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ExercisePrefRouteArgs>();
-      return _i8.ExercisePrefScreen(
+      return _i9.ExercisePrefScreen(
         key: args.key,
         profile: args.profile,
       );
@@ -384,9 +444,9 @@ class ExercisePrefRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {
@@ -395,12 +455,12 @@ class ExercisePrefRouteArgs {
 }
 
 /// generated route for
-/// [_i9.ExperienceScreen]
-class ExperienceRoute extends _i29.PageRouteInfo<ExperienceRouteArgs> {
+/// [_i10.ExperienceScreen]
+class ExperienceRoute extends _i32.PageRouteInfo<ExperienceRouteArgs> {
   ExperienceRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           ExperienceRoute.name,
           args: ExperienceRouteArgs(
@@ -412,11 +472,11 @@ class ExperienceRoute extends _i29.PageRouteInfo<ExperienceRouteArgs> {
 
   static const String name = 'ExperienceRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ExperienceRouteArgs>();
-      return _i9.ExperienceScreen(
+      return _i10.ExperienceScreen(
         key: args.key,
         profile: args.profile,
       );
@@ -430,9 +490,9 @@ class ExperienceRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {
@@ -441,12 +501,12 @@ class ExperienceRouteArgs {
 }
 
 /// generated route for
-/// [_i10.FitnessLevelScreen]
-class FitnessLevelRoute extends _i29.PageRouteInfo<FitnessLevelRouteArgs> {
+/// [_i11.FitnessLevelScreen]
+class FitnessLevelRoute extends _i32.PageRouteInfo<FitnessLevelRouteArgs> {
   FitnessLevelRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           FitnessLevelRoute.name,
           args: FitnessLevelRouteArgs(
@@ -458,11 +518,11 @@ class FitnessLevelRoute extends _i29.PageRouteInfo<FitnessLevelRouteArgs> {
 
   static const String name = 'FitnessLevelRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<FitnessLevelRouteArgs>();
-      return _i10.FitnessLevelScreen(
+      return _i11.FitnessLevelScreen(
         key: args.key,
         profile: args.profile,
       );
@@ -476,9 +536,9 @@ class FitnessLevelRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {
@@ -487,12 +547,12 @@ class FitnessLevelRouteArgs {
 }
 
 /// generated route for
-/// [_i11.GenderScreen]
-class GenderRoute extends _i29.PageRouteInfo<GenderRouteArgs> {
+/// [_i12.GenderScreen]
+class GenderRoute extends _i32.PageRouteInfo<GenderRouteArgs> {
   GenderRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           GenderRoute.name,
           args: GenderRouteArgs(
@@ -504,11 +564,11 @@ class GenderRoute extends _i29.PageRouteInfo<GenderRouteArgs> {
 
   static const String name = 'GenderRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<GenderRouteArgs>();
-      return _i11.GenderScreen(
+      return _i12.GenderScreen(
         key: args.key,
         profile: args.profile,
       );
@@ -522,9 +582,9 @@ class GenderRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {
@@ -533,9 +593,9 @@ class GenderRouteArgs {
 }
 
 /// generated route for
-/// [_i12.GetStartedScreen]
-class GetStartedRoute extends _i29.PageRouteInfo<void> {
-  const GetStartedRoute({List<_i29.PageRouteInfo>? children})
+/// [_i13.GetStartedScreen]
+class GetStartedRoute extends _i32.PageRouteInfo<void> {
+  const GetStartedRoute({List<_i32.PageRouteInfo>? children})
       : super(
           GetStartedRoute.name,
           initialChildren: children,
@@ -543,18 +603,18 @@ class GetStartedRoute extends _i29.PageRouteInfo<void> {
 
   static const String name = 'GetStartedRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
-      return const _i12.GetStartedScreen();
+      return const _i13.GetStartedScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i13.GoalScreen]
-class GoalRoute extends _i29.PageRouteInfo<void> {
-  const GoalRoute({List<_i29.PageRouteInfo>? children})
+/// [_i14.GoalScreen]
+class GoalRoute extends _i32.PageRouteInfo<void> {
+  const GoalRoute({List<_i32.PageRouteInfo>? children})
       : super(
           GoalRoute.name,
           initialChildren: children,
@@ -562,18 +622,18 @@ class GoalRoute extends _i29.PageRouteInfo<void> {
 
   static const String name = 'GoalRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
-      return const _i13.GoalScreen();
+      return const _i14.GoalScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i14.HelpSupportScreen]
-class HelpSupportRoute extends _i29.PageRouteInfo<void> {
-  const HelpSupportRoute({List<_i29.PageRouteInfo>? children})
+/// [_i15.HelpSupportScreen]
+class HelpSupportRoute extends _i32.PageRouteInfo<void> {
+  const HelpSupportRoute({List<_i32.PageRouteInfo>? children})
       : super(
           HelpSupportRoute.name,
           initialChildren: children,
@@ -581,18 +641,18 @@ class HelpSupportRoute extends _i29.PageRouteInfo<void> {
 
   static const String name = 'HelpSupportRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
-      return const _i14.HelpSupportScreen();
+      return const _i15.HelpSupportScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i15.LoginScreen]
-class LoginRoute extends _i29.PageRouteInfo<void> {
-  const LoginRoute({List<_i29.PageRouteInfo>? children})
+/// [_i16.LoginScreen]
+class LoginRoute extends _i32.PageRouteInfo<void> {
+  const LoginRoute({List<_i32.PageRouteInfo>? children})
       : super(
           LoginRoute.name,
           initialChildren: children,
@@ -600,18 +660,18 @@ class LoginRoute extends _i29.PageRouteInfo<void> {
 
   static const String name = 'LoginRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
-      return const _i15.LoginScreen();
+      return const _i16.LoginScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i16.MainScreen]
-class MainRoute extends _i29.PageRouteInfo<void> {
-  const MainRoute({List<_i29.PageRouteInfo>? children})
+/// [_i17.MainScreen]
+class MainRoute extends _i32.PageRouteInfo<void> {
+  const MainRoute({List<_i32.PageRouteInfo>? children})
       : super(
           MainRoute.name,
           initialChildren: children,
@@ -619,18 +679,18 @@ class MainRoute extends _i29.PageRouteInfo<void> {
 
   static const String name = 'MainRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
-      return const _i16.MainScreen();
+      return const _i17.MainScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i17.MealsPage]
-class MealsRoute extends _i29.PageRouteInfo<void> {
-  const MealsRoute({List<_i29.PageRouteInfo>? children})
+/// [_i18.MealsPage]
+class MealsRoute extends _i32.PageRouteInfo<void> {
+  const MealsRoute({List<_i32.PageRouteInfo>? children})
       : super(
           MealsRoute.name,
           initialChildren: children,
@@ -638,22 +698,22 @@ class MealsRoute extends _i29.PageRouteInfo<void> {
 
   static const String name = 'MealsRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
-      return const _i17.MealsPage();
+      return const _i18.MealsPage();
     },
   );
 }
 
 /// generated route for
-/// [_i18.OnboardingCompleteScreen]
+/// [_i19.OnboardingCompleteScreen]
 class OnboardingCompleteRoute
-    extends _i29.PageRouteInfo<OnboardingCompleteRouteArgs> {
+    extends _i32.PageRouteInfo<OnboardingCompleteRouteArgs> {
   OnboardingCompleteRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel finalProfile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel finalProfile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           OnboardingCompleteRoute.name,
           args: OnboardingCompleteRouteArgs(
@@ -665,11 +725,11 @@ class OnboardingCompleteRoute
 
   static const String name = 'OnboardingCompleteRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<OnboardingCompleteRouteArgs>();
-      return _i18.OnboardingCompleteScreen(
+      return _i19.OnboardingCompleteScreen(
         key: args.key,
         finalProfile: args.finalProfile,
       );
@@ -683,9 +743,9 @@ class OnboardingCompleteRouteArgs {
     required this.finalProfile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel finalProfile;
+  final _i34.FitnessProfileModel finalProfile;
 
   @override
   String toString() {
@@ -694,13 +754,13 @@ class OnboardingCompleteRouteArgs {
 }
 
 /// generated route for
-/// [_i19.PhysicalLimitationsScreen]
+/// [_i20.PhysicalLimitationsScreen]
 class PhysicalLimitationsRoute
-    extends _i29.PageRouteInfo<PhysicalLimitationsRouteArgs> {
+    extends _i32.PageRouteInfo<PhysicalLimitationsRouteArgs> {
   PhysicalLimitationsRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           PhysicalLimitationsRoute.name,
           args: PhysicalLimitationsRouteArgs(
@@ -712,11 +772,11 @@ class PhysicalLimitationsRoute
 
   static const String name = 'PhysicalLimitationsRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<PhysicalLimitationsRouteArgs>();
-      return _i19.PhysicalLimitationsScreen(
+      return _i20.PhysicalLimitationsScreen(
         key: args.key,
         profile: args.profile,
       );
@@ -730,9 +790,9 @@ class PhysicalLimitationsRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {
@@ -741,9 +801,9 @@ class PhysicalLimitationsRouteArgs {
 }
 
 /// generated route for
-/// [_i20.RegisterScreen]
-class RegisterRoute extends _i29.PageRouteInfo<void> {
-  const RegisterRoute({List<_i29.PageRouteInfo>? children})
+/// [_i21.RegisterScreen]
+class RegisterRoute extends _i32.PageRouteInfo<void> {
+  const RegisterRoute({List<_i32.PageRouteInfo>? children})
       : super(
           RegisterRoute.name,
           initialChildren: children,
@@ -751,21 +811,21 @@ class RegisterRoute extends _i29.PageRouteInfo<void> {
 
   static const String name = 'RegisterRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
-      return const _i20.RegisterScreen();
+      return const _i21.RegisterScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i21.SleepQualityScreen]
-class SleepQualityRoute extends _i29.PageRouteInfo<SleepQualityRouteArgs> {
+/// [_i22.SleepQualityScreen]
+class SleepQualityRoute extends _i32.PageRouteInfo<SleepQualityRouteArgs> {
   SleepQualityRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           SleepQualityRoute.name,
           args: SleepQualityRouteArgs(
@@ -777,11 +837,11 @@ class SleepQualityRoute extends _i29.PageRouteInfo<SleepQualityRouteArgs> {
 
   static const String name = 'SleepQualityRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<SleepQualityRouteArgs>();
-      return _i21.SleepQualityScreen(
+      return _i22.SleepQualityScreen(
         key: args.key,
         profile: args.profile,
       );
@@ -795,9 +855,9 @@ class SleepQualityRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {
@@ -806,12 +866,12 @@ class SleepQualityRouteArgs {
 }
 
 /// generated route for
-/// [_i22.SpecificSuppScreen]
-class SpecificSuppRoute extends _i29.PageRouteInfo<SpecificSuppRouteArgs> {
+/// [_i23.SpecificSuppScreen]
+class SpecificSuppRoute extends _i32.PageRouteInfo<SpecificSuppRouteArgs> {
   SpecificSuppRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           SpecificSuppRoute.name,
           args: SpecificSuppRouteArgs(
@@ -823,11 +883,11 @@ class SpecificSuppRoute extends _i29.PageRouteInfo<SpecificSuppRouteArgs> {
 
   static const String name = 'SpecificSuppRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<SpecificSuppRouteArgs>();
-      return _i22.SpecificSuppScreen(
+      return _i23.SpecificSuppScreen(
         key: args.key,
         profile: args.profile,
       );
@@ -841,9 +901,9 @@ class SpecificSuppRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {
@@ -852,9 +912,9 @@ class SpecificSuppRouteArgs {
 }
 
 /// generated route for
-/// [_i23.SplashScreen]
-class SplashRoute extends _i29.PageRouteInfo<void> {
-  const SplashRoute({List<_i29.PageRouteInfo>? children})
+/// [_i24.SplashScreen]
+class SplashRoute extends _i32.PageRouteInfo<void> {
+  const SplashRoute({List<_i32.PageRouteInfo>? children})
       : super(
           SplashRoute.name,
           initialChildren: children,
@@ -862,21 +922,21 @@ class SplashRoute extends _i29.PageRouteInfo<void> {
 
   static const String name = 'SplashRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
-      return const _i23.SplashScreen();
+      return const _i24.SplashScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i24.SupplementsScreen]
-class SupplementsRoute extends _i29.PageRouteInfo<SupplementsRouteArgs> {
+/// [_i25.SupplementsScreen]
+class SupplementsRoute extends _i32.PageRouteInfo<SupplementsRouteArgs> {
   SupplementsRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           SupplementsRoute.name,
           args: SupplementsRouteArgs(
@@ -888,11 +948,11 @@ class SupplementsRoute extends _i29.PageRouteInfo<SupplementsRouteArgs> {
 
   static const String name = 'SupplementsRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<SupplementsRouteArgs>();
-      return _i24.SupplementsScreen(
+      return _i25.SupplementsScreen(
         key: args.key,
         profile: args.profile,
       );
@@ -906,9 +966,9 @@ class SupplementsRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {
@@ -917,9 +977,9 @@ class SupplementsRouteArgs {
 }
 
 /// generated route for
-/// [_i25.TipsTricksScreen]
-class TipsTricksRoute extends _i29.PageRouteInfo<void> {
-  const TipsTricksRoute({List<_i29.PageRouteInfo>? children})
+/// [_i26.TipsTricksScreen]
+class TipsTricksRoute extends _i32.PageRouteInfo<void> {
+  const TipsTricksRoute({List<_i32.PageRouteInfo>? children})
       : super(
           TipsTricksRoute.name,
           initialChildren: children,
@@ -927,21 +987,21 @@ class TipsTricksRoute extends _i29.PageRouteInfo<void> {
 
   static const String name = 'TipsTricksRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
-      return const _i25.TipsTricksScreen();
+      return const _i26.TipsTricksScreen();
     },
   );
 }
 
 /// generated route for
-/// [_i26.WeightScreen]
-class WeightRoute extends _i29.PageRouteInfo<WeightRouteArgs> {
+/// [_i27.WeightScreen]
+class WeightRoute extends _i32.PageRouteInfo<WeightRouteArgs> {
   WeightRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           WeightRoute.name,
           args: WeightRouteArgs(
@@ -953,11 +1013,11 @@ class WeightRoute extends _i29.PageRouteInfo<WeightRouteArgs> {
 
   static const String name = 'WeightRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<WeightRouteArgs>();
-      return _i26.WeightScreen(
+      return _i27.WeightScreen(
         key: args.key,
         profile: args.profile,
       );
@@ -971,9 +1031,9 @@ class WeightRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {
@@ -982,9 +1042,114 @@ class WeightRouteArgs {
 }
 
 /// generated route for
-/// [_i27.WorkoutsPage]
-class WorkoutsRoute extends _i29.PageRouteInfo<void> {
-  const WorkoutsRoute({List<_i29.PageRouteInfo>? children})
+/// [_i28.WorkoutDetailPage]
+class WorkoutDetailRoute extends _i32.PageRouteInfo<WorkoutDetailRouteArgs> {
+  WorkoutDetailRoute({
+    _i33.Key? key,
+    required _i35.WorkoutModel workout,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
+  }) : super(
+          WorkoutDetailRoute.name,
+          args: WorkoutDetailRouteArgs(
+            key: key,
+            workout: workout,
+            profile: profile,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'WorkoutDetailRoute';
+
+  static _i32.PageInfo page = _i32.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<WorkoutDetailRouteArgs>();
+      return _i28.WorkoutDetailPage(
+        key: args.key,
+        workout: args.workout,
+        profile: args.profile,
+      );
+    },
+  );
+}
+
+class WorkoutDetailRouteArgs {
+  const WorkoutDetailRouteArgs({
+    this.key,
+    required this.workout,
+    required this.profile,
+  });
+
+  final _i33.Key? key;
+
+  final _i35.WorkoutModel workout;
+
+  final _i34.FitnessProfileModel profile;
+
+  @override
+  String toString() {
+    return 'WorkoutDetailRouteArgs{key: $key, workout: $workout, profile: $profile}';
+  }
+}
+
+/// generated route for
+/// [_i29.WorkoutSchedulePage]
+class WorkoutScheduleRoute
+    extends _i32.PageRouteInfo<WorkoutScheduleRouteArgs> {
+  WorkoutScheduleRoute({
+    _i33.Key? key,
+    required List<_i35.WorkoutModel> workouts,
+    required dynamic profile,
+    List<_i32.PageRouteInfo>? children,
+  }) : super(
+          WorkoutScheduleRoute.name,
+          args: WorkoutScheduleRouteArgs(
+            key: key,
+            workouts: workouts,
+            profile: profile,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'WorkoutScheduleRoute';
+
+  static _i32.PageInfo page = _i32.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<WorkoutScheduleRouteArgs>();
+      return _i29.WorkoutSchedulePage(
+        key: args.key,
+        workouts: args.workouts,
+        profile: args.profile,
+      );
+    },
+  );
+}
+
+class WorkoutScheduleRouteArgs {
+  const WorkoutScheduleRouteArgs({
+    this.key,
+    required this.workouts,
+    required this.profile,
+  });
+
+  final _i33.Key? key;
+
+  final List<_i35.WorkoutModel> workouts;
+
+  final dynamic profile;
+
+  @override
+  String toString() {
+    return 'WorkoutScheduleRouteArgs{key: $key, workouts: $workouts, profile: $profile}';
+  }
+}
+
+/// generated route for
+/// [_i30.WorkoutsPage]
+class WorkoutsRoute extends _i32.PageRouteInfo<void> {
+  const WorkoutsRoute({List<_i32.PageRouteInfo>? children})
       : super(
           WorkoutsRoute.name,
           initialChildren: children,
@@ -992,22 +1157,22 @@ class WorkoutsRoute extends _i29.PageRouteInfo<void> {
 
   static const String name = 'WorkoutsRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
-      return const _i27.WorkoutsPage();
+      return const _i30.WorkoutsPage();
     },
   );
 }
 
 /// generated route for
-/// [_i28.WorkoutsPerWeekScreen]
+/// [_i31.WorkoutsPerWeekScreen]
 class WorkoutsPerWeekRoute
-    extends _i29.PageRouteInfo<WorkoutsPerWeekRouteArgs> {
+    extends _i32.PageRouteInfo<WorkoutsPerWeekRouteArgs> {
   WorkoutsPerWeekRoute({
-    _i30.Key? key,
-    required _i31.FitnessProfileModel profile,
-    List<_i29.PageRouteInfo>? children,
+    _i33.Key? key,
+    required _i34.FitnessProfileModel profile,
+    List<_i32.PageRouteInfo>? children,
   }) : super(
           WorkoutsPerWeekRoute.name,
           args: WorkoutsPerWeekRouteArgs(
@@ -1019,11 +1184,11 @@ class WorkoutsPerWeekRoute
 
   static const String name = 'WorkoutsPerWeekRoute';
 
-  static _i29.PageInfo page = _i29.PageInfo(
+  static _i32.PageInfo page = _i32.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<WorkoutsPerWeekRouteArgs>();
-      return _i28.WorkoutsPerWeekScreen(
+      return _i31.WorkoutsPerWeekScreen(
         key: args.key,
         profile: args.profile,
       );
@@ -1037,9 +1202,9 @@ class WorkoutsPerWeekRouteArgs {
     required this.profile,
   });
 
-  final _i30.Key? key;
+  final _i33.Key? key;
 
-  final _i31.FitnessProfileModel profile;
+  final _i34.FitnessProfileModel profile;
 
   @override
   String toString() {

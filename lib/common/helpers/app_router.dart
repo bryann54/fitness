@@ -63,5 +63,9 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: SpecificSuppRoute.page),
         AutoRoute(page: AllSupplementsRoute.page),
         AutoRoute(page: CaloriesRoute.page),
+        AutoRoute(page: WorkoutsRoute.page),
+        AutoRoute(page: WorkoutDetailRoute.page),
+        AutoRoute(page: WorkoutScheduleRoute.page),
+        AutoRoute(page: AllExercisesRoute.page),
       ];
 }

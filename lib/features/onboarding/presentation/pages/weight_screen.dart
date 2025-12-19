@@ -39,12 +39,12 @@ class _WeightScreenState extends State<WeightScreen> {
             fontWeight: FontWeight.w900,
           ),
         ).animate().fadeIn(duration: 600.ms, delay: 400.ms).slideX(
-                        begin: -0.3,
-                        end: 0,
-                        duration: 600.ms,
-                        delay: 400.ms,
-                        curve: Curves.easeOut,
-                      ),
+              begin: -0.3,
+              end: 0,
+              duration: 600.ms,
+              delay: 400.ms,
+              curve: Curves.easeOut,
+            ),
 
         // Unit label (Small Text)
         Text(
@@ -54,12 +54,12 @@ class _WeightScreenState extends State<WeightScreen> {
             fontWeight: FontWeight.w500,
           ),
         ).animate().fadeIn(duration: 600.ms, delay: 400.ms).slideX(
-                        begin: 0.3,
-                        end: 0,
-                        duration: 600.ms,
-                        delay: 400.ms,
-                        curve: Curves.easeOut,
-                      ),
+              begin: 0.3,
+              end: 0,
+              duration: 600.ms,
+              delay: 400.ms,
+              curve: Curves.easeOut,
+            ),
         const SizedBox(height: 50),
 
         SliderTheme(
@@ -121,13 +121,16 @@ class _WeightScreenState extends State<WeightScreen> {
                 delay: 400.ms,
                 curve: Curves.easeOut,
               ),
-          _buildUnitButton('lbs').animate().fadeIn(duration: 600.ms, delay: 400.ms).slideX(
-                        begin: 0.3,
-                        end: 0,
-                        duration: 600.ms,
-                        delay: 400.ms,
-                        curve: Curves.easeOut,
-                      ),
+          _buildUnitButton('lbs')
+              .animate()
+              .fadeIn(duration: 600.ms, delay: 400.ms)
+              .slideX(
+                begin: 0.3,
+                end: 0,
+                duration: 600.ms,
+                delay: 400.ms,
+                curve: Curves.easeOut,
+              ),
         ],
       ),
     );
@@ -146,14 +149,16 @@ class _WeightScreenState extends State<WeightScreen> {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: isSelected ?AppColors.primary : Colors.transparent,
+            color: isSelected ? AppColors.primary : Colors.transparent,
             borderRadius: BorderRadius.circular(8.0),
           ),
           alignment: Alignment.center,
           child: Text(
             label.toUpperCase(),
             style: TextStyle(
-              color: isSelected ? AppColors.visualLightBackgroundHalf : AppColors.visualLightBackgroundHalf,
+              color: isSelected
+                  ? AppColors.visualLightBackgroundHalf
+                  : AppColors.visualLightBackgroundHalf,
               fontWeight: FontWeight.bold,
             ),
           ),

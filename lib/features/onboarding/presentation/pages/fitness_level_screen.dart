@@ -45,7 +45,7 @@ class _FitnessLevelScreenState extends State<FitnessLevelScreen> {
 
   void _handleGesture(Offset position, Size size) {
     final center = Offset(size.width / 2, size.height * 0.75);
-  
+
     final touchVector = position - center;
     double touchAngle = atan2(touchVector.dy, touchVector.dx);
 

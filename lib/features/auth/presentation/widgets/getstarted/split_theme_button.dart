@@ -83,8 +83,8 @@ class _SplitThemeButtonState extends State<SplitThemeButton>
                     // Main drop shadow for depth
                     BoxShadow(
                       color: isDarkMode
-                          ? Colors.black.withValues(alpha: 0.6)
-                          : Colors.black.withValues(alpha: 0.25),
+                          ? AppColors.primary.withValues(alpha: 0.6)
+                          : AppColors.primary.withValues(alpha: 0.25),
                       blurRadius: _isHovered ? 28 : 20,
                       offset: Offset(0, _isHovered ? 12 : 8),
                       spreadRadius: _isHovered ? 1 : 0,
@@ -92,8 +92,8 @@ class _SplitThemeButtonState extends State<SplitThemeButton>
                     // Secondary shadow for more depth
                     BoxShadow(
                       color: isDarkMode
-                          ? Colors.black.withValues(alpha: 0.3)
-                          : Colors.black.withValues(alpha: 0.1),
+                          ? AppColors.primary.withValues(alpha: 0.3)
+                          : AppColors.primary.withValues(alpha: 0.1),
                       blurRadius: _isHovered ? 16 : 12,
                       offset: Offset(0, _isHovered ? 6 : 4),
                       spreadRadius: 0,
@@ -101,8 +101,10 @@ class _SplitThemeButtonState extends State<SplitThemeButton>
                     // Inner highlight for raised appearance
                     BoxShadow(
                       color: isDarkMode
-                          ? Colors.white.withValues(alpha: 0.1)
-                          : Colors.white.withValues(alpha: 0.8),
+                          ? AppColors.visualLightBackgroundHalf
+                              .withValues(alpha: 0.1)
+                          : AppColors.visualLightBackgroundHalf
+                              .withValues(alpha: 0.8),
                       blurRadius: 8,
                       offset: const Offset(0, -2),
                       spreadRadius: -4,
@@ -127,8 +129,9 @@ class _SplitThemeButtonState extends State<SplitThemeButton>
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                         color: isDarkMode
-                            ? Colors.white.withValues(alpha: 0.2)
-                            : Colors.black.withValues(alpha: 0.1),
+                            ? AppColors.visualLightBackgroundHalf
+                                .withValues(alpha: 0.2)
+                            : AppColors.primary.withValues(alpha: 0.1),
                         width: 0.5,
                       ),
                     ),
@@ -147,13 +150,15 @@ class _SplitThemeButtonState extends State<SplitThemeButton>
                                       end: Alignment.bottomRight,
                                       colors: isDarkMode
                                           ? [
-                                              Colors.white,
-                                              Colors.white
+                                              AppColors
+                                                  .visualLightBackgroundHalf,
+                                              AppColors
+                                                  .visualLightBackgroundHalf
                                                   .withValues(alpha: 0.95),
                                             ]
                                           : [
-                                              Colors.black,
-                                              Colors.black
+                                              AppColors.primary,
+                                              AppColors.primary
                                                   .withValues(alpha: 0.95),
                                             ],
                                     ),
@@ -168,13 +173,15 @@ class _SplitThemeButtonState extends State<SplitThemeButton>
                                       end: Alignment.bottomLeft,
                                       colors: isDarkMode
                                           ? [
-                                              Colors.black,
-                                              Colors.black
+                                              AppColors.primary,
+                                              AppColors.primary
                                                   .withValues(alpha: 0.95),
                                             ]
                                           : [
-                                              Colors.white,
-                                              Colors.white
+                                              AppColors
+                                                  .visualLightBackgroundHalf,
+                                              AppColors
+                                                  .visualLightBackgroundHalf
                                                   .withValues(alpha: 0.95),
                                             ],
                                     ),
@@ -272,14 +279,17 @@ class _SplitButtonContent extends StatelessWidget {
                           style: GoogleFonts.poppins(
                             fontSize: isHovered ? 17 : 16,
                             fontWeight: FontWeight.w700,
-                            color: isDarkMode ? Colors.black : Colors.white,
+                            color: isDarkMode
+                                ? AppColors.primary
+                                : AppColors.visualLightBackgroundHalf,
                             letterSpacing: isHovered ? 1.4 : 1.2,
                             shadows: isHovered
                                 ? [
                                     Shadow(
                                       color: (isDarkMode
-                                              ? Colors.black
-                                              : Colors.white)
+                                              ? AppColors.primary
+                                              : AppColors
+                                                  .visualLightBackgroundHalf)
                                           .withValues(alpha: 0.3),
                                       blurRadius: 4,
                                       offset: const Offset(0, 1),
@@ -323,14 +333,17 @@ class _SplitButtonContent extends StatelessWidget {
                           style: GoogleFonts.poppins(
                             fontSize: isHovered ? 17 : 16,
                             fontWeight: FontWeight.w700,
-                            color: isDarkMode ? Colors.white : Colors.black,
+                            color: isDarkMode
+                                ? AppColors.visualLightBackgroundHalf
+                                : AppColors.primary,
                             letterSpacing: isHovered ? 1.4 : 1.2,
                             shadows: isHovered
                                 ? [
                                     Shadow(
                                       color: (isDarkMode
-                                              ? Colors.white
-                                              : Colors.black)
+                                              ? AppColors
+                                                  .visualLightBackgroundHalf
+                                              : AppColors.primary)
                                           .withValues(alpha: 0.3),
                                       blurRadius: 4,
                                       offset: const Offset(0, 1),

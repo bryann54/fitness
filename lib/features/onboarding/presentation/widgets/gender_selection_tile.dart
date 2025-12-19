@@ -31,7 +31,9 @@ class GenderSelectionTile extends StatelessWidget {
         shape: BoxShape.circle,
         color: isSelected ? AppColors.primary : Colors.transparent,
         border: Border.all(
-          color: isSelected ? AppColors.primary : AppColors.visualLightBackgroundHalf,
+          color: isSelected
+              ? AppColors.primary
+              : AppColors.visualLightBackgroundHalf,
           width: 2,
         ),
       ),
@@ -42,16 +44,17 @@ class GenderSelectionTile extends StatelessWidget {
               color: Colors.black,
             )
           : null,
-    ).animate(
-      delay: 100.ms,
-    ).fadeIn(duration: 500.ms, curve: Curves.easeOut).scale(
-        begin: const Offset(0.8, 0.8),
-        end: const Offset(1.0, 1.0),
-        duration: 500.ms,
-        curve: Curves.easeOut
-    );
+    )
+        .animate(
+          delay: 100.ms,
+        )
+        .fadeIn(duration: 500.ms, curve: Curves.easeOut)
+        .scale(
+            begin: const Offset(0.8, 0.8),
+            end: const Offset(1.0, 1.0),
+            duration: 500.ms,
+            curve: Curves.easeOut);
   }
-
 
   Widget _buildTextContent(BuildContext context) {
     return Padding(
@@ -140,14 +143,13 @@ class GenderSelectionTile extends StatelessWidget {
               _buildImageContent(context),
             ],
           ),
-        ).animate(
-          delay: 100.ms,
-        ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideX(
-            begin: 0.2,
-            end: 0,
-            duration: 600.ms,
-            curve: Curves.easeOut
-        ),
+        )
+            .animate(
+              delay: 100.ms,
+            )
+            .fadeIn(duration: 600.ms, curve: Curves.easeOut)
+            .slideX(
+                begin: 0.2, end: 0, duration: 600.ms, curve: Curves.easeOut),
       ),
     );
   }

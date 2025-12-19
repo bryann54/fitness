@@ -69,13 +69,12 @@ class _SleepQualityScreenState extends State<SleepQualityScreen> {
     final bool isButtonEnabled = _selectedQuality != null;
 
     return Scaffold(
-      backgroundColor: AppColors.backgroundDark, 
+      backgroundColor: AppColors.backgroundDark,
       appBar: const OnboardingAppBar(
         currentStep: 14,
         totalSteps: 17,
         isInitial: false,
       ),
-
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -110,14 +109,16 @@ class _SleepQualityScreenState extends State<SleepQualityScreen> {
                             _selectedQuality = quality;
                           });
                         },
-                      ).animate(
-                        delay: 100.ms,
-                      ).fadeIn(duration: 600.ms, curve: Curves.easeOut).slideX(
-                          begin: 0.2,
-                          end: 0,
-                          duration: 600.ms,
-                          curve: Curves.easeOut
-                      );
+                      )
+                          .animate(
+                            delay: 100.ms,
+                          )
+                          .fadeIn(duration: 600.ms, curve: Curves.easeOut)
+                          .slideX(
+                              begin: 0.2,
+                              end: 0,
+                              duration: 600.ms,
+                              curve: Curves.easeOut);
                     }).toList(),
                   ),
                 ),
@@ -127,7 +128,6 @@ class _SleepQualityScreenState extends State<SleepQualityScreen> {
                 onPressed: isButtonEnabled
                     ? () {
                         final updatedProfile = FitnessProfileModel(
-                          
                           uid: widget.profile.uid,
                           primaryGoal: widget.profile.primaryGoal,
                           gender: widget.profile.gender,
@@ -144,10 +144,8 @@ class _SleepQualityScreenState extends State<SleepQualityScreen> {
                               widget.profile.isTakingSupplements,
                           supplementsTaken: widget.profile.supplementsTaken,
                           heightCm: widget.profile.heightCm,
-                          calorieGoal:
-                              widget.profile.calorieGoal, 
-                          calorieUnit:
-                              widget.profile.calorieUnit, 
+                          calorieGoal: widget.profile.calorieGoal,
+                          calorieUnit: widget.profile.calorieUnit,
                           sleepQuality: _selectedQuality!,
                         );
 

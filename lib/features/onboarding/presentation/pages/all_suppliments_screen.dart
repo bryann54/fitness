@@ -50,7 +50,6 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
     'Melatonin',
     'Collagen',
     'Electrolytes'
-    
   ];
 
   late List<String> _filteredSupplements;
@@ -102,16 +101,16 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
             fontWeight: FontWeight.bold,
           ),
         ).animate(
-                    effects: [
-                      FadeEffect(delay: 100.ms, duration: 500.ms),
-                      SlideEffect(
-                        delay: 100.ms,
-                        duration: 500.ms,
-                        begin: const Offset(-0.5, 0),
-                        end: const Offset(0, 0),
-                      ),
-                    ],
-                  ),
+          effects: [
+            FadeEffect(delay: 100.ms, duration: 500.ms),
+            SlideEffect(
+              delay: 100.ms,
+              duration: 500.ms,
+              begin: const Offset(-0.5, 0),
+              end: const Offset(0, 0),
+            ),
+          ],
+        ),
       ),
       body: SafeArea(
         child: Column(
@@ -186,9 +185,8 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
                 children: [
                   const Text(
                     'Selected:',
-                    style: TextStyle(
-                        color: AppColors.textSecondary,
-                        fontSize: 16),
+                    style:
+                        TextStyle(color: AppColors.textSecondary, fontSize: 16),
                   ),
                   const SizedBox(height: 8),
                   Wrap(
@@ -196,7 +194,6 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
                     runSpacing: 8.0,
                     children: _currentSelection
                         .map(
-                         
                           (supp) => OnboardingSelectedChip(
                             label: supp,
                             onDelete: () => _toggleSelection(supp),
@@ -214,21 +211,18 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
                         context.router.maybePop(_currentSelection);
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            AppColors.primary,
+                        backgroundColor: AppColors.primary,
                         padding: const EdgeInsets.symmetric(vertical: 18.0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                       ),
-                      icon: const Icon(Icons.check,
-                          color: AppColors
-                              .textAccent), 
+                      icon:
+                          const Icon(Icons.check, color: AppColors.textAccent),
                       label: Text(
                         'Apply (${_currentSelection.length})',
                         style: theme.textTheme.titleLarge?.copyWith(
-                          color: AppColors
-                              .textAccent,
+                          color: AppColors.textAccent,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

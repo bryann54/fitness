@@ -1,3 +1,4 @@
+import 'package:fitness/common/res/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,8 +32,7 @@ class AuthButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             elevation: 0,
-            backgroundColor:
-                isEnabled ? Theme.of(context).primaryColor : Colors.grey[400],
+            backgroundColor: isEnabled ? AppColors.primary : Colors.grey[400],
           ),
           child: isLoading
               ? const SizedBox(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Helper function to dynamically check theme (kept for potential future use)
 bool isDarkTheme(BuildContext context) {
   return Theme.of(context).brightness == Brightness.dark;
 }
@@ -37,7 +36,7 @@ class AppColors {
   static const Color warning = Color(0xFFFFC107);
   static const Color info = Color(0xFF2196F3);
   static const Color visualDarkBackgroundHalf =
-      Color(0xFF1A1A1A); // Always the dark side of the split
+      Colors.teal; // Always the dark side of the split
   static const Color visualLightBackgroundHalf =
       Colors.white; // Always the light side of the split
   // Borders & Dividers

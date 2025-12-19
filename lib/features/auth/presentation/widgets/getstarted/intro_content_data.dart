@@ -116,14 +116,12 @@ class IntroContentData {
           'Zone-based training for runners, cyclists, and cardio enthusiasts. Build endurance intelligently without overtraining.',
     ),
     IntroScreenContent(
-      // Changed from handHoldingHeart to spa (relaxation/recovery)
       icon: FontAwesomeIcons.spa,
       title: 'Active Recovery Days',
       description:
           'Low-intensity movement protocols that accelerate healing. Gentle flows, foam rolling guides, and mobility drills keep you moving.',
     ),
     IntroScreenContent(
-      // Changed from shieldHeart to bandage (prevention/care)
       icon: FontAwesomeIcons.bandage,
       title: 'Injury Prevention',
       description:
@@ -131,31 +129,26 @@ class IntroContentData {
     ),
   ];
 
-  // SET 5: "Elite Performance" - Advanced features for serious athletes
   static final List<IntroScreenContent> performanceContent = [
     IntroScreenContent(
-      // Changed from brain to robot (modern AI symbol)
       icon: FontAwesomeIcons.robot,
       title: 'AI Training Coach',
       description:
           'Machine learning analyzes your performance patterns, suggesting optimal training splits, deload weeks, and intensity adjustments.',
     ),
     IntroScreenContent(
-      // Changed from microscope to cameraRetro (video analysis)
       icon: FontAwesomeIcons.cameraRetro,
       title: 'Biomechanics Analysis',
       description:
           'Upload form videos for AI-powered technique feedback. Identify movement inefficiencies and unlock hidden strength potential.',
     ),
     IntroScreenContent(
-      // Changed from gauge to chartColumn (data visualization)
       icon: FontAwesomeIcons.chartColumn,
       title: 'Performance Metrics',
       description:
           'Track velocity-based training, rate of perceived exertion, and volume load. Dive deep into training science for maximum adaptation.',
     ),
     IntroScreenContent(
-      // Changed from rocket to hourglass (time/periodization)
       icon: FontAwesomeIcons.hourglass,
       title: 'Periodization Plans',
       description:
@@ -163,10 +156,6 @@ class IntroContentData {
     ),
   ];
 
-  // NOTE: All helper methods below this point remain functional
-  // and will use the newly updated introContent lists.
-
-  // Method to get content based on user type or preference
   static List<IntroScreenContent> getContentForType(String contentType) {
     switch (contentType.toLowerCase()) {
       case 'execution':

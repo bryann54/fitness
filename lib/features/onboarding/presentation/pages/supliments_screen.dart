@@ -176,7 +176,6 @@ class _SupplementsScreenState extends State<SupplementsScreen>
                       Text(
                         "Are you taking any supplements?",
                         style: theme.textTheme.headlineMedium?.copyWith(
-                        
                           fontWeight: FontWeight.w800,
                         ),
                       ),
@@ -206,10 +205,8 @@ class _SupplementsScreenState extends State<SupplementsScreen>
                 ),
               ),
 
-              const Spacer(
-                
-              ),
-             Row(
+              const Spacer(),
+              Row(
                 children: [
                   _buildSelectionButton(label: "No", value: false).animate(
                     effects: [
@@ -222,7 +219,6 @@ class _SupplementsScreenState extends State<SupplementsScreen>
                       ),
                     ],
                   ),
-
                   _buildSelectionButton(label: "Yes", value: true).animate(
                     effects: [
                       FadeEffect(delay: 200.ms, duration: 500.ms),

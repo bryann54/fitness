@@ -33,6 +33,8 @@ import '../../features/auth/data/repositories/auth_repositoryImpl.dart'
     as _i877;
 import '../../features/auth/domain/repositories/auth_epository.dart' as _i626;
 import '../../features/auth/domain/usecases/auth_usecases.dart' as _i46;
+import '../../features/auth/domain/usecases/get_user_fitness_profile_usecase.dart'
+    as _i928;
 import '../../features/auth/presentation/bloc/auth_bloc.dart' as _i797;
 import '../../features/onboarding/data/datasources/onboarding_remote_datasource.dart'
     as _i608;
@@ -46,14 +48,16 @@ import '../../features/onboarding/domain/usecases/save_fitness_profile_usecase.d
     as _i674;
 import '../../features/onboarding/presentation/bloc/onboarding_bloc.dart'
     as _i792;
-import '../../features/workouts/data/datasources/workouts_remote_datasource.dart'
-    as _i558;
+import '../../features/workouts/data/datasources/workouts_remote_datasource%20copy.dart'
+    as _i597;
 import '../../features/workouts/data/repositories/workouts_repository_impl.dart'
     as _i774;
 import '../../features/workouts/domain/repositories/workouts_repository.dart'
     as _i243;
-import '../../features/workouts/domain/usecases/get_exercise_categories_usecase.dart'
-    as _i730;
+import '../../features/workouts/domain/usecases/get_workout_by_day_usecase.dart'
+    as _i1024;
+import '../../features/workouts/domain/usecases/get_workouts_usecase.dart'
+    as _i653;
 import '../../features/workouts/presentation/bloc/workouts_bloc.dart' as _i410;
 import '../api_client/client/dio_client.dart' as _i758;
 import '../api_client/client_provider.dart' as _i546;
@@ -112,6 +116,11 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i974.FirebaseFirestore>(),
               gh<_i59.FirebaseAuth>(),
             ));
+    gh.lazySingleton<_i597.WorkoutsRemoteDatasource>(
+        () => _i597.WorkoutsRemoteDatasource(
+              gh<_i974.FirebaseFirestore>(),
+              gh<_i59.FirebaseAuth>(),
+            ));
     gh.lazySingleton<_i1067.AccountRepository>(() =>
         _i857.AccountRepositoryImpl(
             remoteDataSource: gh<_i302.AccountRemoteDataSource>()));
@@ -121,6 +130,14 @@ extension GetItInjectableX on _i174.GetIt {
         _i452.OnboardingRepositoryImpl(gh<_i608.OnboardingRemoteDatasource>()));
     gh.lazySingleton<_i626.AuthRepository>(() => _i877.AuthRepositoryImpl(
         remoteDataSource: gh<_i167.AuthRemoteDataSource>()));
+    gh.lazySingleton<_i243.WorkoutsRepository>(() =>
+        _i774.WorkoutsRepositoryImpl(gh<_i597.WorkoutsRemoteDatasource>()));
+    gh.lazySingleton<_i928.GetUserFitnessProfileUseCase>(() =>
+        _i928.GetUserFitnessProfileUseCase(gh<_i430.OnboardingRepository>()));
+    gh.lazySingleton<_i1024.GetWorkoutByDayUsecase>(
+        () => _i1024.GetWorkoutByDayUsecase(gh<_i243.WorkoutsRepository>()));
+    gh.lazySingleton<_i653.GetWorkoutsUsecase>(
+        () => _i653.GetWorkoutsUsecase(gh<_i243.WorkoutsRepository>()));
     gh.factory<_i475.UpdateUserProfileUseCase>(
         () => _i475.UpdateUserProfileUseCase(gh<_i1067.AccountRepository>()));
     gh.lazySingleton<_i488.GetFitnessProfileUsecase>(
@@ -137,10 +154,12 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.lazySingleton<_i546.ClientProvider>(
         () => _i546.ClientProvider(gh<_i758.DioClient>()));
+    gh.factory<_i410.WorkoutsBloc>(() => _i410.WorkoutsBloc(
+          gh<_i653.GetWorkoutsUsecase>(),
+          gh<_i1024.GetWorkoutByDayUsecase>(),
+        ));
     gh.factory<_i708.AccountBloc>(() => _i708.AccountBloc(
         updateUserProfileUseCase: gh<_i475.UpdateUserProfileUseCase>()));
-    gh.lazySingleton<_i558.WorkoutsRemoteDatasource>(
-        () => _i558.WorkoutsRemoteDatasource(gh<_i546.ClientProvider>()));
     gh.lazySingleton<_i46.SignInWithEmailAndPasswordUseCase>(() =>
         _i46.SignInWithEmailAndPasswordUseCase(gh<_i626.AuthRepository>()));
     gh.lazySingleton<_i46.SignUpWithEmailAndPasswordUseCase>(() =>
@@ -163,12 +182,6 @@ extension GetItInjectableX on _i174.GetIt {
           getAuthStateChangesUseCase: gh<_i46.GetAuthStateChangesUseCase>(),
           resetPasswordUseCase: gh<_i46.ResetPasswordUseCase>(),
         ));
-    gh.lazySingleton<_i243.WorkoutsRepository>(() =>
-        _i774.WorkoutsRepositoryImpl(gh<_i558.WorkoutsRemoteDatasource>()));
-    gh.lazySingleton<_i730.GetExerciseCategoriesUsecase>(() =>
-        _i730.GetExerciseCategoriesUsecase(gh<_i243.WorkoutsRepository>()));
-    gh.factory<_i410.WorkoutsBloc>(
-        () => _i410.WorkoutsBloc(gh<_i730.GetExerciseCategoriesUsecase>()));
     return this;
   }
 }

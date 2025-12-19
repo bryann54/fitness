@@ -63,7 +63,7 @@ class FitnessProfileModel extends Equatable {
     required this.calorieGoal,
     required this.calorieUnit,
   });
-FitnessProfileModel copyWith({
+  FitnessProfileModel copyWith({
     String? uid,
     String? gender,
     int? age,

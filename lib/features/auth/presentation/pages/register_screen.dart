@@ -1,4 +1,7 @@
+// lib/features/auth/presentation/pages/register_screen.dart
+
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness/features/auth/presentation/widgets/getstarted/intro_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -12,8 +15,8 @@ import 'package:fitness/features/auth/presentation/widgets/auth_text_field.dart'
 import 'package:fitness/features/auth/presentation/widgets/google_auth_button.dart';
 import 'package:fitness/features/auth/presentation/widgets/name_fields_row.dart';
 import 'package:fitness/features/auth/presentation/widgets/select_profile_image.dart';
-import 'package:image_picker/image_picker.dart'; // Make sure this import is present if you intend to use image picking
-import 'dart:io'; // Make sure this import is present if you intend to use image picking
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 @RoutePage()
 class RegisterScreen extends StatefulWidget {
@@ -26,7 +29,6 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  // FIX: Changed TextedingController to TextEditingController
   final TextEditingController _confirmPasswordController =
       TextEditingController();
   final TextEditingController _firstNameController = TextEditingController();
@@ -36,8 +38,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
   bool _canRegister = false;
-  File?
-      _selectedImage; // Added this based on our previous discussion for image upload
+  File? _selectedImage;
 
   @override
   void initState() {
@@ -51,12 +52,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void dispose() {
-    _emailController.removeListener(_checkFormValidity);
-    _passwordController.removeListener(_checkFormValidity);
-    _confirmPasswordController.removeListener(_checkFormValidity);
-    _firstNameController.removeListener(_checkFormValidity);
-    _lastNameController.removeListener(_checkFormValidity);
-
     _emailController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
@@ -74,24 +69,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     final bool passwordsMatch =
         _passwordController.text == _confirmPasswordController.text;
-
     final bool passwordLengthMet = (_passwordController.text.length >= 6);
 
-    final bool isFormLogicallyValid =
-        allFieldsFilled && passwordsMatch && passwordLengthMet;
-
-    if (_canRegister != isFormLogicallyValid) {
-      setState(() {
-        _canRegister = isFormLogicallyValid;
-      });
-    }
+    setState(() {
+      _canRegister = allFieldsFilled && passwordsMatch && passwordLengthMet;
+    });
   }
 
-  // Method to pick an image from the gallery (added for image upload functionality)
   Future<void> _pickImage() async {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-
     if (image != null) {
       setState(() {
         _selectedImage = File(image.path);
@@ -102,182 +89,154 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          if (state is AuthAuthenticated) {
-            context.router.replace(const GoalRoute());
-          } else if (state is AuthError) {
-            if (mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.message),
-                  // FIX: Corrected withValues to withOpacity
-                  backgroundColor: Theme.of(context)
-                      .colorScheme
-                      .error
-                      .withValues(alpha: 0.9),
-                  behavior: SnackBarBehavior.floating,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+      body: Stack(
+        children: [
+          const IntroBackground(imagePath: 'assets/bg.jpg'),
+          BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              if (state is AuthAuthenticated) {
+                context.router.replace(const GoalRoute());
+              } else if (state is AuthError) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.message),
+                    backgroundColor:
+                        Theme.of(context).colorScheme.error.withOpacity(0.9),
+                    behavior: SnackBarBehavior.floating,
+                  ),
+                );
+              }
+            },
+            child: SafeArea(
+              child: SingleChildScrollView(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const AuthHeader(
+                        title: 'Create Account',
+                        subtitle: 'Sign up to get started',
+                      ),
+                      const SizedBox(height: 10),
+                      SelectProfileImage(
+                        onTap: _pickImage,
+                        imagePath: _selectedImage?.path,
+                      ),
+                      NameFieldsRow(
+                        firstNameController: _firstNameController,
+                        lastNameController: _lastNameController,
+                        onChanged: (value) => _checkFormValidity(),
+                      )
+                          .animate(delay: 300.ms)
+                          .fadeIn(duration: 600.ms)
+                          .slideY(begin: 0.2, end: 0),
+                      const SizedBox(height: 16),
+                      AuthTextField(
+                        controller: _emailController,
+                        label: 'Email',
+                        icon: Icons.email_outlined,
+                        keyboardType: TextInputType.emailAddress,
+                        onChanged: (value) => _checkFormValidity(),
+                      )
+                          .animate(delay: 400.ms)
+                          .fadeIn(duration: 600.ms)
+                          .slideY(begin: 0.2, end: 0),
+                      const SizedBox(height: 16),
+                      AuthTextField(
+                        controller: _passwordController,
+                        label: 'Password',
+                        icon: Icons.lock_outline,
+                        isPassword: true,
+                        isPasswordVisible: _isPasswordVisible,
+                        onVisibilityToggle: () {
+                          setState(
+                              () => _isPasswordVisible = !_isPasswordVisible);
+                        },
+                        onChanged: (value) => _checkFormValidity(),
+                      )
+                          .animate(delay: 500.ms)
+                          .fadeIn(duration: 600.ms)
+                          .slideY(begin: 0.2, end: 0),
+                      const SizedBox(height: 16),
+                      AuthTextField(
+                        controller: _confirmPasswordController,
+                        label: 'Confirm Password',
+                        icon: Icons.lock_outline,
+                        isPassword: true,
+                        isPasswordVisible: _isConfirmPasswordVisible,
+                        onVisibilityToggle: () {
+                          setState(() => _isConfirmPasswordVisible =
+                              !_isConfirmPasswordVisible);
+                        },
+                        onChanged: (value) => _checkFormValidity(),
+                      )
+                          .animate(delay: 600.ms)
+                          .fadeIn(duration: 600.ms)
+                          .slideY(begin: 0.2, end: 0),
+                      const SizedBox(height: 32),
+                      BlocBuilder<AuthBloc, AuthState>(
+                        builder: (context, state) {
+                          return AuthButton(
+                            text: 'Create Account',
+                            isEnabled: _canRegister && state is! AuthLoading,
+                            isLoading: state is AuthLoading,
+                            onPressed: () {
+                              if (_formKey.currentState?.validate() ?? false) {
+                                context.read<AuthBloc>().add(
+                                      AuthSignUpWithEmailAndPassword(
+                                        firstName:
+                                            _firstNameController.text.trim(),
+                                        lastName:
+                                            _lastNameController.text.trim(),
+                                        email: _emailController.text.trim(),
+                                        password:
+                                            _passwordController.text.trim(),
+                                        profileImage: _selectedImage,
+                                      ),
+                                    );
+                              }
+                            },
+                            heroTag: 'register_button',
+                          );
+                        },
+                      )
+                          .animate(delay: 700.ms)
+                          .fadeIn(duration: 600.ms)
+                          .slideY(begin: 0.2, end: 0),
+                      const SizedBox(height: 16),
+                      const AuthDivider(text: 'Or sign up with'),
+                      BlocBuilder<AuthBloc, AuthState>(
+                        builder: (context, state) {
+                          return GoogleAuthButton(
+                            text: 'Sign up with Google',
+                            isLoading: state is AuthLoading,
+                            onPressed: () {
+                              context
+                                  .read<AuthBloc>()
+                                  .add(const AuthSignInWithGoogle());
+                            },
+                          );
+                        },
+                      ).animate(delay: 900.ms).fadeIn(duration: 600.ms),
+                      const SizedBox(
+                          height:
+                              80), // Padding to ensure content isn't under the bottom bar
+                    ],
                   ),
                 ),
-              );
-            }
-          }
-        },
-        child: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const AuthHeader(
-                    title: 'Create Account',
-                    subtitle: 'Sign up to get started',
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  // FIX: Pass onTap and imagePath to SelectProfileImage
-                  SelectProfileImage(
-                    onTap: _pickImage,
-                    imagePath: _selectedImage?.path,
-                  ),
-                  NameFieldsRow(
-                    firstNameController: _firstNameController,
-                    lastNameController: _lastNameController,
-                    onChanged: (value) => _checkFormValidity(),
-                  )
-                      .animate(delay: 300.ms)
-                      .fadeIn(duration: 600.ms)
-                      .slideY(begin: 0.2, end: 0),
-                  const SizedBox(height: 16),
-                  AuthTextField(
-                    controller: _emailController,
-                    label: 'Email',
-                    icon: Icons.email_outlined,
-                    keyboardType: TextInputType.emailAddress,
-                    validator: (value) {
-                      if (value?.isEmpty ?? true) return 'Email is required';
-                      final emailRegex =
-                          RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-                      return emailRegex.hasMatch(value!)
-                          ? null
-                          : 'Enter a valid email address';
-                    },
-                    onChanged: (value) => _checkFormValidity(),
-                  )
-                      .animate(delay: 400.ms)
-                      .fadeIn(duration: 600.ms)
-                      .slideY(begin: 0.2, end: 0),
-                  const SizedBox(height: 16),
-                  AuthTextField(
-                    controller: _passwordController,
-                    label: 'Password',
-                    icon: Icons.lock_outline,
-                    isPassword: true,
-                    isPasswordVisible: _isPasswordVisible,
-                    onVisibilityToggle: () {
-                      setState(() {
-                        _isPasswordVisible = !_isPasswordVisible;
-                      });
-                    },
-                    validator: (value) {
-                      if (value?.isEmpty ?? true) return 'Password is required';
-                      if ((value?.length ?? 0) < 6) {
-                        return 'Password must be at least 6 characters';
-                      }
-                      return null;
-                    },
-                    onChanged: (value) => _checkFormValidity(),
-                  )
-                      .animate(delay: 500.ms)
-                      .fadeIn(duration: 600.ms)
-                      .slideY(begin: 0.2, end: 0),
-                  const SizedBox(height: 16),
-                  AuthTextField(
-                    controller: _confirmPasswordController,
-                    label: 'Confirm Password',
-                    icon: Icons.lock_outline,
-                    isPassword: true,
-                    isPasswordVisible: _isConfirmPasswordVisible,
-                    onVisibilityToggle: () {
-                      setState(() {
-                        _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
-                      });
-                    },
-                    validator: (value) {
-                      if (value?.isEmpty ?? true) {
-                        return 'Confirm Password is required';
-                      }
-                      if (value != _passwordController.text) {
-                        return 'Passwords do not match';
-                      }
-                      return null;
-                    },
-                    onChanged: (value) => _checkFormValidity(),
-                  )
-                      .animate(delay: 600.ms)
-                      .fadeIn(duration: 600.ms)
-                      .slideY(begin: 0.2, end: 0),
-                  const SizedBox(height: 32),
-                  BlocBuilder<AuthBloc, AuthState>(
-                    builder: (context, state) {
-                      return AuthButton(
-                        text: 'Create Account',
-                        isEnabled: _canRegister && state is! AuthLoading,
-                        isLoading: state is AuthLoading,
-                        onPressed: () {
-                          if (_formKey.currentState?.validate() ?? false) {
-                            // Pass the selected image to the sign-up event
-                            context.read<AuthBloc>().add(
-                                  AuthSignUpWithEmailAndPassword(
-                                    firstName: _firstNameController.text.trim(),
-                                    lastName: _lastNameController.text.trim(),
-                                    email: _emailController.text.trim(),
-                                    password: _passwordController.text.trim(),
-                                    profileImage:
-                                        _selectedImage, // Pass the image here
-                                  ),
-                                );
-                          }
-                        },
-                        heroTag: 'register_button',
-                      );
-                    },
-                  )
-                      .animate(delay: 700.ms)
-                      .fadeIn(duration: 600.ms)
-                      .slideY(begin: 0.2, end: 0),
-                  const SizedBox(height: 16),
-                  const AuthDivider(text: 'Or sign up with'),
-                  BlocBuilder<AuthBloc, AuthState>(
-                    builder: (context, state) {
-                      return GoogleAuthButton(
-                        text: 'Sign up with Google',
-                        isLoading: state is AuthLoading,
-                        onPressed: () {
-                          context
-                              .read<AuthBloc>()
-                              .add(const AuthSignInWithGoogle());
-                        },
-                      );
-                    },
-                  ).animate(delay: 900.ms).fadeIn(duration: 600.ms),
-                ],
               ),
             ),
           ),
-        ),
+        ],
       ),
+      extendBody: true,
       bottomNavigationBar: AuthBottomBar(
         promptText: 'Already have an account?',
         actionText: 'Sign In',
-        onActionPressed: () {
-          context.router.maybePop();
-        },
+        onActionPressed: () => context.router.maybePop(),
         heroTag: 'auth_toggle_button',
       ),
     );

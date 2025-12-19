@@ -63,7 +63,7 @@ void main() async {
           create: (context) => workoutsBloc,
         ),
         BlocProvider<OnboardingBloc>(
-          create: (context) => getIt<OnboardingBloc>() ,
+          create: (context) => getIt<OnboardingBloc>(),
         ),
       ],
       child: MyApp(authBloc: authBloc),

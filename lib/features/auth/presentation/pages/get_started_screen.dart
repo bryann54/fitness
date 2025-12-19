@@ -41,7 +41,7 @@ class _GetStartedScreenState extends State<GetStartedScreen>
     return Scaffold(
       body: Stack(
         children: [
-          const IntroBackground(),
+          const IntroBackground(imagePath: 'assets/bg.jpg'),
           SafeArea(
             child: Column(
               children: [

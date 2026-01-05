@@ -1,5 +1,7 @@
 // main.dart - Fixed dependency injection order
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fitness/features/favourites/presentation/bloc/favourites_bloc.dart';
+import 'package:fitness/features/meals/presentation/bloc/meals_bloc.dart';
 import 'package:fitness/features/onboarding/presentation/bloc/onboarding_bloc.dart';
 import 'package:fitness/features/workouts/presentation/bloc/workouts_bloc.dart';
 import 'package:fitness/firebase_options.dart';
@@ -47,6 +49,9 @@ void main() async {
   final AuthBloc authBloc = getIt<AuthBloc>();
   final AccountBloc accountBloc = getIt<AccountBloc>();
   final WorkoutsBloc workoutsBloc = getIt<WorkoutsBloc>();
+  final MealsBloc mealsBloc = getIt<MealsBloc>();
+  final OnboardingBloc onboardingBloc = getIt<OnboardingBloc>();
+  final FavouritesBloc favouritesBloc = getIt<FavouritesBloc>();
 
   runApp(
     MultiProvider(
@@ -63,7 +68,13 @@ void main() async {
           create: (context) => workoutsBloc,
         ),
         BlocProvider<OnboardingBloc>(
-          create: (context) => getIt<OnboardingBloc>(),
+          create: (context) => onboardingBloc,
+        ),
+        BlocProvider<FavouritesBloc>(
+          create: (context) => favouritesBloc,
+        ),
+        BlocProvider<MealsBloc>(
+          create: (context) => mealsBloc,
         ),
       ],
       child: MyApp(authBloc: authBloc),

@@ -36,6 +36,35 @@ import '../../features/auth/domain/usecases/auth_usecases.dart' as _i46;
 import '../../features/auth/domain/usecases/get_user_fitness_profile_usecase.dart'
     as _i928;
 import '../../features/auth/presentation/bloc/auth_bloc.dart' as _i797;
+import '../../features/favourites/data/datasources/favourites_local_datasource.dart'
+    as _i458;
+import '../../features/favourites/data/repositories/favourites_repository_impl.dart'
+    as _i283;
+import '../../features/favourites/domain/repositories/favourites_repository.dart'
+    as _i518;
+import '../../features/favourites/domain/usecases/add_to_favourites_usecase.dart'
+    as _i21;
+import '../../features/favourites/domain/usecases/check_if_fav_usecase.dart'
+    as _i372;
+import '../../features/favourites/domain/usecases/delete_favourite_usecase.dart'
+    as _i506;
+import '../../features/favourites/domain/usecases/load_favourites_usecase.dart'
+    as _i926;
+import '../../features/favourites/presentation/bloc/favourites_bloc.dart'
+    as _i624;
+import '../../features/meals/data/datasources/meals_remote_datasource.dart'
+    as _i404;
+import '../../features/meals/data/repositories/meals_repository_impl.dart'
+    as _i24;
+import '../../features/meals/domain/repositories/meals_repository.dart'
+    as _i907;
+import '../../features/meals/domain/usecases/get_all_meals_usecase.dart'
+    as _i922;
+import '../../features/meals/domain/usecases/get_categories_usecase.dart'
+    as _i643;
+import '../../features/meals/domain/usecases/get_meals_by_category_usecase.dart'
+    as _i231;
+import '../../features/meals/presentation/bloc/meals_bloc.dart' as _i684;
 import '../../features/onboarding/data/datasources/onboarding_remote_datasource.dart'
     as _i608;
 import '../../features/onboarding/data/repositories/onboarding_repository_impl.dart'
@@ -97,6 +126,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i934.SharedPreferencesManager>(
         () => _i934.SharedPreferencesManager(gh<_i460.SharedPreferences>()));
+    gh.lazySingleton<_i597.WorkoutsRemoteDatasource>(
+        () => _i597.WorkoutsRemoteDatasource(gh<_i974.FirebaseFirestore>()));
+    gh.lazySingleton<_i404.MealsRemoteDatasource>(
+        () => _i404.MealsRemoteDatasource(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i167.AuthRemoteDataSource>(
         () => _i167.AuthRemoteDataSourceImpl(
               firebaseAuth: gh<_i59.FirebaseAuth>(),
@@ -104,6 +137,10 @@ extension GetItInjectableX on _i174.GetIt {
               firebaseStorage: gh<_i457.FirebaseStorage>(),
               uuid: gh<_i706.Uuid>(),
             ));
+    gh.lazySingleton<_i458.FavouritesLocalDatasource>(() =>
+        _i458.FavouritesLocalDatasource(gh<_i934.SharedPreferencesManager>()));
+    gh.lazySingleton<_i907.MealsRepository>(
+        () => _i24.MealsRepositoryImpl(gh<_i404.MealsRemoteDatasource>()));
     gh.lazySingleton<_i302.AccountRemoteDataSource>(
         () => _i302.AccountRemoteDataSourceImpl(
               firebaseAuth: gh<_i59.FirebaseAuth>(),
@@ -116,16 +153,21 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i974.FirebaseFirestore>(),
               gh<_i59.FirebaseAuth>(),
             ));
-    gh.lazySingleton<_i597.WorkoutsRemoteDatasource>(
-        () => _i597.WorkoutsRemoteDatasource(
-              gh<_i974.FirebaseFirestore>(),
-              gh<_i59.FirebaseAuth>(),
-            ));
+    gh.lazySingleton<_i518.FavouritesRepository>(() =>
+        _i283.FavouritesRepositoryImpl(gh<_i458.FavouritesLocalDatasource>()));
     gh.lazySingleton<_i1067.AccountRepository>(() =>
         _i857.AccountRepositoryImpl(
             remoteDataSource: gh<_i302.AccountRemoteDataSource>()));
     gh.lazySingleton<_i361.Dio>(
         () => registerModules.dio(gh<String>(instanceName: 'BaseUrl')));
+    gh.lazySingleton<_i926.LoadFavouritesUsecase>(
+        () => _i926.LoadFavouritesUsecase(gh<_i518.FavouritesRepository>()));
+    gh.lazySingleton<_i506.DeleteFavouriteUsecase>(
+        () => _i506.DeleteFavouriteUsecase(gh<_i518.FavouritesRepository>()));
+    gh.lazySingleton<_i21.AddToFavouritesUsecase>(
+        () => _i21.AddToFavouritesUsecase(gh<_i518.FavouritesRepository>()));
+    gh.lazySingleton<_i372.CheckIfFavUsecase>(
+        () => _i372.CheckIfFavUsecase(gh<_i518.FavouritesRepository>()));
     gh.lazySingleton<_i430.OnboardingRepository>(() =>
         _i452.OnboardingRepositoryImpl(gh<_i608.OnboardingRemoteDatasource>()));
     gh.lazySingleton<_i626.AuthRepository>(() => _i877.AuthRepositoryImpl(
@@ -134,10 +176,22 @@ extension GetItInjectableX on _i174.GetIt {
         _i774.WorkoutsRepositoryImpl(gh<_i597.WorkoutsRemoteDatasource>()));
     gh.lazySingleton<_i928.GetUserFitnessProfileUseCase>(() =>
         _i928.GetUserFitnessProfileUseCase(gh<_i430.OnboardingRepository>()));
+    gh.lazySingleton<_i922.GetAllMealsUsecase>(
+        () => _i922.GetAllMealsUsecase(gh<_i907.MealsRepository>()));
+    gh.lazySingleton<_i231.GetMealsByCategoryUsecase>(
+        () => _i231.GetMealsByCategoryUsecase(gh<_i907.MealsRepository>()));
+    gh.lazySingleton<_i643.GetCategoriesUsecase>(
+        () => _i643.GetCategoriesUsecase(gh<_i907.MealsRepository>()));
     gh.lazySingleton<_i1024.GetWorkoutByDayUsecase>(
         () => _i1024.GetWorkoutByDayUsecase(gh<_i243.WorkoutsRepository>()));
     gh.lazySingleton<_i653.GetWorkoutsUsecase>(
         () => _i653.GetWorkoutsUsecase(gh<_i243.WorkoutsRepository>()));
+    gh.factory<_i624.FavouritesBloc>(() => _i624.FavouritesBloc(
+          gh<_i926.LoadFavouritesUsecase>(),
+          gh<_i21.AddToFavouritesUsecase>(),
+          gh<_i506.DeleteFavouriteUsecase>(),
+          gh<_i372.CheckIfFavUsecase>(),
+        ));
     gh.factory<_i475.UpdateUserProfileUseCase>(
         () => _i475.UpdateUserProfileUseCase(gh<_i1067.AccountRepository>()));
     gh.lazySingleton<_i488.GetFitnessProfileUsecase>(
@@ -172,6 +226,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i46.GetAuthStateChangesUseCase(gh<_i626.AuthRepository>()));
     gh.lazySingleton<_i46.ResetPasswordUseCase>(
         () => _i46.ResetPasswordUseCase(gh<_i626.AuthRepository>()));
+    gh.factory<_i684.MealsBloc>(
+        () => _i684.MealsBloc(gh<_i922.GetAllMealsUsecase>()));
     gh.factory<_i797.AuthBloc>(() => _i797.AuthBloc(
           signInWithEmailAndPasswordUseCase:
               gh<_i46.SignInWithEmailAndPasswordUseCase>(),

@@ -1,6 +1,5 @@
 // lib/features/workouts/data/datasources/workouts_remote_datasource.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness/core/errors/exceptions.dart';
 import 'package:fitness/features/workouts/data/models/workout_model.dart';
 import 'package:injectable/injectable.dart';
@@ -8,39 +7,22 @@ import 'package:injectable/injectable.dart';
 @LazySingleton()
 class WorkoutsRemoteDatasource {
   final FirebaseFirestore _firestore;
-  final FirebaseAuth _auth;
 
-  WorkoutsRemoteDatasource(this._firestore, this._auth);
+  WorkoutsRemoteDatasource(
+    this._firestore,
+  );
 
   static const String _workoutsCollection = 'workouts';
 
-  String get _currentUid {
-    final uid = _auth.currentUser?.uid;
-    if (uid == null) {
-      throw ServerException(message: 'User is not authenticated.');
-    }
-    return uid;
-  }
-
-  /// Fetch workouts based on gender and location preference
-  /// The data structure in Firebase is: workouts/{DayName_location}
-  /// Example: "Sunday_gym", "Monday_home"
   Future<List<WorkoutModel>> getWorkouts({
     required String gender,
     String? location,
   }) async {
     try {
-      print('🔍 === FETCHING WORKOUTS ===');
-      print('🔍 Gender: $gender');
-      print('🔍 Location: $location');
-
       // Get all documents in the workouts collection
       final snapshot = await _firestore.collection(_workoutsCollection).get();
 
-      print('📦 Found ${snapshot.docs.length} total workout documents');
-
       if (snapshot.docs.isEmpty) {
-        print('⚠️  WARNING: workouts collection is EMPTY!');
         return [];
       }
 
@@ -49,10 +31,6 @@ class WorkoutsRemoteDatasource {
       for (final doc in snapshot.docs) {
         try {
           final data = doc.data();
-
-          print('📄 Processing document: ${doc.id}');
-          print('   Has exercises: ${data.containsKey('exercises')}');
-          print('   Location: ${data['location']}');
 
           // Handle Firestore timestamp conversion
           if (data['lastUpdated'] != null) {
@@ -65,45 +43,29 @@ class WorkoutsRemoteDatasource {
           // Parse the workout
           final workout = WorkoutModel.fromJson(data);
 
-          print('   Parsed workout: ${workout.day} - ${workout.location}');
-
           // Filter by location if specified
           if (location == null || location.toLowerCase() == 'both') {
             // Include all locations
             allWorkouts.add(workout);
-            print('   ✅ Added (showing all)');
           } else if (workout.location.toLowerCase() == location.toLowerCase() ||
               workout.location.toLowerCase() == 'both') {
             // Include if location matches or workout is marked as 'both'
             allWorkouts.add(workout);
-            print('   ✅ Added (location match)');
-          } else {
-            print(
-                '   ⏭️  Skipped (location mismatch: ${workout.location} != $location)');
-          }
-        } catch (e, stackTrace) {
-          print('❌ Error parsing document ${doc.id}: $e');
-          print('   Stack: $stackTrace');
+          } else {}
+        } catch (e) {
           // Skip this document and continue with others
           continue;
         }
       }
 
-      print('🎉 Total workouts loaded: ${allWorkouts.length}');
       return allWorkouts;
     } on FirebaseException catch (e) {
-      print('❌ Firebase error: ${e.message}');
       throw ServerException(message: 'Firestore error: ${e.message}');
-    } catch (e, stackTrace) {
-      print('❌ Unexpected error: $e');
-      print('   Stack: $stackTrace');
+    } catch (e) {
       throw ServerException(message: 'Error fetching workouts: $e');
     }
   }
 
-  /// Fetch a specific workout by day and location
-  /// Document ID format: "DayName_location"
-  /// Example: "Sunday_gym"
   Future<WorkoutModel?> getWorkoutByDay({
     required String gender,
     required String day,
@@ -113,13 +75,10 @@ class WorkoutsRemoteDatasource {
       // Create document ID in the format: "DayName_location"
       final docId = '${day}_$location';
 
-      print('🔍 Fetching workout document: $docId');
-
       final doc =
           await _firestore.collection(_workoutsCollection).doc(docId).get();
 
       if (!doc.exists || doc.data() == null) {
-        print('❌ Workout not found: $docId');
         return null;
       }
 
@@ -133,13 +92,10 @@ class WorkoutsRemoteDatasource {
         }
       }
 
-      print('✅ Workout found: $docId');
       return WorkoutModel.fromJson(data);
     } on FirebaseException catch (e) {
-      print('❌ Firebase error: ${e.message}');
       throw ServerException(message: 'Firestore error: ${e.message}');
     } catch (e) {
-      print('❌ Unexpected error: $e');
       throw ServerException(message: 'Error fetching workout: $e');
     }
   }

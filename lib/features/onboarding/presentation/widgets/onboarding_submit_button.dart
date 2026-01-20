@@ -26,7 +26,7 @@ class OnboardingSubmitButton extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.message),
-              backgroundColor: Colors.red,
+              backgroundColor: AppColors.error,
             ),
           );
         }
@@ -50,7 +50,7 @@ class OnboardingSubmitButton extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('Please sign in first'),
-                          backgroundColor: Colors.red,
+                          backgroundColor: AppColors.error,
                         ),
                       );
                       return;
@@ -77,13 +77,14 @@ class OnboardingSubmitButton extends StatelessWidget {
                     width: 20,
                     child: CircularProgressIndicator.adaptive(
                       strokeWidth: 3,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      valueColor:
+                          AlwaysStoppedAnimation<Color>(AppColors.cardLight),
                     ),
                   )
                 : Text(
                     'Confirm & Start Plan',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: Colors.black,
+                          color: AppColors.cardDark,
                           fontWeight: FontWeight.bold,
                         ),
                   ),

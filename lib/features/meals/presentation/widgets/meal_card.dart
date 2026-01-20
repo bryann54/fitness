@@ -24,16 +24,16 @@ class MealCard extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             color: AppColors.cardDark,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(15),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.3),
+                color: AppColors.cardDark.withValues(alpha: 0.3),
                 blurRadius: 15,
                 offset: const Offset(0, 8),
               ),
             ],
           ),
-          child: Column(
+          child: Column( 
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Image Section with overlays
@@ -83,7 +83,7 @@ class MealCard extends StatelessWidget {
                             end: Alignment.bottomCenter,
                             colors: [
                               Colors.transparent,
-                              Colors.black.withOpacity(0.7),
+                              AppColors.cardDark.withValues(alpha: 0.7),
                             ],
                             stops: const [0.5, 1.0],
                           ),
@@ -105,7 +105,7 @@ class MealCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
+                              color: AppColors.cardDark.withValues(alpha: 0.3),
                               blurRadius: 8,
                             ),
                           ],
@@ -116,13 +116,13 @@ class MealCard extends StatelessWidget {
                             Icon(
                               _getDietTagIcon(meal.dietTag),
                               size: 12,
-                              color: Colors.white,
+                              color: AppColors.cardLight,
                             ),
                             const SizedBox(width: 4),
                             Text(
                               meal.dietTag.toUpperCase(),
                               style: const TextStyle(
-                                color: Colors.white,
+                                color: AppColors.cardLight,
                                 fontSize: 9,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 1,
@@ -143,13 +143,13 @@ class MealCard extends StatelessWidget {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.6),
+                          color: AppColors.cardDark.withValues(alpha: 0.6),
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Text(
                           meal.category,
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: AppColors.cardLight,
                             fontSize: 9,
                             fontWeight: FontWeight.w600,
                           ),
@@ -175,7 +175,7 @@ class MealCard extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.poppins(
-                          color: Colors.white,
+                          color: AppColors.cardLight,
                           fontWeight: FontWeight.bold,
                           fontSize: 13,
                           height: 1.2,
@@ -215,13 +215,13 @@ class MealCard extends StatelessWidget {
         Icon(
           icon,
           size: 14,
-          color: isPrimary ? AppColors.primary : Colors.white54,
+          color: isPrimary ? AppColors.primary : AppColors.cardLight,
         ),
         const SizedBox(width: 4),
         Text(
           label,
           style: TextStyle(
-            color: isPrimary ? AppColors.primary : Colors.white54,
+            color: isPrimary ? AppColors.primary : AppColors.cardLight,
             fontSize: 11,
             fontWeight: isPrimary ? FontWeight.bold : FontWeight.normal,
           ),

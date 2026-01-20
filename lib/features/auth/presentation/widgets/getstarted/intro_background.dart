@@ -75,15 +75,15 @@ class IntroBackground extends StatelessWidget {
                 end: Alignment.bottomCenter,
                 colors: [
                   Colors.transparent,
-                  Colors.white.withValues(alpha: 0.25),
-                  Colors.white.withValues(alpha: 0.4),
-                  Colors.white.withValues(alpha: 0.25),
+                  AppColors.cardLight.withValues(alpha: 0.25),
+                  AppColors.cardLight.withValues(alpha: 0.4),
+                  AppColors.cardLight.withValues(alpha: 0.25),
                   Colors.transparent,
                 ],
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.white.withValues(alpha: 0.3),
+                  color: AppColors.cardLight.withValues(alpha: 0.3),
                   blurRadius: 8,
                   spreadRadius: 1,
                 ),

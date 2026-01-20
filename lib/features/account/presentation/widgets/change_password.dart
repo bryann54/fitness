@@ -164,7 +164,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               Text(
                 _errorMessage!,
                 style: TextStyle(
-                  color: Colors.red[400],
+                  color: AppColors.error.withValues(alpha: 0.4),
                   fontSize: 14,
                 ),
               ),
@@ -199,13 +199,14 @@ class _ChangePasswordState extends State<ChangePassword> {
                           child: CircularProgressIndicator.adaptive(
                             strokeWidth: 2,
                             valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.white),
+                                AlwaysStoppedAnimation<Color>(
+                                AppColors.cardLight),
                           ),
                         )
                       : Text(
                           'Update',
                           style: GoogleFonts.acme(
-                            color: Colors.white,
+                            color: AppColors.cardLight,
                           ),
                         ),
                 ),

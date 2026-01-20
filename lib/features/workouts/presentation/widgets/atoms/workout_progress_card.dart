@@ -14,7 +14,7 @@ class WorkoutProgressCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppColors.primary.withOpacity(0.15),
+        color: AppColors.primary.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(25),
       ),
       child: Row(
@@ -27,10 +27,10 @@ class WorkoutProgressCard extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white)),
+                        color: AppColors.cardLight)),
                 const SizedBox(height: 4),
                 Text("$exercisesLeft Exercise Left",
-                    style: const TextStyle(color: Colors.white60)),
+                    style: const TextStyle(color: AppColors.cardLight)),
               ],
             ),
           ),
@@ -43,13 +43,13 @@ class WorkoutProgressCard extends StatelessWidget {
                 child: CircularProgressIndicator(
                   value: percent,
                   strokeWidth: 6,
-                  backgroundColor: Colors.white10,
+                  backgroundColor: AppColors.cardLight,
                   color: AppColors.primary,
                 ),
               ),
               Text("${(percent * 100).toInt()}%",
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.white)),
+                      fontWeight: FontWeight.bold, color: AppColors.cardLight)),
             ],
           )
         ],

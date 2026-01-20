@@ -49,7 +49,7 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: GenderRoute.page),
         AutoRoute(page: AgeRoute.page),
         AutoRoute(page: WeightRoute.page),
-        // AutoRoute(page: HeightRoute.page),
+        AutoRoute(page: NotificationsRoute.page),
         // AutoRoute(page: ActivityLevelRoute.page),
         AutoRoute(page: OnboardingCompleteRoute.page),
         AutoRoute(page: FitnessLevelRoute.page),

@@ -31,7 +31,7 @@ class LimitationInputBox extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: AppColors.cardDark.withOpacity(0.5),
+        color: AppColors.cardDark.withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(16.0),
         border: Border.all(
           color: AppColors.primary,

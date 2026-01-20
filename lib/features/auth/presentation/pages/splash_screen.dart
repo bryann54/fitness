@@ -126,7 +126,8 @@ class _SplashScreenState extends State<SplashScreen>
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withValues(alpha: 0.1),
+                                    color: AppColors.cardDark
+                                        .withValues(alpha: 0.1),
                                     blurRadius: 20,
                                     offset: const Offset(0, 10),
                                   ),
@@ -147,7 +148,7 @@ class _SplashScreenState extends State<SplashScreen>
                               child: Container(
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(17),
-                                    color: Colors.white),
+                                    color: AppColors.cardLight),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(17),
                                   child: Image.asset(
@@ -175,7 +176,7 @@ class _SplashScreenState extends State<SplashScreen>
                                 fontSize: 32,
                                 fontWeight: FontWeight.w700,
                                 letterSpacing: -0.5,
-                                color: Colors.white,
+                                color: AppColors.cardLight,
                               ),
                             ),
                           ),
@@ -183,7 +184,7 @@ class _SplashScreenState extends State<SplashScreen>
                           ShaderMask(
                             shaderCallback: (bounds) => LinearGradient(
                               colors: [
-                                Colors.white70,
+                                AppColors.cardLight,
                                 AppColors.textSecondary,
                               ],
                               begin: Alignment.centerLeft,

@@ -92,7 +92,7 @@ class BuyMeCoffeeButton extends StatelessWidget {
                 children: [
                   // Coffee Cup with Steam Animation using the reusable widget
                   SteamAnimation(
-                    steamColor: Colors.white,
+                    steamColor: AppColors.cardLight,
                     steamOpacity: 0.7,
                     steamHeight: 18.0,
                     steamWidth: 2.0,
@@ -110,9 +110,9 @@ class BuyMeCoffeeButton extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Buy coaches Coffee',
+                        'Buy me a Coffee',
                         style: GoogleFonts.montserrat(
-                          color: Colors.white,
+                          color: AppColors.cardLight,
                           fontWeight: FontWeight.w600,
                           fontSize: 16,
                           letterSpacing: 0.5,
@@ -122,7 +122,7 @@ class BuyMeCoffeeButton extends StatelessWidget {
                       Text(
                         'Support the developer',
                         style: GoogleFonts.montserrat(
-                          color: Colors.white.withValues(alpha: 0.8),
+                          color: AppColors.cardLight.withValues(alpha: 0.8),
                           fontWeight: FontWeight.w400,
                           fontSize: 11,
                         ),

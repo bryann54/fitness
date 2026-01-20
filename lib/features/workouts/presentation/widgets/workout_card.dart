@@ -48,7 +48,10 @@ class WorkoutCard extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
-                colors: [Colors.black.withOpacity(0.8), Colors.transparent],
+                colors: [
+                  AppColors.cardDark.withValues(alpha: 0.8),
+                  Colors.transparent
+                ],
               ),
             ),
             padding: const EdgeInsets.all(15),
@@ -60,24 +63,25 @@ class WorkoutCard extends StatelessWidget {
                   Row(
                     children: [
                       const Icon(Icons.access_time,
-                          color: Colors.white70, size: 14),
+                          color: AppColors.cardLight, size: 14),
                       const SizedBox(width: 5),
                       Text(workout.duration,
-                          style: const TextStyle(color: Colors.white)),
+                          style: const TextStyle(color: AppColors.cardLight)),
                       const SizedBox(width: 15),
                       const Icon(Icons.local_fire_department,
-                          color: Colors.white70, size: 14),
+                          color: AppColors.cardLight, size: 14),
                       const SizedBox(width: 5),
                       const Text("450kcal",
                           style: TextStyle(
-                              color: Colors.white)), // Calculated/Estimated
+                              color:
+                                  AppColors.cardLight)), // Calculated/Estimated
                     ],
                   ),
                 const SizedBox(height: 5),
                 Text(
                   workout.focus,
                   style: GoogleFonts.poppins(
-                    color: Colors.white,
+                    color: AppColors.cardLight,
                     fontSize: isFeatured ? 22 : 16,
                     fontWeight: FontWeight.bold,
                   ),

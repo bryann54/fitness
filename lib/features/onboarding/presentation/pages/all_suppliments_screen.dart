@@ -166,7 +166,7 @@ class _AllSupplementsScreenState extends State<AllSupplementsScreen> {
                     ),
                     onTap: () => _toggleSelection(supplement),
                     tileColor: isSelected
-                        ? AppColors.primary.withOpacity(0.1)
+                        ? AppColors.primary.withValues(alpha: 0.1)
                         : Colors.transparent,
                   );
                 },

@@ -1,6 +1,7 @@
 // lib/features/onboarding/presentation/widgets/onboarding_app_bar.dart
 
 import 'package:auto_route/auto_route.dart';
+import 'package:fitness/common/res/colors.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -23,13 +24,15 @@ class OnboardingAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: isInitial
           ? const SizedBox.shrink()
           : IconButton(
-              icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+              icon:
+                  const Icon(Icons.arrow_back_ios, color: AppColors.cardLight),
               onPressed: () => context.router.maybePop(),
             ),
       // --- Title ---
       title: const Text(
         'Assessment',
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        style:
+            TextStyle(color: AppColors.cardLight, fontWeight: FontWeight.bold),
       ),
 
       actions: [

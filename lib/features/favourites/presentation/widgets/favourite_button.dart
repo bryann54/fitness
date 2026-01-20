@@ -77,7 +77,7 @@ class _FavouriteButtonState extends State<FavouriteButton> {
             _isFavourite! ? Icons.bookmark : Icons.bookmark_border,
             color: _isFavourite!
                 ? AppColors.primary
-                : (widget.iconColor ?? Colors.white),
+                : (widget.iconColor ?? AppColors.cardLight),
             size: widget.iconSize,
           )
               .animate(

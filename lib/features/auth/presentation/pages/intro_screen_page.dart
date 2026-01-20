@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:fitness/common/res/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'package:fitness/common/res/colors.dart';
 
 class IntroScreenPage extends StatelessWidget {
   final IconData? icon;
@@ -128,14 +129,14 @@ class IntroScreenPage extends StatelessWidget {
         border: Border.all(
           color: isDarkMode
               ? AppColors.visualLightBackgroundHalf.withValues(alpha: 0.1)
-              : Colors.black.withValues(alpha: 0.05),
+              : AppColors.cardDark.withValues(alpha: 0.05),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
             color: isDarkMode
-                ? Colors.black.withValues(alpha: 0.3)
-                : Colors.black.withValues(alpha: 0.08),
+                ? AppColors.cardDark.withValues(alpha: 0.3)
+                : AppColors.cardDark.withValues(alpha: 0.08),
             blurRadius: isDarkMode ? 30 : 20,
             offset: const Offset(0, 10),
             spreadRadius: isDarkMode ? 2 : 0,
@@ -204,7 +205,7 @@ class IntroScreenPage extends StatelessWidget {
                   colors: [
                     Colors.transparent,
                     isDarkMode
-                        ? Colors.black.withValues(alpha: 0.2)
+                        ? AppColors.cardDark.withValues(alpha: 0.2)
                         : AppColors.visualLightBackgroundHalf
                             .withValues(alpha: 0.1),
                   ],
@@ -239,14 +240,14 @@ class IntroScreenPage extends StatelessWidget {
         border: Border.all(
           color: isDarkMode
               ? AppColors.visualLightBackgroundHalf.withValues(alpha: 0.1)
-              : Colors.black.withValues(alpha: 0.05),
+              : AppColors.cardDark.withValues(alpha: 0.05),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
             color: isDarkMode
-                ? Colors.black.withValues(alpha: 0.3)
-                : Colors.black.withValues(alpha: 0.08),
+                ? AppColors.cardDark.withValues(alpha: 0.3)
+                : AppColors.cardDark.withValues(alpha: 0.08),
             blurRadius: isDarkMode ? 30 : 20,
             offset: const Offset(0, 10),
             spreadRadius: isDarkMode ? 2 : 0,

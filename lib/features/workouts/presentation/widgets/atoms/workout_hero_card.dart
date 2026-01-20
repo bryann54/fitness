@@ -45,14 +45,14 @@ class WorkoutHeroCard extends StatelessWidget {
             border: Border.all(color: AppColors.accent.withValues(alpha: .2)),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.3),
+                color: AppColors.cardDark.withValues(alpha: 0.3),
                 blurRadius: 15,
                 offset: const Offset(0, 8),
               ),
             ],
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(12),
             child: Stack(
               fit: StackFit.expand,
               children: [
@@ -64,8 +64,8 @@ class WorkoutHeroCard extends StatelessWidget {
                     placeholder: (context, url) => Container(
                       color: AppColors.cardDark,
                       child: const Center(
-                        child: CircularProgressIndicator(
-                          color: AppColors.primary,
+                        child: CircularProgressIndicator.adaptive(
+                        
                         ),
                       ),
                     ),
@@ -96,8 +96,8 @@ class WorkoutHeroCard extends StatelessWidget {
                       end: Alignment.bottomCenter,
                       colors: [
                         Colors.transparent,
-                        Colors.black.withOpacity(0.7),
-                        Colors.black.withOpacity(0.95),
+                        AppColors.cardDark.withValues(alpha: 0.7),
+                        AppColors.cardDark.withValues(alpha: 0.95),
                       ],
                       stops: const [0.3, 0.7, 1.0],
                     ),
@@ -136,7 +136,7 @@ class WorkoutHeroCard extends StatelessWidget {
                       Text(
                         workout.focus,
                         style: GoogleFonts.poppins(
-                          color: Colors.white,
+                          color: AppColors.cardLight,
                           fontSize: isLarge ? 22 : 16,
                           fontWeight: FontWeight.bold,
                           height: 1.2,
@@ -154,10 +154,10 @@ class WorkoutHeroCard extends StatelessWidget {
                             vertical: 6,
                           ),
                           decoration: BoxDecoration(
-                            color: AppColors.primary.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(20),
+                            color: AppColors.primary.withValues(alpha: 0.2),
+                            borderRadius: BorderRadius.circular(12),
                             border: Border.all(
-                              color: AppColors.primary.withOpacity(0.5),
+                              color: AppColors.primary.withValues(alpha: 0.5),
                             ),
                           ),
                           child: Text(
@@ -185,10 +185,10 @@ class WorkoutHeroCard extends StatelessWidget {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(20),
+                      color: AppColors.cardDark.withValues(alpha: 0.6),
+                      borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: Colors.white.withOpacity(0.2),
+                        color: AppColors.cardLight.withValues(alpha: 0.2),
                       ),
                     ),
                     child: Row(
@@ -197,13 +197,13 @@ class WorkoutHeroCard extends StatelessWidget {
                         Icon(
                           _getLocationIcon(workout.location),
                           size: 12,
-                          color: Colors.white,
+                          color: AppColors.cardLight,
                         ),
                         const SizedBox(width: 4),
                         Text(
                           workout.location.toUpperCase(),
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: AppColors.cardLight,
                             fontSize: 10,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.5,

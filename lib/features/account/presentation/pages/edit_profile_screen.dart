@@ -88,7 +88,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back,
-              color: isDarkMode ? Colors.white : AppColors.textPrimary),
+              color: isDarkMode ? AppColors.cardLight : AppColors.textPrimary),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
@@ -146,7 +146,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           child: _profileImage == null &&
                                   widget.currentPhotoUrl == null
                               ? const Icon(Icons.person,
-                                  size: 64, color: Colors.white)
+                                  size: 64, color: AppColors.cardLight)
                               : null,
                         ),
                       ),
@@ -155,7 +155,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       onPressed: _isLoading ? null : _pickImage,
                       backgroundColor: AppColors.primary,
                       child: const Icon(Icons.camera_alt,
-                          size: 20, color: Colors.white),
+                          size: 20, color: AppColors.cardLight),
                     ),
                   ],
                 ),
@@ -193,7 +193,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 Text(
                   _errorMessage!,
                   style: GoogleFonts.montserrat(
-                    color: Colors.red[400],
+                    color: AppColors.error,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -217,7 +217,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           style: GoogleFonts.montserrat(
                             fontWeight: FontWeight.w600,
                             fontSize: 16,
-                            color: Colors.white,
+                            color: AppColors.cardLight,
                           ),
                         ),
                 ),

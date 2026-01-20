@@ -28,13 +28,13 @@ class AllExercisesPage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.cardDark,
       appBar: AppBar(
         title: Text(
           "All Exercises",
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: AppColors.cardLight,
           ),
         ),
         backgroundColor: Colors.transparent,
@@ -52,7 +52,7 @@ class AllExercisesPage extends StatelessWidget {
             children: [
               // Category Header
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
+                padding: const EdgeInsets.symmetric(vertical: 3),
                 child: Text(
                   category.toUpperCase(),
                   style: const TextStyle(
@@ -76,13 +76,13 @@ class AllExercisesPage extends StatelessWidget {
                     : '';
 
                 return Container(
-                  margin: const EdgeInsets.only(bottom: 15),
+                  margin: const EdgeInsets.only(bottom: 5),
                   decoration: BoxDecoration(
                     color: AppColors.cardDark,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(12),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
+                        color: AppColors.cardDark.withValues(alpha: 0.3),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),
@@ -100,9 +100,8 @@ class AllExercisesPage extends StatelessWidget {
                         placeholder: (context, url) => Container(
                           color: AppColors.cardDark,
                           child: const Center(
-                            child: CircularProgressIndicator(
-                              color: AppColors.primary,
-                              strokeWidth: 2,
+                            child: CircularProgressIndicator.adaptive(
+                          
                             ),
                           ),
                         ),
@@ -118,7 +117,7 @@ class AllExercisesPage extends StatelessWidget {
                     title: Text(
                       workout.focus,
                       style: GoogleFonts.poppins(
-                        color: Colors.white,
+                        color: AppColors.cardLight,
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
                       ),
@@ -130,13 +129,13 @@ class AllExercisesPage extends StatelessWidget {
                           Icon(
                             Icons.fitness_center,
                             size: 14,
-                            color: Colors.white.withOpacity(0.6),
+                            color: AppColors.cardLight.withValues(alpha: 0.6),
                           ),
                           const SizedBox(width: 4),
                           Text(
                             "${workout.totalExercises} exercises",
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.6),
+                              color: AppColors.cardLight.withValues(alpha: 0.6),
                               fontSize: 13,
                             ),
                           ),
@@ -144,13 +143,13 @@ class AllExercisesPage extends StatelessWidget {
                           Icon(
                             Icons.timer,
                             size: 14,
-                            color: Colors.white.withOpacity(0.6),
+                            color: AppColors.cardLight.withValues(alpha: 0.6),
                           ),
                           const SizedBox(width: 4),
                           Text(
                             workout.duration,
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.6),
+                              color: AppColors.cardLight.withValues(alpha: 0.6),
                               fontSize: 13,
                             ),
                           ),
@@ -160,7 +159,7 @@ class AllExercisesPage extends StatelessWidget {
                     trailing: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: AppColors.primary.withOpacity(0.2),
+                        color: AppColors.primary.withValues(alpha: 0.2),
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(

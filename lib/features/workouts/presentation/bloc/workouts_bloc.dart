@@ -21,6 +21,48 @@ class WorkoutsBloc extends Bloc<WorkoutsEvent, WorkoutsState> {
   ) : super(WorkoutsInitial()) {
     on<FetchWorkoutsEvent>(_onFetchWorkouts);
     on<FetchWorkoutByDayEvent>(_onFetchWorkoutByDay);
+    on<FetchTodaysWorkoutEvent>(_onFetchTodaysWorkout);
+  }
+  FutureOr<void> _onFetchTodaysWorkout(
+    FetchTodaysWorkoutEvent event,
+    Emitter<WorkoutsState> emit,
+  ) async {
+    emit(WorkoutsLoading());
+
+    // Get today's day name
+    final now = DateTime.now();
+    final dayNames = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
+    ];
+    final todayName = dayNames[now.weekday % 7];
+
+    final params = GetWorkoutByDayParams(
+      gender: event.gender,
+      day: todayName,
+      location: event.location,
+    );
+
+    final result = await _getWorkoutByDayUsecase(params);
+
+    emit(
+      result.fold(
+        (failure) => WorkoutsError(message: failure.toString()),
+        (workout) {
+          if (workout != null) {
+            return WorkoutDetailLoaded(workout: workout);
+          } else {
+            return const WorkoutsError(
+                message: 'No workout scheduled for today');
+          }
+        },
+      ),
+    );
   }
 
   FutureOr<void> _onFetchWorkouts(

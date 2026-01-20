@@ -21,13 +21,15 @@ class SectionHeader extends StatelessWidget {
           text: TextSpan(
             text: title,
             style: GoogleFonts.poppins(
-                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: AppColors.cardLight),
             children: count != null
                 ? [
                     TextSpan(
                         text: " ($count)",
                         style: const TextStyle(
-                            color: Colors.white38, fontSize: 14))
+                            color: AppColors.cardLight, fontSize: 14))
                   ]
                 : [],
           ),

@@ -1,5 +1,6 @@
 // main.dart - Fixed dependency injection order
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fitness/common/res/colors.dart';
 import 'package:fitness/features/favourites/presentation/bloc/favourites_bloc.dart';
 import 'package:fitness/features/meals/presentation/bloc/meals_bloc.dart';
 import 'package:fitness/features/onboarding/presentation/bloc/onboarding_bloc.dart';
@@ -111,11 +112,11 @@ class MyApp extends StatelessWidget {
     return ThemeData(
       brightness: Brightness.light,
       primarySwatch: Colors.blue,
-      scaffoldBackgroundColor: Colors.white,
-      cardColor: Colors.white,
+      scaffoldBackgroundColor: AppColors.cardLight,
+      cardColor: AppColors.cardLight,
       appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        backgroundColor: AppColors.cardLight,
+        foregroundColor: AppColors.cardDark,
         elevation: 0,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
@@ -124,7 +125,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.cardLight,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
         selectedIconTheme: IconThemeData(size: 28),
@@ -142,7 +143,7 @@ class MyApp extends StatelessWidget {
       cardColor: Colors.grey[850],
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.grey[900],
-        foregroundColor: Colors.white,
+        foregroundColor: AppColors.cardLight,
         elevation: 0,
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
@@ -169,7 +170,8 @@ class MyApp extends StatelessWidget {
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: isLight ? Brightness.dark : Brightness.light,
       statusBarBrightness: isLight ? Brightness.light : Brightness.dark,
-      systemNavigationBarColor: isLight ? Colors.white : Colors.grey[900],
+      systemNavigationBarColor:
+          isLight ? AppColors.cardLight : Colors.grey[900],
       systemNavigationBarIconBrightness:
           isLight ? Brightness.dark : Brightness.light,
       systemNavigationBarDividerColor: Colors.transparent,

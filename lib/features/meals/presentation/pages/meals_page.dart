@@ -116,7 +116,7 @@ class _MealsPageState extends State<MealsPage> {
           children: [
             Text(
               "Fuel Your Body",
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.acme(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 color: AppColors.textPrimaryDark,
@@ -134,21 +134,32 @@ class _MealsPageState extends State<MealsPage> {
                   clipBehavior: Clip.none,
                   children: [
                     Container(
+                      width: 35,
+                      height: 35,
                       decoration: BoxDecoration(
-                        color: AppColors.primary.withOpacity(0.1),
+                        color: AppColors.primary.withValues(alpha: .1),
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: AppColors.primary.withOpacity(0.3),
+                          color: AppColors.primary.withValues(alpha: 0.3),
                           width: 1,
                         ),
                       ),
-                      child: IconButton(
-                        onPressed: () {
-                          context.router.push(const FavouritesRoute());
-                        },
-                        icon: const Icon(
-                          Icons.bookmark,
-                          color: AppColors.primary,
+                      child: Material(
+                        type: MaterialType.transparency,
+                        shape: const CircleBorder(),
+                        child: InkWell(
+                          onTap: () {
+                            context.router.push(const FavouritesRoute());
+                          },
+                          customBorder: const CircleBorder(),
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.bookmark,
+                              color: AppColors.primary,
+                              size: 16,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -159,7 +170,7 @@ class _MealsPageState extends State<MealsPage> {
                         child: Container(
                           padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
-                            color: Colors.red,
+                            color: AppColors.error,
                             shape: BoxShape.circle,
                             border: Border.all(
                               color: AppColors.cardDark,
@@ -167,7 +178,7 @@ class _MealsPageState extends State<MealsPage> {
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: AppColors.error.withOpacity(0.5),
+                                color: AppColors.error.withValues(alpha: 0.5),
                                 blurRadius: 8,
                                 spreadRadius: 1,
                               ),
@@ -222,13 +233,14 @@ class _MealsPageState extends State<MealsPage> {
           style: const TextStyle(color: AppColors.textPrimaryDark),
           decoration: InputDecoration(
             hintText: 'Search meals...',
-            hintStyle:
-                TextStyle(color: AppColors.textPrimaryDark.withOpacity(0.5)),
+            hintStyle: TextStyle(
+                color: AppColors.textPrimaryDark.withValues(alpha: 0.5)),
             prefixIcon: const Icon(Icons.search, color: AppColors.primary),
             suffixIcon: _searchController.text.isNotEmpty
                 ? IconButton(
                     icon: Icon(Icons.clear,
-                        color: AppColors.textPrimaryDark.withOpacity(0.7)),
+                        color:
+                            AppColors.textPrimaryDark.withValues(alpha: 0.7)),
                     onPressed: () {
                       _searchController.clear();
                       context.read<MealsBloc>().add(const SearchMealsEvent(''));
@@ -236,7 +248,7 @@ class _MealsPageState extends State<MealsPage> {
                   )
                 : null,
             filled: true,
-            fillColor: AppColors.textLightDark.withOpacity(0.2),
+            fillColor: AppColors.textLightDark.withValues(alpha: 0.2),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
               borderSide: BorderSide.none,
@@ -267,8 +279,8 @@ class _MealsPageState extends State<MealsPage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: isSelected
-                      ? AppColors.primary.withOpacity(0.2)
-                      : AppColors.textLightDark.withOpacity(0.2),
+                      ? AppColors.primary.withValues(alpha: 0.2)
+                      : AppColors.textLightDark.withValues(alpha: 0.2),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -278,7 +290,8 @@ class _MealsPageState extends State<MealsPage> {
                       Icon(
                         _getDietIcon(tag),
                         size: 16,
-                        color: isSelected ? Colors.black : AppColors.primary,
+                        color:
+                            isSelected ? AppColors.cardDark : AppColors.primary,
                       ),
                       const SizedBox(width: 6),
                       Text(tag),
@@ -292,8 +305,8 @@ class _MealsPageState extends State<MealsPage> {
               },
               labelStyle: GoogleFonts.poppins(
                 color: isSelected
-                    ? Colors.black
-                    : AppColors.textPrimaryDark.withOpacity(0.7),
+                    ? AppColors.cardDark
+                    : AppColors.textPrimaryDark.withValues(alpha: 0.7),
                 fontSize: 12,
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
               ),
@@ -335,20 +348,22 @@ class _MealsPageState extends State<MealsPage> {
                 },
                 labelStyle: GoogleFonts.poppins(
                   color: isSelected
-                      ? Colors.black
-                      : AppColors.textPrimaryDark.withOpacity(0.7),
+                      ? AppColors.cardDark
+                      : AppColors.textPrimaryDark.withValues(alpha: 0.7),
                   fontSize: 13,
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
                 ),
                 selectedColor: AppColors.primary,
-                backgroundColor: AppColors.textPrimaryDark.withOpacity(0.1),
+                backgroundColor:
+                    AppColors.textPrimaryDark.withValues(alpha: 0.1),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
                 side: isSelected
                     ? BorderSide.none
                     : BorderSide(
-                        color: AppColors.textPrimaryDark.withOpacity(0.2)),
+                        color:
+                            AppColors.textPrimaryDark.withValues(alpha: 0.2)),
                 showCheckmark: false,
               ),
             );
@@ -368,7 +383,7 @@ class _MealsPageState extends State<MealsPage> {
               Icon(
                 Icons.restaurant_menu,
                 size: 80,
-                color: AppColors.textPrimaryDark.withOpacity(0.2),
+                color: AppColors.textPrimaryDark.withValues(alpha: 0.2),
               )
                   .animate(onPlay: (controller) => controller.repeat())
                   .shimmer(duration: 2.seconds),
@@ -376,7 +391,7 @@ class _MealsPageState extends State<MealsPage> {
               Text(
                 "No meals found",
                 style: TextStyle(
-                  color: AppColors.textPrimaryDark.withOpacity(0.5),
+                  color: AppColors.textPrimaryDark.withValues(alpha: 0.5),
                   fontSize: 18,
                 ),
               ),

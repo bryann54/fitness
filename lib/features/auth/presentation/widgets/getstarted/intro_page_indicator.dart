@@ -31,7 +31,7 @@ class IntroPageIndicator extends StatelessWidget {
             activeDotColor:
                 isDarkMode ? AppColors.textPrimary : AppColors.borderColorDark,
             dotColor: isDarkMode
-                ? Colors.white.withValues(alpha: 0.25)
+                ? AppColors.cardLight.withValues(alpha: 0.25)
                 : Colors.grey.withValues(alpha: 0.3),
             dotHeight: 10,
             dotWidth: 10,

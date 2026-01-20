@@ -25,7 +25,7 @@ class ExerciseGridTile extends StatelessWidget {
         decoration: BoxDecoration(
           // Use AppColors
           color: isSelected
-              ? AppColors.primary.withOpacity(0.2)
+              ? AppColors.primary.withValues(alpha: 0.2)
               : AppColors.textOnPrimary.withValues(alpha: 0.5),
           borderRadius: BorderRadius.circular(16.0),
           border: Border.all(
@@ -42,7 +42,7 @@ class ExerciseGridTile extends StatelessWidget {
               // Use AppColors
               color: isSelected
                   ? AppColors.primary
-                  : AppColors.backgroundLight.withOpacity(0.5),
+                  : AppColors.backgroundLight.withValues(alpha: 0.5),
             ),
             const SizedBox(height: 8),
             Text(
@@ -51,7 +51,7 @@ class ExerciseGridTile extends StatelessWidget {
                 // Use AppColors
                 color: isSelected
                     ? AppColors.primary
-                    : AppColors.backgroundLight.withOpacity(0.5),
+                    : AppColors.backgroundLight.withValues(alpha: 0.5),
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                 fontSize: 14,
               ),

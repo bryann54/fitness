@@ -5,6 +5,7 @@ import 'package:fitness/common/res/colors.dart';
 import 'package:fitness/features/workouts/presentation/widgets/atoms/section_header.dart';
 import 'package:fitness/features/workouts/presentation/widgets/atoms/workout_hero_card.dart';
 import 'package:fitness/features/workouts/presentation/widgets/atoms/workout_progress_card.dart';
+import 'package:fitness/features/workouts/presentation/widgets/todays_workout_section.dart';
 import 'package:fitness/features/workouts/presentation/widgets/workouts_app_bar.dart';
 import 'package:fitness/features/workouts/presentation/widgets/exercise_shimmer.dart';
 import 'package:fitness/features/workouts/presentation/widgets/workouts_dashboard_shimmer.dart';
@@ -62,8 +63,8 @@ class _WorkoutsPageState extends State<WorkoutsPage> {
           return _buildEmptyState(
             icon: Icons.person_outline,
             message: "Complete your profile to see workouts",
-            onRetry: () => context.router.pushNamed('/onboarding'),
-            buttonText: "Go to Onboarding",
+            onRetry: () => context.router.push(WorkoutsRoute()),
+            buttonText: "Skip to home page",
           );
         },
       ),
@@ -105,20 +106,7 @@ class _WorkoutsPageState extends State<WorkoutsPage> {
                 ),
                 const SizedBox(height: 30),
 
-                SectionHeader(
-                  title: "Today's Workout",
-                  count: workouts.length.toString(),
-                  onSeeAll: () => context.router.push(WorkoutScheduleRoute(
-                      workouts: workouts, profile: profile)),
-                ),
-                const SizedBox(height: 15),
-
-                // Organism: Large Hero Card (Featured)
-                WorkoutHeroCard(
-                  workout: workouts.first,
-                  profile: profile,
-                  isLarge: true,
-                ),
+                TodaysWorkoutSection(workouts: workouts, profile: profile),
                 const SizedBox(height: 30),
 
                 SectionHeader(
@@ -197,7 +185,7 @@ class _WorkoutsPageState extends State<WorkoutsPage> {
                 width: 40,
                 height: 4,
                 decoration: BoxDecoration(
-                    color: Colors.white24,
+                    color: AppColors.cardLight,
                     borderRadius: BorderRadius.circular(10))),
             const SizedBox(height: 20),
             const Text('Choose Environment',

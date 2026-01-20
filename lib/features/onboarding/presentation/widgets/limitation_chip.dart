@@ -36,7 +36,7 @@ class LimitationChip extends StatelessWidget {
       textColor = AppColors.textOnPrimary;
       borderSide = isSuggestion
           ? const BorderSide(color: AppColors.primary, width: 1.5)
-          : const BorderSide(color: Colors.white24, width: 1.5);
+          : const BorderSide(color: AppColors.cardLight, width: 1.5);
     }
 
     return Padding(

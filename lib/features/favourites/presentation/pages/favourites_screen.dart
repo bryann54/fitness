@@ -27,7 +27,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.cardDark,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -35,7 +35,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
           'Favourites',
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: AppColors.cardLight,
           ),
         ),
         actions: [
@@ -43,7 +43,8 @@ class _FavouritesPageState extends State<FavouritesPage> {
             builder: (context, state) {
               if (state is FavouritesLoaded && state.favourites.isNotEmpty) {
                 return IconButton(
-                  icon: const Icon(Icons.delete_outline, color: Colors.red),
+                  icon:
+                      const Icon(Icons.delete_outline, color: AppColors.error),
                   onPressed: () => _showClearAllDialog(context),
                 );
               }
@@ -62,7 +63,8 @@ class _FavouritesPageState extends State<FavouritesPage> {
                       ? 'Added to favourites'
                       : 'Removed from favourites',
                 ),
-                backgroundColor: state.isFavourite ? Colors.green : Colors.red,
+                backgroundColor:
+                    state.isFavourite ? Colors.green : AppColors.error,
                 duration: const Duration(seconds: 2),
                 behavior: SnackBarBehavior.floating,
               ),
@@ -75,7 +77,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.message),
-                backgroundColor: Colors.red,
+                backgroundColor: AppColors.error,
                 behavior: SnackBarBehavior.floating,
               ),
             );
@@ -138,7 +140,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
           Icon(
             Icons.favorite_border,
             size: 100,
-            color: Colors.white24,
+            color: AppColors.cardLight,
           )
               .animate(onPlay: (controller) => controller.repeat())
               .shimmer(duration: 2.seconds),
@@ -148,7 +150,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
             style: GoogleFonts.poppins(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: AppColors.cardLight,
             ),
           ),
           const SizedBox(height: 12),
@@ -156,7 +158,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
             'Tap the heart icon on any meal\nto add it to your favourites',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.white.withOpacity(0.6),
+              color: AppColors.cardLight.withValues(alpha: 0.6),
               fontSize: 14,
               height: 1.5,
             ),
@@ -167,11 +169,11 @@ class _FavouritesPageState extends State<FavouritesPage> {
               // Navigate to meals page
               context.router.push(const MealsRoute());
             },
-            icon: const Icon(Icons.restaurant_menu, color: Colors.black),
+            icon: const Icon(Icons.restaurant_menu, color: AppColors.cardDark),
             label: Text(
               'Browse Meals',
               style: GoogleFonts.poppins(
-                color: Colors.black,
+                color: AppColors.cardDark,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -199,20 +201,20 @@ class _FavouritesPageState extends State<FavouritesPage> {
         title: Text(
           'Clear All Favourites?',
           style: GoogleFonts.poppins(
-            color: Colors.white,
+            color: AppColors.cardLight,
             fontWeight: FontWeight.bold,
           ),
         ),
         content: Text(
           'This will remove all meals from your favourites.',
-          style: TextStyle(color: Colors.white.withOpacity(0.8)),
+          style: TextStyle(color: AppColors.cardLight.withValues(alpha: 0.8)),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
             child: const Text(
               'Cancel',
-              style: TextStyle(color: Colors.white54),
+              style: TextStyle(color: AppColors.cardLight),
             ),
           ),
           TextButton(
@@ -229,7 +231,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
             },
             child: const Text(
               'Clear All',
-              style: TextStyle(color: Colors.red),
+              style: TextStyle(color: AppColors.error),
             ),
           ),
         ],

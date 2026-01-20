@@ -36,7 +36,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: _isExpanded
-                ? AppColors.primary.withOpacity(0.5)
+                ? AppColors.primary.withValues(alpha: 0.5)
                 : (dark
                     ? AppColors.borderColorDark
                     : AppColors.borderColorLight),
@@ -44,7 +44,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
           boxShadow: _isExpanded
               ? [
                   BoxShadow(
-                    color: AppColors.primary.withOpacity(0.1),
+                    color: AppColors.primary.withValues(alpha: 0.1),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   )

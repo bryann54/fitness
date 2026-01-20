@@ -102,7 +102,7 @@ class _GoalScreenState extends State<GoalScreen> {
                     ? const Icon(
                         Icons.check,
                         size: 16,
-                        color: Colors.black,
+                        color: AppColors.cardDark,
                       )
                     : null,
               ),
@@ -130,7 +130,7 @@ class _GoalScreenState extends State<GoalScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Please sign in to continue with onboarding'),
-          backgroundColor: Colors.red,
+          backgroundColor: AppColors.error,
         ),
       );
       // Optionally navigate to login screen
@@ -166,7 +166,7 @@ class _GoalScreenState extends State<GoalScreen> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.cardDark,
       appBar: const OnboardingAppBar(
         currentStep: 1,
         totalSteps: 17,

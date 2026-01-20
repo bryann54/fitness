@@ -40,13 +40,14 @@ class AuthButton extends StatelessWidget {
                   width: 24,
                   child: CircularProgressIndicator.adaptive(
                     strokeWidth: 2.5,
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(AppColors.cardLight),
                   ),
                 )
               : Text(
                   text,
                   style: GoogleFonts.poppins(
-                    color: Colors.white,
+                    color: AppColors.cardLight,
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
                   ),

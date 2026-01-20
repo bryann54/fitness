@@ -71,7 +71,7 @@ class _PasswordResetDialogState extends State<PasswordResetDialog> {
               SnackBar(
                 content: Text('Error: ${state.message}'),
                 behavior: SnackBarBehavior.floating,
-                backgroundColor: Colors.redAccent,
+                backgroundColor: AppColors.error,
               ),
             );
           }
@@ -83,7 +83,7 @@ class _PasswordResetDialogState extends State<PasswordResetDialog> {
             borderRadius: BorderRadius.circular(24),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.15),
+                color: AppColors.cardDark.withValues(alpha: 0.15),
                 blurRadius: 24,
                 offset: const Offset(0, 12),
               ),
@@ -243,7 +243,7 @@ class _PasswordResetDialogState extends State<PasswordResetDialog> {
                                     style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w500,
                                       color: _isEmailValid
-                                          ? Colors.white
+                                          ? AppColors.cardLight
                                           : theme.colorScheme.onSurface
                                               .withValues(alpha: 0.4),
                                     ),

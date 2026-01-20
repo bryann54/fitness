@@ -76,7 +76,7 @@ class _GenderScreenState extends State<GenderScreen> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.cardDark,
       appBar: const OnboardingAppBar(
         currentStep: 2,
         totalSteps: 17,
@@ -92,7 +92,7 @@ class _GenderScreenState extends State<GenderScreen> {
               Text(
                 "What is your gender?",
                 style: theme.textTheme.headlineMedium?.copyWith(
-                  color: Colors.white,
+                  color: AppColors.cardLight,
                   fontWeight: FontWeight.w800,
                 ),
               ),

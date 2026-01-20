@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(state.message),
-                    backgroundColor: AppColors.error.withOpacity(0.9),
+                    backgroundColor: AppColors.error.withValues(alpha: 0.9),
                     behavior: SnackBarBehavior.floating,
                   ),
                 );
@@ -145,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: GoogleFonts.poppins(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
-                              color: Colors.white70,
+                              color: AppColors.cardLight,
                             ),
                           ),
                         ),

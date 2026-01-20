@@ -22,7 +22,7 @@ class SupportCardWidget extends StatelessWidget {
 
     return Card(
       elevation: 0,
-      color: isDarkMode ? Colors.grey[850] : Colors.white,
+      color: isDarkMode ? Colors.grey[850] : AppColors.cardLight,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: BorderSide(

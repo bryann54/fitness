@@ -53,7 +53,8 @@ class ProfileListItemWidget extends StatelessWidget {
                     style: GoogleFonts.montserrat(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: isDarkMode ? Colors.white : Colors.black87,
+                      color:
+                          isDarkMode ? AppColors.cardLight : AppColors.cardDark,
                     ),
                   ),
                 ],

@@ -1,4 +1,5 @@
 // common/helpers/system_ui_helper.dart
+import 'package:fitness/common/res/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -19,7 +20,7 @@ class SystemUIHelper {
       statusBarIconBrightness: isLight ? Brightness.dark : Brightness.light,
       statusBarBrightness: isLight ? Brightness.light : Brightness.dark,
       systemNavigationBarColor:
-          isLight ? Colors.white : const Color(0xFF121212),
+          isLight ? AppColors.cardLight : const Color(0xFF121212),
       systemNavigationBarIconBrightness:
           isLight ? Brightness.dark : Brightness.light,
       systemNavigationBarDividerColor: Colors.transparent,
@@ -46,7 +47,7 @@ class SystemUIHelper {
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
     statusBarBrightness: Brightness.light,
-    systemNavigationBarColor: Colors.white,
+    systemNavigationBarColor: AppColors.cardLight,
     systemNavigationBarIconBrightness: Brightness.dark,
     systemNavigationBarDividerColor: Colors.transparent,
   );

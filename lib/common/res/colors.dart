@@ -8,14 +8,14 @@ class AppColors {
   // Theme-Specific Colors (Based on your App's Design)
   static const Color primary = Colors.teal; // Orange/Accent Color
   static const Color secondary = Color(0xFF1E88E5); // Blue secondary accent
-  static const Color accent = Color(0xFFFF9800);
-  static const Color coffeeBrownDark = Color(0xFFFFA726);
-  static const Color coffeeBrownLight = Color(0xFFFFCC80);
-  static const Color coffeeBrownMedium = Color(0xFFFFE0B2);
+  static const Color accent = Color.fromARGB(255, 0, 153, 255);
+  static const Color coffeeBrownDark = Color.fromARGB(255, 38, 71, 255);
+  static const Color coffeeBrownLight = Color.fromARGB(255, 128, 192, 255);
+  static const Color coffeeBrownMedium = Color.fromARGB(255, 178, 210, 255);
 
   // Backgrounds
-  static const Color backgroundDark = Colors.black;
-  static const Color backgroundLight = Colors.white;
+  static const Color backgroundDark = AppColors.cardDark;
+  static const Color backgroundLight = AppColors.cardLight;
 
   // UI/Card Colors
   static const Color cardDark = Color(0xFF2C2C2C); // Dark Card/Input Fill
@@ -29,7 +29,7 @@ class AppColors {
   static const Color textOnPrimary = Colors.grey;
   static const Color textPrimaryDark = Color(0xFFF8F9FA);
   static const Color textSecondaryDark = Color(0xFFE9ECEF);
-  static const Color textAccent = Colors.black;
+  static const Color textAccent = AppColors.cardDark;
   // Status Colors
   static const Color success = Color(0xFF4CAF50);
   static const Color error = Color(0xFFF44336);
@@ -38,7 +38,7 @@ class AppColors {
   static const Color visualDarkBackgroundHalf =
       Colors.teal; // Always the dark side of the split
   static const Color visualLightBackgroundHalf =
-      Colors.white; // Always the light side of the split
+      AppColors.cardLight; // Always the light side of the split
   // Borders & Dividers
   static const Color borderColorDark = Color(0xFF3A3A3A);
   static const Color borderColorLight = Color(0xFFE0E0E0);

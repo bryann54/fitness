@@ -37,7 +37,7 @@ class WorkoutSchedulePage extends StatelessWidget {
         title: Text(
           "Weekly Schedule",
           style: GoogleFonts.poppins(
-              fontWeight: FontWeight.bold, color: Colors.white),
+              fontWeight: FontWeight.bold, color: AppColors.cardLight),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,

@@ -37,13 +37,13 @@ class CustomLogoutDialog extends StatelessWidget {
             Expanded(
               child: GestureDetector(
                 onTap: onCancel,
-                child: const Padding(
+                child:  Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Center(
                     child: Text(
                       'cancel',
                       style: TextStyle(
-                        color: Colors.redAccent,
+                        color: AppColors.error.withValues(alpha: 0.8),
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),

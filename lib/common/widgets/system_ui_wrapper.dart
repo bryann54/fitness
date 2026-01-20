@@ -1,4 +1,5 @@
 // common/widgets/system_ui_wrapper.dart
+import 'package:fitness/common/res/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../helpers/system_ui_helper.dart';
@@ -32,12 +33,13 @@ class CustomStatusBarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SystemUIWrapper(
-      systemUiOverlayStyle: SystemUIHelper.getOverlayStyleForColor(Colors.red),
+      systemUiOverlayStyle:
+          SystemUIHelper.getOverlayStyleForColor(AppColors.error),
       child: Scaffold(
-        backgroundColor: Colors.red,
+        backgroundColor: AppColors.error,
         appBar: AppBar(
           title: Text('Custom Status Bar'),
-          backgroundColor: Colors.red,
+          backgroundColor: AppColors.error,
         ),
         body: Center(
           child: Text('Custom colored status bar'),

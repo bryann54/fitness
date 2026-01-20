@@ -27,7 +27,7 @@ class WorkoutDetailPage extends StatelessWidget {
         workout.exercises.isNotEmpty ? workout.exercises.first.imageUrl : '';
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.cardDark,
       body: Stack(
         children: [
           CustomScrollView(
@@ -36,18 +36,8 @@ class WorkoutDetailPage extends StatelessWidget {
               SliverAppBar(
                 expandedHeight: 400,
                 pinned: true,
-                backgroundColor: Colors.black,
-                leading: IconButton(
-                  icon: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.5),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(Icons.arrow_back, color: Colors.white),
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                ),
+                backgroundColor: AppColors.cardDark,
+               
                 flexibleSpace: FlexibleSpaceBar(
                   background: Stack(
                     fit: StackFit.expand,
@@ -83,7 +73,7 @@ class WorkoutDetailPage extends StatelessWidget {
                             end: Alignment.bottomCenter,
                             colors: [
                               Colors.transparent,
-                              Colors.black.withOpacity(0.7),
+                              AppColors.cardDark.withValues(alpha: 0.7),
                             ],
                             stops: const [0.6, 1.0],
                           ),
@@ -98,7 +88,7 @@ class WorkoutDetailPage extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Container(
                   decoration: const BoxDecoration(
-                    color: Colors.black,
+                    color: AppColors.cardDark,
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(30),
                     ),
@@ -120,7 +110,8 @@ class WorkoutDetailPage extends StatelessWidget {
                                     vertical: 6,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: AppColors.primary.withOpacity(0.2),
+                                    color: AppColors.primary
+                                        .withValues(alpha: 0.2),
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Text(
@@ -140,13 +131,14 @@ class WorkoutDetailPage extends StatelessWidget {
                                     vertical: 6,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.1),
+                                    color: AppColors.cardLight
+                                        .withValues(alpha: 0.1),
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Text(
                                     workout.muscleCategory.toUpperCase(),
                                     style: const TextStyle(
-                                      color: Colors.white70,
+                                      color: AppColors.cardLight,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 11,
                                       letterSpacing: 1.2,
@@ -167,7 +159,7 @@ class WorkoutDetailPage extends StatelessWidget {
                               style: GoogleFonts.poppins(
                                 fontSize: 28,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: AppColors.cardLight,
                                 height: 1.2,
                               ),
                             )
@@ -181,7 +173,8 @@ class WorkoutDetailPage extends StatelessWidget {
                             Text(
                               _generateDescription(workout),
                               style: TextStyle(
-                                color: Colors.white.withOpacity(0.6),
+                                color:
+                                    AppColors.cardLight.withValues(alpha: 0.6),
                                 height: 1.6,
                                 fontSize: 15,
                               ),
@@ -220,7 +213,7 @@ class WorkoutDetailPage extends StatelessWidget {
                               style: GoogleFonts.poppins(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: AppColors.cardLight,
                               ),
                             ).animate().fadeIn(delay: 500.ms),
 
@@ -267,8 +260,8 @@ class WorkoutDetailPage extends StatelessWidget {
                   child: _actionButton(
                     Icons.bookmark_outline,
                     "Save",
-                    Colors.white.withOpacity(0.15),
-                    Colors.white,
+                    AppColors.cardLight.withValues(alpha: 0.15),
+                    AppColors.cardLight,
                   ),
                 ),
                 const SizedBox(width: 15),
@@ -278,7 +271,7 @@ class WorkoutDetailPage extends StatelessWidget {
                     Icons.play_arrow_rounded,
                     "Start Workout",
                     AppColors.primary,
-                    Colors.black,
+                    AppColors.cardDark,
                   ),
                 ),
               ],
@@ -300,7 +293,7 @@ class WorkoutDetailPage extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(
-            color: Colors.white,
+            color: AppColors.cardLight,
             fontWeight: FontWeight.bold,
             fontSize: 15,
           ),
@@ -318,7 +311,7 @@ class WorkoutDetailPage extends StatelessWidget {
         boxShadow: bg == AppColors.primary
             ? [
                 BoxShadow(
-                  color: AppColors.primary.withOpacity(0.3),
+                  color: AppColors.primary.withValues(alpha: 0.3),
                   blurRadius: 20,
                   offset: const Offset(0, 10),
                 ),

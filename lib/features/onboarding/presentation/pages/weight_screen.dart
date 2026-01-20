@@ -172,7 +172,7 @@ class _WeightScreenState extends State<WeightScreen> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.cardDark,
       appBar: const OnboardingAppBar(
         currentStep: 3,
         totalSteps: 17,

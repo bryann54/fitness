@@ -35,3 +35,16 @@ class FetchWorkoutByDayEvent extends WorkoutsEvent {
   @override
   List<Object?> get props => [gender, day, location];
 }
+
+class FetchTodaysWorkoutEvent extends WorkoutsEvent {
+  final String gender;
+  final String location;
+
+  const FetchTodaysWorkoutEvent({
+    required this.gender,
+    required this.location,
+  });
+
+  @override
+  List<Object?> get props => [gender, location];
+}

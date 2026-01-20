@@ -1,3 +1,4 @@
+import 'package:fitness/common/res/colors.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,14 +19,14 @@ class CustomFlashyBottomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final activeColor =
-        isDarkMode ? Colors.white : Theme.of(context).primaryColor;
+        isDarkMode ? AppColors.cardLight : Theme.of(context).primaryColor;
     final inactiveColor = Colors.grey[600]!;
 
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
+            color: AppColors.cardDark.withValues(alpha: 0.1),
             blurRadius: 10,
             spreadRadius: 2,
             offset: const Offset(0, -2),

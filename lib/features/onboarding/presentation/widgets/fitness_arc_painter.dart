@@ -52,7 +52,7 @@ class FitnessArcPainter extends CustomPainter {
 
     // Draw white border first (larger circle)
     final borderPaint = Paint()
-      ..color = Colors.white
+      ..color = AppColors.cardLight
       ..style = PaintingStyle.fill;
     canvas.drawCircle(
       thumbPosition,

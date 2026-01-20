@@ -100,8 +100,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(state.message),
-                    backgroundColor:
-                        Theme.of(context).colorScheme.error.withOpacity(0.9),
+                    backgroundColor: Theme.of(context)
+                        .colorScheme
+                        .error
+                        .withValues(alpha: 0.9),
                     behavior: SnackBarBehavior.floating,
                   ),
                 );

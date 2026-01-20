@@ -20,7 +20,9 @@ class WorkoutInfoChip extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(
-              color: Colors.white, fontWeight: FontWeight.w500, fontSize: 13),
+              color: AppColors.cardLight,
+              fontWeight: FontWeight.w500,
+              fontSize: 13),
         ),
       ],
     );

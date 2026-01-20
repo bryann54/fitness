@@ -75,13 +75,15 @@ class _SpecificSuppScreenState extends State<SpecificSuppScreen> {
           supplement,
           style: TextStyle(
             color:
-                isSelected ? Colors.black : AppColors.visualLightBackgroundHalf,
+                isSelected
+                ? AppColors.cardDark
+                : AppColors.visualLightBackgroundHalf,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),
         backgroundColor: isSelected ? primaryColor : unselectedColor,
         deleteIcon: isSelected
-            ? const Icon(Icons.close, color: Colors.black, size: 16)
+            ? const Icon(Icons.close, color: AppColors.cardDark, size: 16)
             : null,
         onDeleted: isSelected ? () => _toggleSupplement(supplement) : null,
         onPressed: () => _toggleSupplement(supplement),
@@ -90,7 +92,7 @@ class _SpecificSuppScreenState extends State<SpecificSuppScreen> {
         ),
         selected: isSelected,
         selectedColor: primaryColor,
-        checkmarkColor: Colors.black,
+        checkmarkColor: AppColors.cardDark,
       ).animate(
         effects: [
           FadeEffect(duration: 800.ms),
@@ -106,7 +108,7 @@ class _SpecificSuppScreenState extends State<SpecificSuppScreen> {
 
     // MOVE SingleChildScrollView INSIDE THE SCAFFOLD BODY
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.cardDark,
       appBar: const OnboardingAppBar(
         currentStep: 12,
         totalSteps: 17,

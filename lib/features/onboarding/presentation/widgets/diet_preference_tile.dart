@@ -31,7 +31,8 @@ class DietPreferenceTile extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
               color: isSelected
-                  ? AppColors.primary.withOpacity(0.1) // Light primary tint
+                  ? AppColors.primary
+                      .withValues(alpha: 0.1) // Light primary tint
                   : AppColors.cardDark,
               borderRadius: BorderRadius.circular(16.0),
               border: Border.all(
@@ -71,7 +72,7 @@ class DietPreferenceTile extends StatelessWidget {
                     size: 36,
                     color: isSelected
                         ? AppColors.primary
-                        : AppColors.textSecondary.withOpacity(0.4),
+                        : AppColors.textSecondary.withValues(alpha: 0.4),
                   ),
                 ),
               ],

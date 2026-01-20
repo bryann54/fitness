@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'package:fitness/common/res/colors.dart';
 import 'package:flutter/material.dart';
 
 class SteamAnimation extends StatefulWidget {
@@ -18,7 +19,7 @@ class SteamAnimation extends StatefulWidget {
     this.steamWidth = 2.0,
     this.steamCount = 3,
     this.duration = const Duration(seconds: 2),
-    this.steamColor = Colors.white,
+    this.steamColor = AppColors.cardLight,
     this.steamOpacity = 0.7,
     this.steamOffsetRange = 4.0,
   });

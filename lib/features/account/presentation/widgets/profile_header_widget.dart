@@ -78,7 +78,8 @@ class ProfileHeaderWidget extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 64,
-            backgroundColor: isDarkMode ? Colors.grey[850] : Colors.white,
+            backgroundColor:
+                isDarkMode ? Colors.grey[850] : AppColors.cardLight,
             child: Hero(
               tag: 'profile-avatar',
               child: CircleAvatar(
@@ -115,14 +116,14 @@ class ProfileHeaderWidget extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: isDarkMode
-                ? Colors.black.withValues(alpha: 0.4)
+                ? AppColors.cardDark.withValues(alpha: 0.4)
                 : Colors.grey.withValues(alpha: 0.3),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
         ],
       ),
-      child: const Icon(Icons.edit, size: 20, color: Colors.white),
+      child: const Icon(Icons.edit, size: 20, color: AppColors.cardLight),
     );
   }
 
@@ -136,7 +137,7 @@ class ProfileHeaderWidget extends StatelessWidget {
           style: GoogleFonts.montserrat(
             fontSize: 26,
             fontWeight: FontWeight.w700,
-            color: Colors.white,
+            color: AppColors.cardLight,
           ),
         ),
       ),
@@ -148,7 +149,7 @@ class ProfileHeaderWidget extends StatelessWidget {
       user.email ?? 'email@example.com',
       style: GoogleFonts.montserrat(
         fontSize: 16,
-        color: Colors.white.withValues(alpha: 0.8),
+        color: AppColors.cardLight.withValues(alpha: 0.8),
       ),
     );
   }

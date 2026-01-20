@@ -27,7 +27,7 @@ class ProfileScreenShimmer extends StatelessWidget {
                 width: 120,
                 height: 24,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.cardLight,
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
@@ -42,7 +42,7 @@ class ProfileScreenShimmer extends StatelessWidget {
                 width: 100,
                 height: 24,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.cardLight,
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
@@ -58,7 +58,7 @@ class ProfileScreenShimmer extends StatelessWidget {
                   width: double.infinity,
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.cardLight,
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
@@ -78,7 +78,7 @@ class ProfileScreenShimmer extends StatelessWidget {
           width: 100,
           height: 100,
           decoration: const BoxDecoration(
-            color: Colors.white,
+            color: AppColors.cardLight,
             shape: BoxShape.circle,
           ),
         ),
@@ -92,7 +92,7 @@ class ProfileScreenShimmer extends StatelessWidget {
                 width: double.infinity,
                 height: 24,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.cardLight,
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
@@ -102,7 +102,7 @@ class ProfileScreenShimmer extends StatelessWidget {
                 width: double.infinity,
                 height: 24,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.cardLight,
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
@@ -112,7 +112,7 @@ class ProfileScreenShimmer extends StatelessWidget {
                 width: double.infinity,
                 height: 20,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.cardLight,
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
@@ -127,7 +127,7 @@ class ProfileScreenShimmer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.cardLight,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: AppColors.cardLight.withValues(alpha: 0.2),
@@ -143,7 +143,7 @@ class ProfileScreenShimmer extends StatelessWidget {
                 width: 60,
                 height: 60,
                 decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.cardLight,
                   shape: BoxShape.circle,
                 ),
               ),
@@ -152,7 +152,7 @@ class ProfileScreenShimmer extends StatelessWidget {
                 width: 60,
                 height: 16,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.cardLight,
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
@@ -182,7 +182,7 @@ class ProfileScreenShimmer extends StatelessWidget {
                   width: 24,
                   height: 24,
                   decoration: const BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.cardLight,
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -190,7 +190,7 @@ class ProfileScreenShimmer extends StatelessWidget {
                   width: double.infinity,
                   height: 16,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.cardLight,
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
@@ -198,7 +198,7 @@ class ProfileScreenShimmer extends StatelessWidget {
                   width: 20,
                   height: 20,
                   decoration: const BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.cardLight,
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -208,7 +208,7 @@ class ProfileScreenShimmer extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Container(
                     height: 1,
-                    color: Colors.white,
+                    color: AppColors.cardLight,
                   ),
                 ),
             ],

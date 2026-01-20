@@ -91,12 +91,13 @@ class _LogOutButtonState extends State<LogOutButton>
                   child: Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: isDarkMode ? Colors.grey[850] : Colors.white,
+                      color:
+                          isDarkMode ? Colors.grey[850] : AppColors.cardLight,
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
                           color: isDarkMode
-                              ? Colors.black.withValues(alpha: 0.4)
+                              ? AppColors.cardDark.withValues(alpha: 0.4)
                               : Colors.grey.withValues(alpha: 0.3),
                           blurRadius: 6,
                           offset: const Offset(0, 2),

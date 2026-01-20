@@ -33,7 +33,7 @@ class _OnboardingCompleteScreenState extends State<OnboardingCompleteScreen> {
             child: Text(
               '$title:',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: Colors.white70,
+                    color: AppColors.cardLight,
                   ),
             ),
           ),
@@ -41,7 +41,7 @@ class _OnboardingCompleteScreenState extends State<OnboardingCompleteScreen> {
             child: Text(
               value,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: Colors.white,
+                    color: AppColors.cardLight,
                     fontWeight: FontWeight.bold,
                   ),
             ),
@@ -60,13 +60,14 @@ class _OnboardingCompleteScreenState extends State<OnboardingCompleteScreen> {
     final profile = widget.finalProfile;
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.cardDark,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
           'Review & Complete',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: AppColors.cardLight, fontWeight: FontWeight.bold),
         ),
       ),
       // --- CORRECTED: Use BlocListener around the _buildBody for navigation and snackbars ---
@@ -112,7 +113,7 @@ class _OnboardingCompleteScreenState extends State<OnboardingCompleteScreen> {
                   Text(
                     "Review your profile data before we generate your personalized fitness plan.",
                     style: theme.textTheme.titleMedium?.copyWith(
-                      color: Colors.white70,
+                      color: AppColors.cardLight,
                     ),
                   ),
                 ],
@@ -135,8 +136,8 @@ class _OnboardingCompleteScreenState extends State<OnboardingCompleteScreen> {
                         children: [
                           Text('Demographics',
                               style: theme.textTheme.headlineSmall
-                                  ?.copyWith(color: Colors.white)),
-                          const Divider(color: Colors.white24),
+                                  ?.copyWith(color: AppColors.cardLight)),
+                          const Divider(color: AppColors.cardLight),
                           _buildProfileDetail(
                               context, 'Gender', profile.gender),
                           _buildProfileDetail(
@@ -161,8 +162,8 @@ class _OnboardingCompleteScreenState extends State<OnboardingCompleteScreen> {
                         children: [
                           Text('Fitness & Goals',
                               style: theme.textTheme.headlineSmall
-                                  ?.copyWith(color: Colors.white)),
-                          const Divider(color: Colors.white24),
+                                  ?.copyWith(color: AppColors.cardLight)),
+                          const Divider(color: AppColors.cardLight),
                           _buildProfileDetail(context, 'Primary Goal',
                               profile.primaryGoal.toString().split('.').last),
                           _buildProfileDetail(context, 'Experience',
@@ -189,8 +190,8 @@ class _OnboardingCompleteScreenState extends State<OnboardingCompleteScreen> {
                         children: [
                           Text('Preferences & Health',
                               style: theme.textTheme.headlineSmall
-                                  ?.copyWith(color: Colors.white)),
-                          const Divider(color: Colors.white24),
+                                  ?.copyWith(color: AppColors.cardLight)),
+                          const Divider(color: AppColors.cardLight),
                           _buildProfileDetail(
                               context, 'Diet Pref.', profile.dietPreference),
                           _buildProfileDetail(context, 'Physical Limits',

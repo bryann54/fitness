@@ -34,7 +34,7 @@ class ProfileSectionWidget extends StatelessWidget {
   Widget _buildProfileCard(BuildContext context, bool isDarkMode) {
     return Card(
       elevation: 0,
-      color: isDarkMode ? Colors.grey[850] : Colors.white,
+      color: isDarkMode ? Colors.grey[850] : AppColors.cardLight,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: BorderSide(

@@ -74,8 +74,7 @@ class _SpecificSuppScreenState extends State<SpecificSuppScreen> {
         label: Text(
           supplement,
           style: TextStyle(
-            color:
-                isSelected
+            color: isSelected
                 ? AppColors.cardDark
                 : AppColors.visualLightBackgroundHalf,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,

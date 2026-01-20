@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fitness/features/notifications/presentation/widgets/empty_notifications.dart';
+import 'package:fitness/features/notifications/presentation/widgets/empty_notifications_view.dart';
 import 'package:flutter/material.dart';
+
 @RoutePage()
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
@@ -14,7 +15,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notifications'),
+        title: const Text(
+          'Notifications',
+          style: TextStyle(),
+        ),
       ),
       body: const Center(
         child: EmptyNotificationsView(),

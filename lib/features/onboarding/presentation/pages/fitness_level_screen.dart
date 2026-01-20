@@ -148,8 +148,7 @@ class _FitnessLevelScreenState extends State<FitnessLevelScreen> {
                   SizedBox(width: 4),
                   Text(
                     'Drag to adjust',
-                    style:
-                        TextStyle(color: AppColors.cardLight, fontSize: 14),
+                    style: TextStyle(color: AppColors.cardLight, fontSize: 14),
                   ),
                 ],
               ).animate().fadeIn(duration: 600.ms, delay: 200.ms),

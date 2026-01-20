@@ -100,9 +100,7 @@ class AllExercisesPage extends StatelessWidget {
                         placeholder: (context, url) => Container(
                           color: AppColors.cardDark,
                           child: const Center(
-                            child: CircularProgressIndicator.adaptive(
-                          
-                            ),
+                            child: CircularProgressIndicator.adaptive(),
                           ),
                         ),
                         errorWidget: (context, url, error) => Container(

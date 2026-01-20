@@ -6,6 +6,7 @@ import 'package:fitness/features/favourites/presentation/bloc/favourites_bloc.da
 import 'package:fitness/features/meals/data/models/meal_model.dart';
 import 'package:fitness/features/meals/presentation/bloc/meals_bloc.dart';
 import 'package:fitness/features/meals/presentation/widgets/meal_card.dart';
+import 'package:fitness/features/meals/presentation/widgets/empty_meals_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -119,7 +120,6 @@ class _MealsPageState extends State<MealsPage> {
               style: GoogleFonts.acme(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
-                color: AppColors.textPrimaryDark,
               ),
             ),
             const Spacer(),
@@ -375,30 +375,7 @@ class _MealsPageState extends State<MealsPage> {
 
   Widget _buildMealGrid(List<MealModel> meals) {
     if (meals.isEmpty) {
-      return SliverFillRemaining(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.restaurant_menu,
-                size: 80,
-                color: AppColors.textPrimaryDark.withValues(alpha: 0.2),
-              )
-                  .animate(onPlay: (controller) => controller.repeat())
-                  .shimmer(duration: 2.seconds),
-              const SizedBox(height: 20),
-              Text(
-                "No meals found",
-                style: TextStyle(
-                  color: AppColors.textPrimaryDark.withValues(alpha: 0.5),
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          ).animate().fadeIn(duration: 600.ms),
-        ),
-      );
+      return EmptyMealsView();
     }
 
     return SliverPadding(

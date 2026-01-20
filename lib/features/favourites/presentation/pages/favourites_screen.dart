@@ -4,6 +4,7 @@ import 'package:fitness/common/helpers/app_router.gr.dart';
 import 'package:fitness/common/res/colors.dart';
 import 'package:fitness/features/favourites/presentation/bloc/favourites_bloc.dart';
 import 'package:fitness/features/meals/presentation/widgets/meal_card.dart';
+import 'package:fitness/features/favourites/presentation/widgets/empty_favourites_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,8 +33,8 @@ class _FavouritesPageState extends State<FavouritesPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Favourites',
-          style: GoogleFonts.poppins(
+          'Bookmarks',
+          style: GoogleFonts.acme(
             fontWeight: FontWeight.bold,
             color: AppColors.cardLight,
           ),
@@ -60,8 +61,8 @@ class _FavouritesPageState extends State<FavouritesPage> {
               SnackBar(
                 content: Text(
                   state.isFavourite
-                      ? 'Added to favourites'
-                      : 'Removed from favourites',
+                      ? 'Added to bookmarks'
+                      : 'Removed from bookmarks',
                 ),
                 backgroundColor:
                     state.isFavourite ? Colors.green : AppColors.error,
@@ -92,7 +93,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
 
           if (state is FavouritesLoaded) {
             if (state.favourites.isEmpty) {
-              return _buildEmptyState();
+              return const EmptyFavoritesView();
             }
 
             return RefreshIndicator(
@@ -126,87 +127,26 @@ class _FavouritesPageState extends State<FavouritesPage> {
           }
 
           // Initial or error state
-          return _buildEmptyState();
+          return EmptyFavoritesView();
         },
       ),
-    );
-  }
-
-  Widget _buildEmptyState() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.favorite_border,
-            size: 100,
-            color: AppColors.cardLight,
-          )
-              .animate(onPlay: (controller) => controller.repeat())
-              .shimmer(duration: 2.seconds),
-          const SizedBox(height: 24),
-          Text(
-            'No Favourites Yet',
-            style: GoogleFonts.poppins(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: AppColors.cardLight,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            'Tap the heart icon on any meal\nto add it to your favourites',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: AppColors.cardLight.withValues(alpha: 0.6),
-              fontSize: 14,
-              height: 1.5,
-            ),
-          ),
-          const SizedBox(height: 32),
-          ElevatedButton.icon(
-            onPressed: () {
-              // Navigate to meals page
-              context.router.push(const MealsRoute());
-            },
-            icon: const Icon(Icons.restaurant_menu, color: AppColors.cardDark),
-            label: Text(
-              'Browse Meals',
-              style: GoogleFonts.poppins(
-                color: AppColors.cardDark,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primary,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 32,
-                vertical: 16,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-          ),
-        ],
-      ).animate().fadeIn(duration: 600.ms),
     );
   }
 
   void _showClearAllDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (dialogContext) => AlertDialog(
+      builder: (dialogContext) => AlertDialog.adaptive(
         backgroundColor: AppColors.cardDark,
         title: Text(
-          'Clear All Favourites?',
+          'Clear All bookmarks?',
           style: GoogleFonts.poppins(
             color: AppColors.cardLight,
             fontWeight: FontWeight.bold,
           ),
         ),
         content: Text(
-          'This will remove all meals from your favourites.',
+          'This will remove all meals from your bookmarks.',
           style: TextStyle(color: AppColors.cardLight.withValues(alpha: 0.8)),
         ),
         actions: [

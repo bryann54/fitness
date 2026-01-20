@@ -37,7 +37,6 @@ class WorkoutDetailPage extends StatelessWidget {
                 expandedHeight: 400,
                 pinned: true,
                 backgroundColor: AppColors.cardDark,
-               
                 flexibleSpace: FlexibleSpaceBar(
                   background: Stack(
                     fit: StackFit.expand,

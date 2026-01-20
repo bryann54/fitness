@@ -33,7 +33,7 @@ class MealCard extends StatelessWidget {
               ),
             ],
           ),
-          child: Column( 
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Image Section with overlays

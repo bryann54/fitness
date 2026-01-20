@@ -198,8 +198,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                           height: 20,
                           child: CircularProgressIndicator.adaptive(
                             strokeWidth: 2,
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(
+                            valueColor: AlwaysStoppedAnimation<Color>(
                                 AppColors.cardLight),
                           ),
                         )

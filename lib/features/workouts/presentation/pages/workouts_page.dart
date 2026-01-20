@@ -2,6 +2,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fitness/common/helpers/app_router.gr.dart';
 import 'package:fitness/common/res/colors.dart';
+import 'package:fitness/features/workouts/presentation/widgets/empty_workouts_view.dart';
 import 'package:fitness/features/workouts/presentation/widgets/atoms/section_header.dart';
 import 'package:fitness/features/workouts/presentation/widgets/atoms/workout_hero_card.dart';
 import 'package:fitness/features/workouts/presentation/widgets/atoms/workout_progress_card.dart';
@@ -90,7 +91,7 @@ class _WorkoutsPageState extends State<WorkoutsPage> {
         if (state is WorkoutsLoaded) {
           final workouts = state.workouts;
           if (workouts.isEmpty) {
-            return const Center(child: Text("No workouts found."));
+            return EmptyWorkoutsView();
           }
 
           return SingleChildScrollView(

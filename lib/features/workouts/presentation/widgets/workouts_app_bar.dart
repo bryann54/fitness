@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class WorkoutsAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onFilterTap;
 
-
   const WorkoutsAppBar({super.key, required this.onFilterTap});
 
   String _extractFirstName(AuthState state) {
@@ -39,10 +38,9 @@ class WorkoutsAppBar extends StatelessWidget implements PreferredSizeWidget {
                   onPressed: onFilterTap,
                   icon: const Icon(Icons.tune, color: Colors.grey),
                 ),
-                GestureDetector
-                (
+                GestureDetector(
                   onTap: () {
-                   context.router.push(const NotificationsRoute());
+                    context.router.push(const NotificationsRoute());
                   },
                   child: Container(
                     padding: const EdgeInsets.all(8.0),

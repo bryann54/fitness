@@ -37,7 +37,7 @@ class CustomLogoutDialog extends StatelessWidget {
             Expanded(
               child: GestureDetector(
                 onTap: onCancel,
-                child:  Padding(
+                child: Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Center(
                     child: Text(

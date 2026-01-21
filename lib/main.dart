@@ -1,6 +1,9 @@
 // main.dart - Fixed dependency injection order
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitness/common/res/colors.dart';
+import 'package:fitness/features/community/presentation/bloc/buddies/buddies_bloc.dart';
+import 'package:fitness/features/community/presentation/bloc/feed/feed_bloc.dart';
+import 'package:fitness/features/community/presentation/bloc/groups/groups_bloc.dart';
 import 'package:fitness/features/favourites/presentation/bloc/favourites_bloc.dart';
 import 'package:fitness/features/meals/presentation/bloc/meals_bloc.dart';
 import 'package:fitness/features/onboarding/presentation/bloc/onboarding_bloc.dart';
@@ -53,6 +56,9 @@ void main() async {
   final MealsBloc mealsBloc = getIt<MealsBloc>();
   final OnboardingBloc onboardingBloc = getIt<OnboardingBloc>();
   final FavouritesBloc favouritesBloc = getIt<FavouritesBloc>();
+  final GroupsBloc groupsBloc = getIt<GroupsBloc>();
+  final FeedBloc feedBloc = getIt<FeedBloc>();
+  final BuddiesBloc buddiesBloc = getIt<BuddiesBloc>();
 
   runApp(
     MultiProvider(
@@ -76,6 +82,15 @@ void main() async {
         ),
         BlocProvider<MealsBloc>(
           create: (context) => mealsBloc,
+        ),
+        BlocProvider<GroupsBloc>(
+          create: (context) => groupsBloc,
+        ),
+        BlocProvider<FeedBloc>(
+          create: (context) => feedBloc,
+        ),
+        BlocProvider<BuddiesBloc>(
+          create: (context) => buddiesBloc,
         ),
       ],
       child: MyApp(authBloc: authBloc),

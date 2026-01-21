@@ -1,7 +1,6 @@
 // lib/features/onboarding/presentation/pages/fitness_level_screen.dart
 
 import 'package:auto_route/auto_route.dart';
-import 'package:fitness/common/res/colors.dart';
 import 'package:fitness/features/onboarding/presentation/widgets/onboarding_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -112,7 +111,7 @@ class _FitnessLevelScreenState extends State<FitnessLevelScreen> {
     final description = fitnessDescriptions[_selectedLevel];
 
     return Scaffold(
-      backgroundColor: AppColors.cardDark,
+      backgroundColor: Colors.black,
       appBar: const OnboardingAppBar(
         currentStep: 6,
         totalSteps: 17,
@@ -130,7 +129,7 @@ class _FitnessLevelScreenState extends State<FitnessLevelScreen> {
               Text(
                 "How would you rate your fitness level?",
                 style: theme.textTheme.headlineMedium?.copyWith(
-                  color: AppColors.cardLight,
+                  color: Colors.white,
                   fontWeight: FontWeight.w800,
                 ),
               )
@@ -143,12 +142,11 @@ class _FitnessLevelScreenState extends State<FitnessLevelScreen> {
               // Animated hint
               const Row(
                 children: [
-                  Icon(Icons.help_outline,
-                      color: AppColors.cardLight, size: 16),
+                  Icon(Icons.help_outline, color: Colors.white70, size: 16),
                   SizedBox(width: 4),
                   Text(
                     'Drag to adjust',
-                    style: TextStyle(color: AppColors.cardLight, fontSize: 14),
+                    style: TextStyle(color: Colors.white70, fontSize: 14),
                   ),
                 ],
               ).animate().fadeIn(duration: 600.ms, delay: 200.ms),
@@ -202,7 +200,7 @@ class _FitnessLevelScreenState extends State<FitnessLevelScreen> {
                                 Text(
                                   '$_selectedLevel',
                                   style: const TextStyle(
-                                    color: AppColors.cardLight,
+                                    color: Colors.white,
                                     fontSize: 160,
                                     fontWeight: FontWeight.w900,
                                     height: 0.9,
@@ -223,7 +221,7 @@ class _FitnessLevelScreenState extends State<FitnessLevelScreen> {
                                 Text(
                                   description,
                                   style: const TextStyle(
-                                    color: AppColors.cardLight,
+                                    color: Colors.white70,
                                     fontSize: 20,
                                     fontWeight: FontWeight.w500,
                                     letterSpacing: 0.5,

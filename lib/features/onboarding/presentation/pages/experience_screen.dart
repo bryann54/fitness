@@ -1,7 +1,6 @@
 // lib/features/onboarding/presentation/pages/experience_screen.dart
 
 import 'package:auto_route/auto_route.dart';
-import 'package:fitness/common/res/colors.dart';
 import 'package:fitness/features/onboarding/presentation/widgets/onboarding_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -49,13 +48,13 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.cardLight,
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(width: 8),
               Icon(
                 isNegative ? Icons.close : Icons.check,
-                color: AppColors.cardLight,
+                color: Colors.white,
               ),
             ],
           ),
@@ -92,7 +91,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: AppColors.cardDark,
+      backgroundColor: Colors.black,
       appBar: const OnboardingAppBar(
         currentStep: 5,
         totalSteps: 17,
@@ -110,7 +109,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
               Text(
                 "Do you have previous fitness experience?",
                 style: theme.textTheme.headlineMedium?.copyWith(
-                  color: AppColors.cardLight,
+                  color: Colors.white,
                   fontWeight: FontWeight.w800,
                 ),
               )
@@ -138,7 +137,7 @@ class _ExperienceScreenState extends State<ExperienceScreen> {
                       alignment: Alignment.center,
                       child: const Text(
                         'Gym Machine Image',
-                        style: TextStyle(color: AppColors.cardLight),
+                        style: TextStyle(color: Colors.white70),
                       ),
                     ),
                   )

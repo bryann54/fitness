@@ -110,8 +110,6 @@ class _DietPrefScreenState extends State<DietPrefScreen>
                       ),
                     ),
                     const SizedBox(height: 30),
-
-                    // Diet Selection Grid (2x2 layout)
                     Column(
                       children: [
                         Row(

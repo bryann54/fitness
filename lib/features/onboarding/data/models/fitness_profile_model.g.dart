@@ -24,12 +24,16 @@ FitnessProfileModel _$FitnessProfileModelFromJson(Map<String, dynamic> json) =>
           .map((e) => e as String)
           .toList(),
       sleepQuality: $enumDecode(_$SleepQualityEnumMap, json['sleepQuality']),
+      calorieGoal: (json['calorieGoal'] as num).toInt(),
+      calorieUnit: json['calorieUnit'] as String,
+      followersCount: (json['followersCount'] as num?)?.toInt() ?? 0,
+      followingCount: (json['followingCount'] as num?)?.toInt() ?? 0,
+      postsCount: (json['postsCount'] as num?)?.toInt() ?? 0,
+      lastActive: FitnessProfileModel._timestampFromJson(json['lastActive']),
       supplementsTaken: (json['supplementsTaken'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
-      calorieGoal: (json['calorieGoal'] as num).toInt(),
-      calorieUnit: json['calorieUnit'] as String,
     );
 
 Map<String, dynamic> _$FitnessProfileModelToJson(
@@ -40,6 +44,10 @@ Map<String, dynamic> _$FitnessProfileModelToJson(
       'age': instance.age,
       'currentWeightKg': instance.currentWeightKg,
       'heightCm': instance.heightCm,
+      'followersCount': instance.followersCount,
+      'followingCount': instance.followingCount,
+      'postsCount': instance.postsCount,
+      'lastActive': FitnessProfileModel._timestampToJson(instance.lastActive),
       'experience': _$WorkoutExperienceEnumMap[instance.experience]!,
       'primaryGoal': _$FitnessGoalEnumMap[instance.primaryGoal]!,
       'fitnessLevel': instance.fitnessLevel,

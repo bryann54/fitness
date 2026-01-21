@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
       routes: const [
         WorkoutsRoute(),
         MealsRoute(),
-        CommunityRoute(),
+        CommunityHomeRoute(),
         AccountRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {

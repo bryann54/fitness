@@ -25,7 +25,7 @@ import 'package:fitness/features/auth/presentation/pages/register_screen.dart'
     as _i24;
 import 'package:fitness/features/auth/presentation/pages/splash_screen.dart'
     as _i27;
-import 'package:fitness/features/community/presentation/pages/community_page.dart'
+import 'package:fitness/features/community/presentation/pages/community_home_page.dart'
     as _i6;
 import 'package:fitness/features/favourites/presentation/pages/favourites_screen.dart'
     as _i11;
@@ -293,20 +293,20 @@ class CaloriesRouteArgs {
 }
 
 /// generated route for
-/// [_i6.CommunityPage]
-class CommunityRoute extends _i35.PageRouteInfo<void> {
-  const CommunityRoute({List<_i35.PageRouteInfo>? children})
+/// [_i6.CommunityHomePage]
+class CommunityHomeRoute extends _i35.PageRouteInfo<void> {
+  const CommunityHomeRoute({List<_i35.PageRouteInfo>? children})
       : super(
-          CommunityRoute.name,
+          CommunityHomeRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'CommunityRoute';
+  static const String name = 'CommunityHomeRoute';
 
   static _i35.PageInfo page = _i35.PageInfo(
     name,
     builder: (data) {
-      return const _i6.CommunityPage();
+      return const _i6.CommunityHomePage();
     },
   );
 }

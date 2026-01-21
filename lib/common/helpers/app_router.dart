@@ -38,7 +38,7 @@ class AppRouter extends RootStackRouter {
           children: [
             AutoRoute(page: WorkoutsRoute.page),
             AutoRoute(page: MealsRoute.page),
-            AutoRoute(page: CommunityRoute.page),
+            AutoRoute(page: CommunityHomeRoute.page),
             AutoRoute(page: AccountRoute.page),
           ],
         ),
@@ -69,5 +69,6 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: AllExercisesRoute.page),
         AutoRoute(page: MealDetailRoute.page),
         AutoRoute(page: FavouritesRoute.page),
+       
       ];
 }

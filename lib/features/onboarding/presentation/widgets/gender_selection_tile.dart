@@ -41,7 +41,7 @@ class GenderSelectionTile extends StatelessWidget {
           ? const Icon(
               Icons.check,
               size: 16,
-              color: AppColors.cardDark,
+              color: Colors.black,
             )
           : null,
     )
@@ -102,7 +102,7 @@ class GenderSelectionTile extends StatelessWidget {
       ),
       child: ColorFiltered(
         colorFilter: const ColorFilter.mode(
-          AppColors.cardDark,
+          Colors.black45,
           BlendMode.darken,
         ),
         child: SizedBox(

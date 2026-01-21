@@ -36,6 +36,32 @@ import '../../features/auth/domain/usecases/auth_usecases.dart' as _i46;
 import '../../features/auth/domain/usecases/get_user_fitness_profile_usecase.dart'
     as _i928;
 import '../../features/auth/presentation/bloc/auth_bloc.dart' as _i797;
+import '../../features/community/data/datasources/community_remote_datasource.dart'
+    as _i158;
+import '../../features/community/data/repositories/community_repository_impl.dart'
+    as _i321;
+import '../../features/community/domain/repositories/community_repository.dart'
+    as _i121;
+import '../../features/community/domain/usecases/create_post_usecase.dart'
+    as _i436;
+import '../../features/community/domain/usecases/find_workout_buddies_usecase.dart'
+    as _i34;
+import '../../features/community/domain/usecases/follow_user_usecase.dart'
+    as _i842;
+import '../../features/community/domain/usecases/get_connections_usecase.dart'
+    as _i435;
+import '../../features/community/domain/usecases/get_feed_posts_usecase.dart'
+    as _i132;
+import '../../features/community/domain/usecases/get_recommended_groups_usecase.dart'
+    as _i327;
+import '../../features/community/domain/usecases/like_post_usecase.dart'
+    as _i850;
+import '../../features/community/presentation/bloc/buddies/buddies_bloc.dart'
+    as _i953;
+import '../../features/community/presentation/bloc/feed/feed_bloc.dart'
+    as _i326;
+import '../../features/community/presentation/bloc/groups/groups_bloc.dart'
+    as _i628;
 import '../../features/favourites/data/datasources/favourites_local_datasource.dart'
     as _i458;
 import '../../features/favourites/data/repositories/favourites_repository_impl.dart'
@@ -148,6 +174,11 @@ extension GetItInjectableX on _i174.GetIt {
               firestore: gh<_i974.FirebaseFirestore>(),
               uuid: gh<_i706.Uuid>(),
             ));
+    gh.lazySingleton<_i158.CommunityRemoteDatasource>(
+        () => _i158.CommunityRemoteDatasource(
+              gh<_i974.FirebaseFirestore>(),
+              gh<_i59.FirebaseAuth>(),
+            ));
     gh.lazySingleton<_i608.OnboardingRemoteDatasource>(
         () => _i608.OnboardingRemoteDatasource(
               gh<_i974.FirebaseFirestore>(),
@@ -170,6 +201,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i372.CheckIfFavUsecase(gh<_i518.FavouritesRepository>()));
     gh.lazySingleton<_i430.OnboardingRepository>(() =>
         _i452.OnboardingRepositoryImpl(gh<_i608.OnboardingRemoteDatasource>()));
+    gh.lazySingleton<_i121.CommunityRepository>(() =>
+        _i321.CommunityRepositoryImpl(gh<_i158.CommunityRemoteDatasource>()));
     gh.lazySingleton<_i626.AuthRepository>(() => _i877.AuthRepositoryImpl(
         remoteDataSource: gh<_i167.AuthRemoteDataSource>()));
     gh.lazySingleton<_i243.WorkoutsRepository>(() =>
@@ -206,6 +239,20 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i361.Dio>(),
           gh<String>(instanceName: 'ApiKey'),
         ));
+    gh.lazySingleton<_i436.CreatePostUsecase>(
+        () => _i436.CreatePostUsecase(gh<_i121.CommunityRepository>()));
+    gh.lazySingleton<_i850.LikePostUsecase>(
+        () => _i850.LikePostUsecase(gh<_i121.CommunityRepository>()));
+    gh.lazySingleton<_i34.FindWorkoutBuddiesUsecase>(
+        () => _i34.FindWorkoutBuddiesUsecase(gh<_i121.CommunityRepository>()));
+    gh.lazySingleton<_i132.GetFeedPostsUsecase>(
+        () => _i132.GetFeedPostsUsecase(gh<_i121.CommunityRepository>()));
+    gh.lazySingleton<_i435.GetConnectionsUsecase>(
+        () => _i435.GetConnectionsUsecase(gh<_i121.CommunityRepository>()));
+    gh.lazySingleton<_i842.FollowUserUsecase>(
+        () => _i842.FollowUserUsecase(gh<_i121.CommunityRepository>()));
+    gh.lazySingleton<_i327.GetRecommendedGroupsUsecase>(() =>
+        _i327.GetRecommendedGroupsUsecase(gh<_i121.CommunityRepository>()));
     gh.lazySingleton<_i546.ClientProvider>(
         () => _i546.ClientProvider(gh<_i758.DioClient>()));
     gh.factory<_i410.WorkoutsBloc>(() => _i410.WorkoutsBloc(
@@ -228,6 +275,18 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i46.ResetPasswordUseCase(gh<_i626.AuthRepository>()));
     gh.factory<_i684.MealsBloc>(
         () => _i684.MealsBloc(gh<_i922.GetAllMealsUsecase>()));
+    gh.factory<_i326.FeedBloc>(() => _i326.FeedBloc(
+          gh<_i132.GetFeedPostsUsecase>(),
+          gh<_i850.LikePostUsecase>(),
+          gh<_i436.CreatePostUsecase>(),
+        ));
+    gh.factory<_i953.BuddiesBloc>(() => _i953.BuddiesBloc(
+          gh<_i34.FindWorkoutBuddiesUsecase>(),
+          gh<_i842.FollowUserUsecase>(),
+          gh<_i435.GetConnectionsUsecase>(),
+        ));
+    gh.factory<_i628.GroupsBloc>(
+        () => _i628.GroupsBloc(gh<_i327.GetRecommendedGroupsUsecase>()));
     gh.factory<_i797.AuthBloc>(() => _i797.AuthBloc(
           signInWithEmailAndPasswordUseCase:
               gh<_i46.SignInWithEmailAndPasswordUseCase>(),

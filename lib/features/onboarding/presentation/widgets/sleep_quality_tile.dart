@@ -66,7 +66,7 @@ class SleepQualityTile extends StatelessWidget {
                 isSelected ? Icons.check_circle : Icons.radio_button_unchecked,
                 color: isSelected
                     ? AppColors.primary
-                    : AppColors.textSecondary.withValues(alpha: 0.5),
+                    : AppColors.textSecondary.withOpacity(0.5),
                 size: 24,
               ),
             ],

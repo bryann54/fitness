@@ -1,19 +1,18 @@
 // lib/features/onboarding/data/models/fitness_profile_model.dart
 
+import 'package:cloud_firestore/cloud_firestore.dart'; // Required for Timestamp
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'fitness_profile_model.g.dart';
 
-// Enums for strongly typed, controlled data entry
 enum WorkoutExperience { never, beginner, intermediate, advanced }
 
 enum FitnessGoal { loseWeight, gainMuscle, improveEndurance, maintenance }
 
 enum SleepQuality { poor, fair, good, excellent }
 
-@JsonSerializable(
-    explicitToJson: true) // explicitly use toJson for nested objects/enums
+@JsonSerializable(explicitToJson: true)
 class FitnessProfileModel extends Equatable {
   final String uid;
 
@@ -23,23 +22,30 @@ class FitnessProfileModel extends Equatable {
   final double currentWeightKg;
   final int heightCm;
 
+  // Social Metrics
+  final int followersCount;
+  final int followingCount;
+  final int postsCount;
+
+  @JsonKey(fromJson: _timestampFromJson, toJson: _timestampToJson)
+  final DateTime? lastActive;
+
   // Fitness Metrics
   final WorkoutExperience experience;
   final FitnessGoal primaryGoal;
-  final String fitnessLevel; // e.g., Beginner-Intermediate
-  final String? physicalLimitations; // e.g., 'Knee injury'
+  final String fitnessLevel;
+  final String? physicalLimitations;
   final int workoutsPerWeek;
   final bool isTakingSupplements;
   final List<String> supplementsTaken;
 
-  // --- NEW CALORIE FIELDS ---
+  // Calorie Fields
   final int calorieGoal;
   final String calorieUnit;
-  // --------------------------
 
   // Preferences
-  final String dietPreference; // e.g., 'Vegetarian', 'Keto'
-  final List<String> workoutPreferences; // e.g., ['Gym', 'Home', 'Cardio']
+  final String dietPreference;
+  final List<String> workoutPreferences;
   final SleepQuality sleepQuality;
 
   const FitnessProfileModel({
@@ -57,18 +63,25 @@ class FitnessProfileModel extends Equatable {
     required this.dietPreference,
     required this.workoutPreferences,
     required this.sleepQuality,
-    // Provide default value for list fields
-    this.supplementsTaken = const [],
-    // --- NEW FIELDS MUST BE REQUIRED OR HAVE DEFAULTS ---
     required this.calorieGoal,
     required this.calorieUnit,
+    this.followersCount = 0,
+    this.followingCount = 0,
+    this.postsCount = 0,
+    this.lastActive,
+    this.supplementsTaken = const [],
   });
+
   FitnessProfileModel copyWith({
     String? uid,
     String? gender,
     int? age,
     double? currentWeightKg,
     int? heightCm,
+    int? followersCount,
+    int? followingCount,
+    int? postsCount,
+    DateTime? lastActive,
     WorkoutExperience? experience,
     FitnessGoal? primaryGoal,
     String? fitnessLevel,
@@ -88,6 +101,10 @@ class FitnessProfileModel extends Equatable {
       age: age ?? this.age,
       currentWeightKg: currentWeightKg ?? this.currentWeightKg,
       heightCm: heightCm ?? this.heightCm,
+      followersCount: followersCount ?? this.followersCount,
+      followingCount: followingCount ?? this.followingCount,
+      postsCount: postsCount ?? this.postsCount,
+      lastActive: lastActive ?? this.lastActive,
       experience: experience ?? this.experience,
       primaryGoal: primaryGoal ?? this.primaryGoal,
       fitnessLevel: fitnessLevel ?? this.fitnessLevel,
@@ -115,6 +132,10 @@ class FitnessProfileModel extends Equatable {
         age,
         currentWeightKg,
         heightCm,
+        followersCount,
+        followingCount,
+        postsCount,
+        lastActive,
         experience,
         primaryGoal,
         fitnessLevel,
@@ -122,10 +143,24 @@ class FitnessProfileModel extends Equatable {
         workoutsPerWeek,
         isTakingSupplements,
         supplementsTaken,
-        calorieGoal, // <--- ADDED
-        calorieUnit, // <--- ADDED
+        calorieGoal,
+        calorieUnit,
         dietPreference,
         workoutPreferences,
         sleepQuality,
       ];
+
+  // Helper methods moved inside the class body
+  static DateTime? _timestampFromJson(dynamic timestamp) {
+    if (timestamp == null) return null;
+    if (timestamp is Timestamp) {
+      return timestamp.toDate();
+    }
+    if (timestamp is String) {
+      return DateTime.parse(timestamp);
+    }
+    return null;
+  }
+
+  static dynamic _timestampToJson(DateTime? date) => date?.toIso8601String();
 }

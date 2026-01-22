@@ -109,8 +109,8 @@ class _CommentsSheetState extends State<CommentsSheet> {
           Expanded(
             child: _isLoading
                 ? const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.primary,
+                    child: CircularProgressIndicator.adaptive(
+                     
                     ),
                   )
                 : _comments.isEmpty

@@ -44,7 +44,8 @@ class _MealsPageState extends State<MealsPage> {
         builder: (context, state) {
           if (state is MealsLoading) {
             return const Center(
-              child: CircularProgressIndicator(color: AppColors.primary),
+              child:
+                  CircularProgressIndicator.adaptive(),
             );
           }
 

@@ -40,11 +40,11 @@ class WorkoutProgressCard extends StatelessWidget {
               SizedBox(
                 width: 60,
                 height: 60,
-                child: CircularProgressIndicator(
+                child: CircularProgressIndicator.adaptive(
                   value: percent,
                   strokeWidth: 6,
                   backgroundColor: AppColors.cardLight,
-                  color: AppColors.primary,
+                
                 ),
               ),
               Text("${(percent * 100).toInt()}%",

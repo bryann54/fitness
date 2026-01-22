@@ -49,8 +49,8 @@ class WorkoutDetailPage extends StatelessWidget {
                           placeholder: (context, url) => Container(
                             color: AppColors.cardDark,
                             child: const Center(
-                              child: CircularProgressIndicator(
-                                color: AppColors.primary,
+                              child: CircularProgressIndicator.adaptive(
+                              
                               ),
                             ),
                           ),

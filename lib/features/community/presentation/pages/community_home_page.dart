@@ -4,6 +4,7 @@ import 'package:fitness/common/res/colors.dart';
 import 'package:fitness/features/community/presentation/bloc/feed/feed_bloc.dart';
 import 'package:fitness/features/community/presentation/bloc/feed/feed_state.dart';
 import 'package:fitness/features/community/presentation/widgets/buddies_tab.dart';
+import 'package:fitness/features/community/presentation/widgets/create_post_sheet.dart';
 import 'package:fitness/features/community/presentation/widgets/groups_tab.dart';
 import 'package:fitness/features/community/presentation/widgets/post_card.dart';
 import 'package:fitness/features/notifications/presentation/widgets/empty_notifications_view.dart';
@@ -120,7 +121,7 @@ class _CommunityHomePageState extends State<CommunityHomePage>
       builder: (context, state) {
         if (state is FeedLoading) {
           return const Center(
-            child: CircularProgressIndicator(color: AppColors.primary),
+            child: CircularProgressIndicator.adaptive(),
           );
         }
 
@@ -220,74 +221,6 @@ class _CommunityHomePageState extends State<CommunityHomePage>
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) => const CreatePostSheet(),
-    );
-  }
-}
-
-// ============================================================================
-// CREATE POST SHEET
-// ============================================================================
-
-class CreatePostSheet extends StatelessWidget {
-  const CreatePostSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom,
-        top: 20,
-        left: 20,
-        right: 20,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 40,
-            height: 4,
-            decoration: BoxDecoration(
-              color: AppColors.textPrimaryDark.withValues(alpha: 0.3),
-              borderRadius: BorderRadius.circular(2),
-            ),
-          ),
-          const SizedBox(height: 20),
-          Text(
-            'Create Post',
-            style: GoogleFonts.poppins(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: AppColors.textPrimaryDark,
-            ),
-          ),
-          const SizedBox(height: 20),
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: AppColors.textLightDark.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              children: [
-                const Icon(
-                  FontAwesomeIcons.penToSquare,
-                  size: 48,
-                  color: AppColors.primary,
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  'Post creation coming soon!',
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    color: AppColors.textPrimaryDark,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
-        ],
-      ),
     );
   }
 }

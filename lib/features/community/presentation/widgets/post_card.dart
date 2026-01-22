@@ -216,7 +216,8 @@ class PostCard extends StatelessWidget {
           placeholder: (context, url) => Container(
             color: AppColors.textLightDark.withValues(alpha: 0.2),
             child: const Center(
-              child: CircularProgressIndicator(color: AppColors.primary),
+              child:
+                  CircularProgressIndicator.adaptive(),
             ),
           ),
         ),

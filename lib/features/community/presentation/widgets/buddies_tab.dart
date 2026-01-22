@@ -209,7 +209,8 @@ class _BuddiesTabState extends State<BuddiesTab>
         if (state is BuddiesLoading) {
           return const SliverFillRemaining(
             child: Center(
-              child: CircularProgressIndicator(color: AppColors.primary),
+              child:
+                  CircularProgressIndicator.adaptive(),
             ),
           );
         }

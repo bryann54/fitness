@@ -149,8 +149,8 @@ class _CreatePostSheetState extends State<CreatePostSheet> {
                         ? const SizedBox(
                             height: 20,
                             width: 20,
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
+                            child: CircularProgressIndicator.adaptive(
+                              
                               strokeWidth: 2,
                             ),
                           )

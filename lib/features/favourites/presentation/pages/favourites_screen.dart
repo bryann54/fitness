@@ -87,7 +87,8 @@ class _FavouritesPageState extends State<FavouritesPage> {
         builder: (context, state) {
           if (state is FavouritesLoading) {
             return const Center(
-              child: CircularProgressIndicator(color: AppColors.primary),
+              child:
+                  CircularProgressIndicator.adaptive(),
             );
           }
 

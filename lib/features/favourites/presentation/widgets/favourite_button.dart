@@ -54,9 +54,9 @@ class _FavouriteButtonState extends State<FavouriteButton> {
           return SizedBox(
             width: widget.iconSize,
             height: widget.iconSize,
-            child: CircularProgressIndicator(
+            child: CircularProgressIndicator.adaptive(
               strokeWidth: 2,
-              color: widget.iconColor ?? AppColors.primary,
+             
             ),
           );
         }
